@@ -85,10 +85,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>　　大二的时候看见学长搭建的个人博客，感觉好高大上的样子，想着自己啥时候不再是哪个只会喊：<strong>哇、牛批、666、厉害厉害</strong>的傻逼选手，然后浪啊浪，突然有一天，CSP考试上考到了一个Markdown转HTML的大模拟题：<img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/CSP.png" alt="计算机软件能力认证考试系统">现场狂写2小时，黑箱测试最后只得20分，从此心理对MD留下了挥之不去的阴影，然后就没有了然后，此事不来了了之。大二的时候在<a href="https://blog.csdn.net/spring371327" target="_blank" rel="noopener">CSDN</a>上写过，但是感觉CSDN的广告是越来也严重了，上面，下面，左面，右面等等四面八方全是各种广告，于是乎，时隔三年，趁着中秋没钱出去浪啊，舍友也回家了，丧尸宿舍也搭建一个简单的个人博客吧，此文简单记录一下搭建过程。<br>本文使用的是 <a href="https://pages.github.com/" target="_blank" rel="noopener">Github pages</a> + <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a> + <a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">Next </a>主题。  </p>
-<h2 id="二、软件安装及环境搭建"><a href="#二、软件安装及环境搭建" class="headerlink" title="二、软件安装及环境搭建"></a>二、软件安装及环境搭建</h2><h4 id="1、注册GitHub账号并创建IO仓库"><a href="#1、注册GitHub账号并创建IO仓库" class="headerlink" title="1、注册GitHub账号并创建IO仓库"></a>1、注册GitHub账号并创建IO仓库</h4><p>　　<a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>作为全球最大的同性交友网站，在程序员心中的地位不亚与<del>PornHub</del>在宅男心中的地位，有过之而无不及啊，登录官网填写相关信息进行账号注册，然后创建一个和注册名相同的仓库(Repository)，注意一定要是下图这种格式<em>[username.github.io]</em>，因为github page每个账号只有一个。  </p>
+<h2 id="二、基础环境搭建"><a href="#二、基础环境搭建" class="headerlink" title="二、基础环境搭建"></a>二、基础环境搭建</h2><h4 id="1、注册GitHub账号并创建IO仓库"><a href="#1、注册GitHub账号并创建IO仓库" class="headerlink" title="1、注册GitHub账号并创建IO仓库"></a>1、注册GitHub账号并创建IO仓库</h4><p>　　<a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>作为全球最大的同性交友网站，在程序员心中的地位不亚与<del>PornHub</del>在宅男心中的地位，有过之而无不及啊，登录官网填写相关信息进行账号注册，然后创建一个和注册名相同的仓库(Repository)，注意一定要是下图这种格式<em>[username.github.io]</em>，因为github page每个账号只有一个。  </p>
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/repo.png" alt="Create New Repository"></p>
 <p>　　现在，已经可以通过<a href="https://wangjibao.github.io/" target="_blank" rel="noopener">https://wangjibao.github.io/</a>来访问了，后面还会在这上面做更多的设置。</p>
-<h4 id="2、安装node-js"><a href="#2、安装node-js" class="headerlink" title="2、安装node.js"></a>2、安装node.js</h4><p>　　Hexo是基于Node.js的，其实Node.js就是一个JavaScript的运行环境，用来生成我们所写的静态博客页面，去<a href="https://nodejs.org/en/" target="_blank" rel="noopener">官网</a>下载安装即可。  　<br>　　其中的 <a href="https://www.npmjs.com.cn/" target="_blank" rel="noopener">npm</a>(Node Package Manager) 是随 node.js 一起安装的包管理工具，能解决NodeJS代码部署上的很多问题。常用命令如下:  </p>
+<h4 id="2、安装node-js"><a href="#2、安装node-js" class="headerlink" title="2、安装node.js"></a>2、安装node.js</h4><p>　　Hexo是基于Node.js的，其实Node.js就是一个JavaScript的运行环境，用来生成我们所写的静态博客页面，去<a href="https://nodejs.org/en/" target="_blank" rel="noopener">官网</a>下载安装即可，并且会自动加入系统环境变量中。  　<br>　　其中的 <a href="https://www.npmjs.com.cn/" target="_blank" rel="noopener">npm</a>(Node Package Manager) 是随 node.js 一起安装的包管理工具，能解决NodeJS代码部署上的很多问题。常用命令如下:  </p>
    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install npm -g              #安装新版本的npm</span><br><span class="line">npm install                     #安装npm依赖包</span><br><span class="line">npm install &lt;Mouble Name&gt;       #安装包，分为全局安装和本地安装，全局安装添加 -g 参数</span><br><span class="line">npm uninstall &lt;Mouble Name&gt;     #卸载包</span><br><span class="line">npm update &lt;Mouble Name&gt;        #更新包</span><br><span class="line">npm list -g                     #列出所有的全局安装包</span><br></pre></td></tr></table></figure>
 <h4 id="3、安装Git并配置SSH-Key"><a href="#3、安装Git并配置SSH-Key" class="headerlink" title="3、安装Ｇit并配置SSH Key"></a>3、安装Ｇit并配置SSH Key</h4><p>   Git是一个流行的版本控制工具，使用它和GitHub进行交互。前往Git<a href="https://git-scm.com/" target="_blank" rel="noopener">官网</a>下载安装到本地即可。  因为你要提交代码到GitHub必须得拥有权限，但是直接使用用户名+密码不安全，所以使用 SSH Key来解决本地和服务器的连接问题。  </p>
 <p>   在Git Bash中执行：  <code>cd ~/.ssh</code>      ，检查本机存在的ssh秘钥。如果提示： <code>No such file or directory</code> 说明你是第一次使用git。</p>
@@ -105,23 +105,58 @@
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/file_tree.png" alt="文件目录树"></p>
 <p>　　其中<code>_config.yml</code>是全局配置文件，<code>_posts</code>是放置博客文章的文件夹，具体各文件功能查看<a href="https://www.jekyll.com.cn/docs/structure/" target="_blank" rel="noopener">这里</a>。此时，我们执行  <code>hexo server</code>来启动Hexo服务，在浏览器中输入 <code>http://localhost:4000</code>查看初始效果。<img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/localhost4000.png" alt="Hexo初始效果"></p>
 <p>  常用的 Hexo命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;tilte&quot;     #创建新文章，放在\source\_posts目录下</span><br><span class="line">hexo new page ***    #创建页面</span><br><span class="line">hexo generate        #用来生成静态文件，简写： hexo g</span><br><span class="line">hexo server          #开启服务器实现本地预览功能，简写：  hexo s</span><br><span class="line">hexo deploy          #部署网址，上传到github仓库，简写：  hexo d</span><br><span class="line">hexo clean           #清除缓存(db.json)和已生成的静态文件(public),例如在更换博客主题后执行该命令</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo -v              #查看版本信息</span><br><span class="line">hexo new &quot;tilte&quot;     #创建新文章，放在\source\_posts目录下</span><br><span class="line">hexo new page ***    #创建页面</span><br><span class="line">hexo generate        #用来生成静态文件，简写： hexo g</span><br><span class="line">hexo server          #开启服务器实现本地预览功能，简写：  hexo s</span><br><span class="line">hexo deploy          #部署网址，上传到github仓库，简写：  hexo d</span><br><span class="line">hexo clean           #清除缓存(db.json)和已生成的静态文件(public),例如在更换博客主题后执行该命令</span><br></pre></td></tr></table></figure>
 <h4 id="6、域名购买及解析"><a href="#6、域名购买及解析" class="headerlink" title="6、域名购买及解析"></a>6、域名购买及解析</h4><p>　　前往<a href="https://www.aliyun.com/?utm_content=se_1000301881" target="_blank" rel="noopener">阿里云</a>购买属于自己的域名，当然，不买也是可以的，直接使用 <code>wangjibao.github.io</code>也能访问博客，只是为了博客更加个性化一点，遂购买一个属于自己的域名。购买完成后，前往域名解析页面设置域名解析，如下图：   </p>
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/dns.png" alt="域名解析"></p>
 <p>　　其中第二行的IP地址是在<code>cmd</code>命令框中通过 <code>ping wangjibao.github.io</code> 命令得到。同时，在github pages的设置页面，填写购买的域名。   </p>
-<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/D:/blog\source\_posts\GitHub-Pages-Hexo-Next博客搭建记录\domain.png" alt="配置域名"></p>
-<p>此时，即可通过在浏览器中的地址栏输入 <code>www.wangjibao.com.cn</code> 进行博客的浏览。</p>
+<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/domain.png" alt="配置域名"></p>
+<p>最后，在<code>source</code>文件夹中新建名为 <code>CNAME</code>的文件，在文件中填入<code>www.wangjibao.com.cn</code>；执行 <code>hexo g -d</code>命令，此时，即可通过在浏览器中的地址栏输入 <code>www.wangjibao.com.cn</code> 进行博客的浏览。</p>
 <h4 id="7、本地与Github连接"><a href="#7、本地与Github连接" class="headerlink" title="7、本地与Github连接"></a>7、本地与Github连接</h4><p>　　之前已经配置好了SSH Key，此时只要修改一下<code>_config.yml</code>文件即可轻松实现本地博文发布。修改<code>_config.yml</code>如下：</p>
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/deploy.png" alt="deploy配置"></p>
 <p>　其中<code>repository</code>的值在下图中获得，注意，此处每个字段的冒号后面都跟有一个空格，否则会出错。</p>
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/git_address.png" alt="git_address"></p>
 <p>　在发布博文前，执行如下命令安装必要的插件：</p>
 <p>　　　<code>npm install hexo-deployer-git --save</code></p>
-<h2 id="三、Next主题安装及配置"><a href="#三、Next主题安装及配置" class="headerlink" title="三、Next主题安装及配置"></a>三、Next主题安装及配置</h2>
+<h4 id="8、配置NexT主题"><a href="#8、配置NexT主题" class="headerlink" title="8、配置NexT主题"></a>8、配置NexT主题</h4><p>NexT的官方说明文档，将各基础配置讲述得非常清楚，按照官方文档一步一步配置即可。包括：</p>
+<ul>
+<li><p>安装NexT  </p>
+<ul>
+<li>下载主题</li>
+<li>启用主题</li>
+<li>验证主题  </li>
+</ul>
+</li>
+<li><p>主题设定  </p>
+<ul>
+<li>选择Scheme</li>
+<li>设置语言</li>
+<li>设置菜单</li>
+<li>设置侧栏</li>
+<li>设置头像</li>
+<li>设置作者昵称</li>
+<li>设置站点描述   </li>
+</ul>
+</li>
+<li><p>设置RSS</p>
+</li>
+<li>添加标签页面</li>
+<li>添加分类页面</li>
+<li>设置字体</li>
+<li>设置代码高亮主题</li>
+<li>侧边栏社交链接</li>
+<li>开启打赏功能</li>
+<li>设置友情链接</li>
+<li>腾讯公益404页面</li>
+<li>站点建立时间</li>
+<li>订阅微信公众号</li>
+<li>设置背景动画   </li>
+</ul>
+<p>其中，更改为网站图标，</p>
+<h2 id="三、集成第三方服务"><a href="#三、集成第三方服务" class="headerlink" title="三、集成第三方服务"></a>三、集成第三方服务</h2><h4 id="1、"><a href="#1、" class="headerlink" title="1、"></a>1、</h4>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/" data-id="cjmdm66v00000bgu992c4d6ri" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/" data-id="cjmdnvyw10001rcu9aor3kbmh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客搭建/">博客搭建</a></li></ul>
@@ -168,7 +203,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/22/hello-world/" data-id="cjmdm66ww0003bgu97mjgamku" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/22/hello-world/" data-id="cjmdnvyvq0000rcu949mtkbln" class="article-share-link">Share</a>
       
       
     </footer>
