@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -98,7 +105,8 @@
 <meta property="og:image" content="http://yoursite.com/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/domain.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/deploy.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/git_address.png">
-<meta property="og:updated_time" content="2018-09-22T18:16:03.168Z">
+<meta property="og:image" content="http://yoursite.com/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/pace.png">
+<meta property="og:updated_time" content="2018-09-22T18:54:57.398Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitHub Pages+Hexo+Next博客搭建记录">
 <meta name="twitter:description" content="前言　　大二的时候看见学长搭建的个人博客，感觉好高大上的样子，想着自己啥时候不再是哪个只会喊：哇、牛批、666、厉害厉害的傻逼选手，然后浪啊浪，突然有一天，CSP考试上考到了一个Markdown转HTML的大模拟题：现场狂写2小时，黑箱测试最后只得20分，从此心理对MD留下了挥之不去的阴影，然后就没有了然后，此事不来了了之。大二的时候在CSDN上写过，但是感觉CSDN的广告是越来也严重了，上面，下">
@@ -409,26 +417,23 @@
 <p>　　　<code>npm install hexo-deployer-git --save</code></p>
 <h3 id="配置NexT主题"><a href="#配置NexT主题" class="headerlink" title="配置NexT主题"></a>配置NexT主题</h3><p><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT</a>的官方说明文档，将各基础配置讲述得非常清楚，按照官方文档一步一步配置即可。包括：</p>
 <ul>
-<li><p>安装NexT  </p>
-<ul>
+<li>安装NexT <ul>
 <li>下载主题</li>
 <li>启用主题</li>
 <li>验证主题  </li>
 </ul>
 </li>
-<li><p>主题设定  </p>
-<ul>
+<li>主题设定  <ul>
 <li>选择Scheme（此处选用Gemini主题）</li>
 <li>设置语言（zh-Hans）</li>
 <li>设置菜单</li>
 <li>设置侧栏</li>
 <li>设置头像</li>
 <li>设置作者昵称</li>
-<li>设置站点描述   </li>
+<li>设置站点描述</li>
 </ul>
 </li>
-<li><p>设置RSS（<code>hexo install hexo-generator-feed --save</code>）</p>
-</li>
+<li>设置RSS（<code>hexo install hexo-generator-feed --save</code>）</li>
 <li>添加标签页面</li>
 <li>添加分类页面</li>
 <li>设置字体</li>
@@ -439,10 +444,18 @@
 <li>腾讯公益404页面</li>
 <li>站点建立时间</li>
 <li>订阅微信公众号</li>
-<li>设置背景动画   </li>
+<li>设置背景动画     <h2 id="NexT主题个性化设计"><a href="#NexT主题个性化设计" class="headerlink" title="NexT主题个性化设计"></a>NexT主题个性化设计</h2><h3 id="设置网站图标-Favicon"><a href="#设置网站图标-Favicon" class="headerlink" title="设置网站图标 Favicon"></a>设置网站图标 <code>Favicon</code></h3>adsf<h3 id="修改文章底部-号标签样式"><a href="#修改文章底部-号标签样式" class="headerlink" title="修改文章底部 # 号标签样式"></a>修改文章底部 <code>#</code> 号标签样式</h3>asdf<h3 id="文章末尾添加-本文结束-标记"><a href="#文章末尾添加-本文结束-标记" class="headerlink" title="文章末尾添加 本文结束 标记"></a>文章末尾添加 <code>本文结束</code> 标记</h3>adsf<h3 id="添加顶部加载条"><a href="#添加顶部加载条" class="headerlink" title="添加顶部加载条"></a>添加顶部加载条</h3>在next主题的配置文件 <code>_config.yml</code> 中搜索关键词 <code>pace</code> ，设置为 <code>true</code> ，还可以设置加载条的样式，修改如下图所示：</li>
 </ul>
-<p>其中，更改为网站图标，</p>
-<h2 id="集成第三方服务"><a href="#集成第三方服务" class="headerlink" title="集成第三方服务"></a>集成第三方服务</h2><p>### </p>
+<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/pace.png" alt="加载进度条"></p>
+<h3 id="隐藏网页底部-由hexo强力驱动"><a href="#隐藏网页底部-由hexo强力驱动" class="headerlink" title="隐藏网页底部 由hexo强力驱动"></a>隐藏网页底部 <code>由hexo强力驱动</code></h3><p>adsf</p>
+<h3 id="博文置顶"><a href="#博文置顶" class="headerlink" title="博文置顶"></a>博文置顶</h3><p>adf</p>
+<h3 id="添加分享"><a href="#添加分享" class="headerlink" title="添加分享"></a>添加分享</h3><p>asdf</p>
+<h3 id="显示当前页面的浏览进度"><a href="#显示当前页面的浏览进度" class="headerlink" title="显示当前页面的浏览进度"></a>显示当前页面的浏览进度</h3><p>adf</p>
+<h3 id="首页长博文自动卷起"><a href="#首页长博文自动卷起" class="headerlink" title="首页长博文自动卷起"></a>首页长博文自动卷起</h3><p>asdf</p>
+<h3 id="实现鼠标点击出现桃心"><a href="#实现鼠标点击出现桃心" class="headerlink" title="实现鼠标点击出现桃心"></a>实现鼠标点击出现桃心</h3><p>asdf</p>
+<h3 id="添加站内搜索"><a href="#添加站内搜索" class="headerlink" title="添加站内搜索"></a>添加站内搜索</h3><p>asdf</p>
+<h3 id="生成站点地图"><a href="#生成站点地图" class="headerlink" title="生成站点地图"></a>生成站点地图</h3><p>asdf</p>
+<h2 id="集成第三方服务"><a href="#集成第三方服务" class="headerlink" title="集成第三方服务"></a>集成第三方服务</h2><p>adsf</p>
 
       
     </div>
@@ -692,7 +705,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础环境搭建"><span class="nav-number">2.</span> <span class="nav-text">基础环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册GitHub账号并创建IO仓库"><span class="nav-number">2.1.</span> <span class="nav-text">注册GitHub账号并创建IO仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装node-js"><span class="nav-number">2.2.</span> <span class="nav-text">安装node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Git并配置SSH-Key"><span class="nav-number">2.3.</span> <span class="nav-text">安装Ｇit并配置SSH Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装sublime"><span class="nav-number">2.4.</span> <span class="nav-text">安装sublime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo"><span class="nav-number">2.5.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域名购买及解析"><span class="nav-number">2.6.</span> <span class="nav-text">域名购买及解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地与Github连接"><span class="nav-number">2.7.</span> <span class="nav-text">本地与Github连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置NexT主题"><span class="nav-number">2.8.</span> <span class="nav-text">配置NexT主题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成第三方服务"><span class="nav-number">3.</span> <span class="nav-text">集成第三方服务</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础环境搭建"><span class="nav-number">2.</span> <span class="nav-text">基础环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册GitHub账号并创建IO仓库"><span class="nav-number">2.1.</span> <span class="nav-text">注册GitHub账号并创建IO仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装node-js"><span class="nav-number">2.2.</span> <span class="nav-text">安装node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Git并配置SSH-Key"><span class="nav-number">2.3.</span> <span class="nav-text">安装Ｇit并配置SSH Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装sublime"><span class="nav-number">2.4.</span> <span class="nav-text">安装sublime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo"><span class="nav-number">2.5.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域名购买及解析"><span class="nav-number">2.6.</span> <span class="nav-text">域名购买及解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地与Github连接"><span class="nav-number">2.7.</span> <span class="nav-text">本地与Github连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置NexT主题"><span class="nav-number">2.8.</span> <span class="nav-text">配置NexT主题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT主题个性化设计"><span class="nav-number">3.</span> <span class="nav-text">NexT主题个性化设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置网站图标-Favicon"><span class="nav-number">3.1.</span> <span class="nav-text">设置网站图标 Favicon</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改文章底部-号标签样式"><span class="nav-number">3.2.</span> <span class="nav-text">修改文章底部 # 号标签样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文章末尾添加-本文结束-标记"><span class="nav-number">3.3.</span> <span class="nav-text">文章末尾添加 本文结束 标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加顶部加载条"><span class="nav-number">3.4.</span> <span class="nav-text">添加顶部加载条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐藏网页底部-由hexo强力驱动"><span class="nav-number">3.5.</span> <span class="nav-text">隐藏网页底部 由hexo强力驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#博文置顶"><span class="nav-number">3.6.</span> <span class="nav-text">博文置顶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加分享"><span class="nav-number">3.7.</span> <span class="nav-text">添加分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示当前页面的浏览进度"><span class="nav-number">3.8.</span> <span class="nav-text">显示当前页面的浏览进度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#首页长博文自动卷起"><span class="nav-number">3.9.</span> <span class="nav-text">首页长博文自动卷起</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现鼠标点击出现桃心"><span class="nav-number">3.10.</span> <span class="nav-text">实现鼠标点击出现桃心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加站内搜索"><span class="nav-number">3.11.</span> <span class="nav-text">添加站内搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成站点地图"><span class="nav-number">3.12.</span> <span class="nav-text">生成站点地图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成第三方服务"><span class="nav-number">4.</span> <span class="nav-text">集成第三方服务</span></a></li></ol></div>
             
 
           </div>
