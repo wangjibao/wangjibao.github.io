@@ -74,6 +74,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="来呀，不服抓个包~~" type="application/atom+xml" />
+
 
 
 
@@ -314,6 +316,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术记录/" itemprop="url" rel="index">
+                    <span itemprop="name">技术记录</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -376,7 +400,7 @@
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/git_address.png" alt="git_address"></p>
 <p>　在发布博文前，执行如下命令安装必要的插件：</p>
 <p>　　　<code>npm install hexo-deployer-git --save</code></p>
-<h4 id="8、配置NexT主题"><a href="#8、配置NexT主题" class="headerlink" title="8、配置NexT主题"></a>8、配置NexT主题</h4><p>NexT的官方说明文档，将各基础配置讲述得非常清楚，按照官方文档一步一步配置即可。包括：</p>
+<h4 id="8、配置NexT主题"><a href="#8、配置NexT主题" class="headerlink" title="8、配置NexT主题"></a>8、配置NexT主题</h4><p><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT</a>的官方说明文档，将各基础配置讲述得非常清楚，按照官方文档一步一步配置即可。包括：</p>
 <ul>
 <li><p>安装NexT  </p>
 <ul>
@@ -387,7 +411,7 @@
 </li>
 <li><p>主题设定  </p>
 <ul>
-<li>选择Scheme</li>
+<li>选择Scheme(此处选用Gemini主题)</li>
 <li>设置语言</li>
 <li>设置菜单</li>
 <li>设置侧栏</li>
@@ -631,20 +655,36 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
             
               
               
               <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">1</span>
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
-                
+                </a>
               </div>
             
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
