@@ -118,11 +118,12 @@
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/scroll.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/percent.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/more_press.png">
+<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/love.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/search.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/search_press.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/wordcount.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/wordcount_press.png">
-<meta property="og:updated_time" content="2018-09-23T17:10:22.474Z">
+<meta property="og:updated_time" content="2018-09-24T02:58:20.696Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitHub Pages+Hexo+Next博客搭建记录">
 <meta name="twitter:description" content="前言　　大二的时候看见学长搭建的个人博客，感觉好高大上的样子，想着自己啥时候不再是哪个只会喊：哇、牛批、666、厉害厉害的傻逼选手，然后浪啊浪，突然有一天，CSP考试上考到了一个Markdown转HTML的大模拟题：现场狂写2小时，黑箱测试最后只得20分，从此心理对MD留下了挥之不去的阴影，然后就没有了然后，此事不来了了之。大二的时候在CSDN上写过，但是感觉CSDN的广告是越来也严重了，上面，下">
@@ -426,7 +427,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.2k
+                  3.5k
                 </span>
               
 
@@ -442,7 +443,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  11
+                  13
                 </span>
               
             </div>
@@ -453,7 +454,17 @@
         </div>
       </header>
     
-
+    <div>
+      
+          <div> 
+       
+      	<div style="text-align:center;color: #ccc;font-size:14px;">
+              -------------本文结束<i class="fa fa-paw"></i>感谢您的阅读------------- 			
+        </div>
+       
+  </div>
+      
+    </div>
     
     
     
@@ -534,7 +545,23 @@
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/facion_top.png" alt="facion图像展示"></p>
 <h3 id="修改文章底部-号标签样式"><a href="#修改文章底部-号标签样式" class="headerlink" title="修改文章底部 # 号标签样式"></a>修改文章底部 <code>#</code> 号标签样式</h3><p>在 <code>\themes\next\layout\_macro\post.swing</code> 文件中搜索 <code>rel=&quot;tag&quot;&gt;#</code> ，将 <code>#</code> 号替换成 <code>&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</code>，如下图：</p>
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/foot_tag.png" alt="footer_tag"></p>
-<h3 id="文章末尾添加-本文结束-标记"><a href="#文章末尾添加-本文结束-标记" class="headerlink" title="文章末尾添加 本文结束 标记"></a>文章末尾添加 <code>本文结束</code> 标记</h3><p>adsf</p>
+<h3 id="文章末尾添加-本文结束-标记"><a href="#文章末尾添加-本文结束-标记" class="headerlink" title="文章末尾添加 本文结束 标记"></a>文章末尾添加 <code>本文结束</code> 标记</h3><p>添加<code>本文结束</code>标记的步骤，其实也是主题编写的基本步骤，主要分3步：</p>
+<ol>
+<li><p><strong>添加模板文件</strong> </p>
+<p>在目录 <code>themes\next\layout\_macro</code>中新建名为 <code>passage-end-tag.swig</code>的文件，并添加如下代码：  </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span> </span><br><span class="line">    &#123;% if not is_index %&#125; </span><br><span class="line">    	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"text-align:center;color: #ccc;font-size:14px;"</span>&gt;</span></span><br><span class="line">            -------------本文结束<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-paw"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>感谢您的阅读------------- 			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125; </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>导入模板文件</strong><br>  在文件 <code>themes\next\layout\_macro\post.swig</code>中找到如下代码块（第268行）:</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;#################&#125;</span><br><span class="line">&#123;### POST BODY ###&#125;</span><br><span class="line">&#123;#################&#125;</span><br></pre></td></tr></table></figure>
+<p>  在此代码块的上面添加如下代码：  </p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      &#123;% if not is_index %&#125;</span><br><span class="line">          &#123;% include 'passage-end-tag.swig' %&#125;</span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>配置</strong>  </p>
+<p>  在<strong>主题配置文件</strong>中添加 <code>passage-end-tag</code> 字段，并设置为 <code>true</code> ：  </p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 文章末尾添加“本文结束”标记</span><br><span class="line">passage_end_tag:</span><br><span class="line">  enabled: true</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>最终效果为：  </p>
 <h3 id="添加顶部加载条"><a href="#添加顶部加载条" class="headerlink" title="添加顶部加载条"></a>添加顶部加载条</h3><p>在next主题的配置文件 <code>_config.yml</code> 中搜索关键词 <code>pace</code> ，设置为 <code>true</code> ，还可以设置加载条的样式，修改如下图所示：</p>
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/pace.png" alt="加载进度条"></p>
 <h3 id="隐藏网站底部-由hexo强力驱动"><a href="#隐藏网站底部-由hexo强力驱动" class="headerlink" title="隐藏网站底部 由hexo强力驱动"></a>隐藏网站底部 <code>由hexo强力驱动</code></h3><p><strong>方案一：</strong>在目录 <code>themes\next\layout\_partials\</code>中打开 <code>footer.swig</code>文件，将对应网站底部的描述部分给注释掉即可，<code>html</code>的注释符 <code>&lt;!--  ****  --&gt;</code>：  </p>
@@ -565,7 +592,10 @@
 </ul>
 <p>这里，我们使用第一种方式，实现效果如下图：  </p>
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/more_press.png" alt="阅读全文"></p>
-<h3 id="实现鼠标点击出现桃心"><a href="#实现鼠标点击出现桃心" class="headerlink" title="实现鼠标点击出现桃心"></a>实现鼠标点击出现桃心</h3><p>adf</p>
+<h3 id="实现鼠标点击出现桃心"><a href="#实现鼠标点击出现桃心" class="headerlink" title="实现鼠标点击出现桃心"></a>实现鼠标点击出现桃心</h3><p>将 <a href="https://link.jianshu.com?t=https://github.com/Neveryu/Neveryu.github.io/blob/master/js/src/love.js" target="_blank" rel="noopener">love.js</a>文件添加到<strong>主题目录</strong>的<code>\source\js\src</code> 下，找到 <code>\themes\next\layout\_layout.swig</code>文件， 在文件的后面， <code>&lt;/body&gt;</code>标签之前 添加以下代码：  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 页面点击小红心 --&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"/js/src/love.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>实现效果为每次鼠标点击页面的时候，会出现一个彩色的桃心，如下图所示：  </p>
+<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/love.png" alt="桃心"></p>
 <h3 id="添加站内搜索"><a href="#添加站内搜索" class="headerlink" title="添加站内搜索"></a>添加站内搜索</h3><p>NexT主题支持多种搜索插件，我们这里使用 <code>hexo-generator-searchdb</code>插件，原理是在本地生成一个<code>search.xml</code>文件，搜索的时候从这个文件中根据关键字检索出相应的链接。首先执行 <code>npm install hexo-generatordb --save</code> 指令进行插件的安装，之后将下面的代码复制进<strong>站点配置文件</strong>的末尾。  </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">	path: search.xml</span><br><span class="line">	field: post</span><br><span class="line">    format: html</span><br><span class="line">    limit: <span class="number">10000</span></span><br></pre></td></tr></table></figure>
 <p>然后将主题配置文件中的对应字段设置为 <code>true</code> 即可。</p>
@@ -867,7 +897,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">3.2k</span>
+    <span title="Site words total count">3.6k</span>
   
 </div>
 
