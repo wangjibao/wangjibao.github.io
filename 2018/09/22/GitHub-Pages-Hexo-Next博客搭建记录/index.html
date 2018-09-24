@@ -116,17 +116,8 @@
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/hide_footer2.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/hide_footer_press.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/template.png">
-<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/share.png">
-<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/share_press.png">
-<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/scroll.png">
-<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/percent.png">
-<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/more_press.png">
-<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/love.png">
-<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/search.png">
-<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/search_press.png">
-<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/wordcount.png">
-<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/wordcount_press.png">
-<meta property="og:updated_time" content="2018-09-24T13:04:33.789Z">
+<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/valine.png">
+<meta property="og:updated_time" content="2018-09-24T15:38:54.314Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitHub Pages+Hexo+Next博客搭建记录">
 <meta name="twitter:description" content="前言　　大二的时候看见学长搭建的个人博客，感觉好高大上的样子，想着自己啥时候不再是哪个只会喊：哇、牛批、666、厉害厉害的傻逼选手，然后浪啊浪，突然有一天，CSP考试上考到了一个Markdown转HTML的大模拟题：现场狂写2小时，黑箱测试最后只得20分，从此心理对MD留下了挥之不去的阴影，然后就没有了然后，此事不来了了之。大二的时候在CSDN上写过，但是感觉CSDN的广告是越来也严重了，上面，下">
@@ -412,9 +403,30 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
+          
+             <span id="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/" class="leancloud_visitors" data-flag-title="GitHub Pages+Hexo+Next博客搭建记录">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -430,7 +442,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.9k 字
+                  4.7k 字
                 </span>
               
 
@@ -446,7 +458,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  15 分钟
+                  18 分钟
                 </span>
               
             </div>
@@ -589,47 +601,19 @@
 <p>这里我们使用第二种方案，每次写文章的时候，都要手动添加 <code>top</code> 属性，很麻烦，这里，我们可以修改 <code>scaffolds\post.md</code> 文件，修改后的内容如下，其实相当于创建了一个博文的初始模板。  </p>
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/template.png" alt="新建博文模板"></p>
 <p>到此，如果文章设置了 <code>top</code> 属性并有值得话，根据 <code>top</code> 值排序，没有的话，按照博文的推送时间排序。</p>
-<h3 id="添加分享"><a href="#添加分享" class="headerlink" title="添加分享"></a>添加分享</h3><p>NexT主题支持多种方式的分享，包括 <code>Baidu Share</code> 、<code>duoshuo_share</code>、<code>needMoreShare2</code>、<code>jiathis</code>等等，这里我们使用<code>needMoreShare2</code>，在主题配置文件中修改对应的字段如下图所示，资深抓包民工表示对这里的很多软件好熟悉~，怕是要被打~~~~  </p>
-<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/share.png" alt="分享"></p>
-<p>修改后，执行 <code>hexo g -d</code>指令，效果如图：  </p>
-<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/share_press.png" alt="分享效果图"></p>
-<h3 id="显示当前页面的浏览进度"><a href="#显示当前页面的浏览进度" class="headerlink" title="显示当前页面的浏览进度"></a>显示当前页面的浏览进度</h3><p>在主题配置文件中 <code>ctrl+f</code> 搜索 <code>scrollpercent</code>，将 <code>false</code> 改为 <code>true</code>。如果想把 <code>top</code>按钮放在侧边栏，可以把 <code>b2t</code>字段设置为<code>true</code> ，实现效果如图所示：  </p>
-<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/scroll.png" alt="scroll">  <img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/percent.png" alt="percent"></p>
-<h3 id="首页博文自动卷起"><a href="#首页博文自动卷起" class="headerlink" title="首页博文自动卷起"></a>首页博文自动卷起</h3><p>在首页显示一篇文章的部分内容，并提供一个链接跳转到全文页面是一个常见的需求。NexT 提供三种方式来控制文章在首页的显示方式。也就是说，在首页显示文章的摘录并显示 <strong>阅读全文</strong> 按钮，可以通过以下方法：  </p>
-<ul>
-<li><p>在文章中使用 <code>&lt;!-- more --&gt;</code> 手动进行截断，Hexo 提供的方式</p>
+<h3 id="添加分享"><a href="#添加分享" class="headerlink" title="添加分享"></a>添加分享</h3><p>NexT主题支持多种方式的分享，包括 <code>Baidu Share</code> 、<code>duoshuo_share</code>、<code>needMoreShare2</code>、<code>jiathis</code>等等，这里我们使用<code>needMoreShare2</code>，在主题配置文件中修改对应的字段如下图所示，资深抓包民工表示对这里的很多软件好熟悉~，怕是要被打<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![分享](GitHub-Pages-Hexo-Next博客搭建记录\share.png)</span><br><span class="line"></span><br><span class="line">修改后，执行 `hexo g -d`指令，效果如图：  </span><br><span class="line"></span><br><span class="line">![分享效果图](GitHub-Pages-Hexo-Next博客搭建记录\share_press.png)</span><br><span class="line"></span><br><span class="line">### 显示当前页面的浏览进度</span><br><span class="line">在主题配置文件中 ` ctrl+f` 搜索 `scrollpercent`，将 `false` 改为 `true`。如果想把 `top`按钮放在侧边栏，可以把 `b2t`字段设置为`true` ，实现效果如图所示：  </span><br><span class="line"></span><br><span class="line">![scroll](GitHub-Pages-Hexo-Next博客搭建记录\scroll.png)  ![percent](GitHub-Pages-Hexo-Next博客搭建记录\percent.png)</span><br><span class="line"></span><br><span class="line">### 首页博文自动卷起</span><br><span class="line">在首页显示一篇文章的部分内容，并提供一个链接跳转到全文页面是一个常见的需求。NexT 提供三种方式来控制文章在首页的显示方式。也就是说，在首页显示文章的摘录并显示 **阅读全文** 按钮，可以通过以下方法：  </span><br><span class="line"></span><br><span class="line">* 在文章中使用 `&lt;!-- more --&gt;` 手动进行截断，Hexo 提供的方式</span><br><span class="line"></span><br><span class="line">* 在文章的 [front-matter](https://hexo.io/docs/front-matter.html)中添加 `description`，并提供文章摘录</span><br><span class="line"></span><br><span class="line">* 自动形成摘要，在**主题配置文件**中将 `auto_excerpt `设置成 `true` ，并自行设定自动截取长度（默认150）</span><br><span class="line"></span><br><span class="line">这里，我们使用第一种方式，实现效果如下图：  </span><br><span class="line"></span><br><span class="line">![阅读全文](GitHub-Pages-Hexo-Next博客搭建记录\more_press.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 实现鼠标点击出现桃心  </span><br><span class="line">将 [love.js](https://link.jianshu.com?t=https://github.com/Neveryu/Neveryu.github.io/blob/master/js/src/love.js)文件添加到**主题目录**的`\source\js\src` 下，找到 `\themes\next\layout\_layout.swig`文件， 在文件的后面， `&lt;/body&gt;`标签之前 添加以下代码：  </span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">&lt;!-- 页面点击小红心 --&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/love.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line">实现效果为每次鼠标点击页面的时候，会出现一个彩色的桃心，如下图所示：  </span><br><span class="line"></span><br><span class="line">![桃心](GitHub-Pages-Hexo-Next博客搭建记录\love.png)</span><br><span class="line"></span><br><span class="line">### 添加站内搜索</span><br><span class="line"></span><br><span class="line">NexT主题支持多种搜索插件，我们这里使用 `hexo-generator-searchdb`插件，原理是在本地生成一个`search.xml`文件，搜索的时候从这个文件中根据关键字检索出相应的链接。首先执行 `npm install hexo-generatordb --save` 指令进行插件的安装，之后将下面的代码复制进**站点配置文件**的末尾。  </span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">search:</span><br><span class="line">	path: search.xml</span><br><span class="line">	field: post</span><br><span class="line">    format: html</span><br><span class="line">    limit: 10000</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line">然后将主题配置文件中的对应字段设置为 `true` 即可。</span><br><span class="line"></span><br><span class="line">![设置搜索字段的值](GitHub-Pages-Hexo-Next博客搭建记录\search.png)</span><br><span class="line"></span><br><span class="line">最终，会在网站的侧栏出现`搜索` 选项，搜索效果如下图所示： </span><br><span class="line"></span><br><span class="line">![搜索效果图](GitHub-Pages-Hexo-Next博客搭建记录\search_press.png)</span><br><span class="line"></span><br><span class="line">### 生成站点地图</span><br><span class="line"></span><br><span class="line">站点地图是一种文件，可以通过该文件列出网站上的网页，从而可以将个人网站内容的组织架构告知 `baidu`、`google`等搜索引擎。搜索引擎的网页爬取工具会读取此文件，以便更加高效的爬取个人网站。</span><br><span class="line"></span><br><span class="line">1、先安装对应的插件，以下两个插件对应的是 `baidu` 和 `google`  </span><br><span class="line"></span><br><span class="line">```html</span><br><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line">2、在**站点配置文件**中添加如下代码：</span><br><span class="line"></span><br><span class="line">```html</span><br><span class="line"># auto create sitemap</span><br><span class="line">sitemap:</span><br><span class="line">	path: sitemap.xml</span><br><span class="line">baidusitemap:</span><br><span class="line">	path: baidusitemap.xml</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line">运行指令 `hexo g -d `  ，在public目录下会发现生成了 `sitemap.xml` 和 `baidusitemap.xml` 两个文件，这表示成功了。接下来就是如何操作让百度、谷歌收录我们的博客了。</span><br><span class="line"></span><br><span class="line">3、站点收录，由于并没有想被搜索引擎检索的需求，私下里自己先玩一玩，所以，此项，To Do....</span><br><span class="line"></span><br><span class="line">### 实现统计功能</span><br><span class="line">在Hexo的根目录下执行 ` npm install hexo-wordcount --save  `   指令，进行字数统计模块的安装，然后修改主题配置文件，将对应的开关打开，即 `false` 改为`true`。</span><br><span class="line"></span><br><span class="line">![wordcount](GitHub-Pages-Hexo-Next博客搭建记录\wordcount.png)</span><br><span class="line"></span><br><span class="line">使用 `sublime`打开文件 `\themes\next\layout\_macro\post.swig` ，`ctrl+f`搜索如下代码字段，并在后面添加`字`、`分钟`。  </span><br><span class="line"></span><br><span class="line">```html</span><br><span class="line">&lt;span title=&quot;&#123;&#123; __(&apos;post.wordcount&apos;) &#125;&#125;&quot;&gt;</span><br><span class="line">    &#123;&#123; wordcount(post.content) &#125;&#125; 字</span><br><span class="line">&lt;/span&gt;</span><br><span class="line">&lt;span title=&quot;&#123;&#123; __(&apos;post.min2read&apos;) &#125;&#125;&quot;&gt;</span><br><span class="line">    &#123;&#123; min2read(post.content) &#125;&#125; 分钟</span><br><span class="line">&lt;/span&gt;</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line">最终的效果图，如下： </span><br><span class="line"></span><br><span class="line">![字数统计效果展示](GitHub-Pages-Hexo-Next博客搭建记录\wordcount_press.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 集成第三方服务</span><br><span class="line">#### Valine评论系统</span><br><span class="line"></span><br><span class="line">针对评论系统来讲的话，多说和网易云已经倒了，畅言需要备案，Disqus，Hypercomments和LiveRe等都是国外的，不仅加载速度慢还容易被墙，找来找去，决定使用valine（2017年8月诞生的一款基于`LeanCloud`的极简风评论系统）。`NexT`主题本身就已经集成了valine，所以设置起来也比较简单。  </span><br><span class="line"></span><br><span class="line">1. **注册LeanCloud，获取`appid`和`appkey`**</span><br><span class="line"></span><br><span class="line">   在[官网](https://leancloud.cn/)注册账号并`创建应用`，应用选择`开发版`即可，毕竟穷孩子，免费的好啊。应用名字随便起，创建完成后，在 `设置 &gt;&gt; 应用key` 中可以看到此应用的appid和appkey。</span><br><span class="line"></span><br><span class="line">   ![appid和appkey](GitHub-Pages-Hexo-Next博客搭建记录\appkey.png)</span><br><span class="line"></span><br><span class="line">2. **配置web安全域名**</span><br><span class="line"></span><br><span class="line">   为了数据安全，在 `设置 &gt;&gt; 安全中心`中设置web安全域名，如下图：</span><br><span class="line"></span><br><span class="line">   ![web域名安全](D:\blog\source\_posts\GitHub-Pages-Hexo-Next博客搭建记录\web_security.png)</span><br><span class="line"></span><br><span class="line">3. **创建`Class`对象**</span><br><span class="line"></span><br><span class="line">   在 `存储 &gt;&gt; 数据`栏中，创建两个`Class`，一个名为`Counter`，用于记录统计每篇博文的阅读次数；另一名为`Comment`用于记录存储每篇博文的评论。注意，此处两个`Class`的名字是固定的，不能更改。</span><br><span class="line"></span><br><span class="line">   ![创建Class](GitHub-Pages-Hexo-Next博客搭建记录\class.png)</span><br><span class="line"></span><br><span class="line">   可以手动修改 `Counter`表中`time`字段的值，也就是修改了博文的阅读次数，美滋滋</span><br></pre></td></tr></table></figure></p>
+<ol start="4">
+<li><p><strong>修改<code>主题配置文件</code></strong></p>
+<p>搜索 <code>leancloud</code>字段，将 <code>enable</code>字段设置为 <code>true</code>，<code>app_id</code>和<code>app_key</code>填写之前获得的值，此时，就可以在页面中启用博文阅读次数统计功能。</p>
+<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/valine.png" alt="valine配置文件修改"></p>
+<p>搜索<code>valine</code>字段，将 <code>enable</code>字段设置为 <code>true</code>，<code>app_id</code>和<code>app_key</code>填写之前获得的值，此时，就可以在页面中启用博文评论及回复功能。其中的<code>notify</code>字段代表有评论时邮件提醒，<code>verify</code>字段代表开启验证码，<code>avatar</code>代表评论者的头像，<code>placeholder</code>字段代表初始评论框中显示的文字，等等。。。</p>
 </li>
-<li><p>在文章的 <a href="https://hexo.io/docs/front-matter.html" target="_blank" rel="noopener">front-matter</a>中添加 <code>description</code>，并提供文章摘录</p>
+<li><p><strong>最终效果展示</strong></p>
 </li>
-<li><p>自动形成摘要，在<strong>主题配置文件</strong>中将 <code>auto_excerpt</code>设置成 <code>true</code> ，并自行设定自动截取长度（默认150）</p>
+<li><p><strong>邮件提醒功能配置</strong></p>
 </li>
-</ul>
-<p>这里，我们使用第一种方式，实现效果如下图：  </p>
-<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/more_press.png" alt="阅读全文"></p>
-<h3 id="实现鼠标点击出现桃心"><a href="#实现鼠标点击出现桃心" class="headerlink" title="实现鼠标点击出现桃心"></a>实现鼠标点击出现桃心</h3><p>将 <a href="https://link.jianshu.com?t=https://github.com/Neveryu/Neveryu.github.io/blob/master/js/src/love.js" target="_blank" rel="noopener">love.js</a>文件添加到<strong>主题目录</strong>的<code>\source\js\src</code> 下，找到 <code>\themes\next\layout\_layout.swig</code>文件， 在文件的后面， <code>&lt;/body&gt;</code>标签之前 添加以下代码：  </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 页面点击小红心 --&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"/js/src/love.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>实现效果为每次鼠标点击页面的时候，会出现一个彩色的桃心，如下图所示：  </p>
-<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/love.png" alt="桃心"></p>
-<h3 id="添加站内搜索"><a href="#添加站内搜索" class="headerlink" title="添加站内搜索"></a>添加站内搜索</h3><p>NexT主题支持多种搜索插件，我们这里使用 <code>hexo-generator-searchdb</code>插件，原理是在本地生成一个<code>search.xml</code>文件，搜索的时候从这个文件中根据关键字检索出相应的链接。首先执行 <code>npm install hexo-generatordb --save</code> 指令进行插件的安装，之后将下面的代码复制进<strong>站点配置文件</strong>的末尾。  </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">	path: search.xml</span><br><span class="line">	field: post</span><br><span class="line">    format: html</span><br><span class="line">    limit: <span class="number">10000</span></span><br></pre></td></tr></table></figure>
-<p>然后将主题配置文件中的对应字段设置为 <code>true</code> 即可。</p>
-<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/search.png" alt="设置搜索字段的值"></p>
-<p>最终，会在网站的侧栏出现<code>搜索</code> 选项，搜索效果如下图所示： </p>
-<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/search_press.png" alt="搜索效果图"></p>
-<h3 id="生成站点地图"><a href="#生成站点地图" class="headerlink" title="生成站点地图"></a>生成站点地图</h3><p>站点地图是一种文件，可以通过该文件列出网站上的网页，从而可以将个人网站内容的组织架构告知 <code>baidu</code>、<code>google</code>等搜索引擎。搜索引擎的网页爬取工具会读取此文件，以便更加高效的爬取个人网站。</p>
-<p>1、先安装对应的插件，以下两个插件对应的是 <code>baidu</code> 和 <code>google</code>  </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
-<p>2、在<strong>站点配置文件</strong>中添加如下代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># auto create sitemap</span><br><span class="line">sitemap:</span><br><span class="line">	path: sitemap.xml</span><br><span class="line">baidusitemap:</span><br><span class="line">	path: baidusitemap.xml</span><br></pre></td></tr></table></figure>
-<p>运行指令 <code>hexo g -d</code>  ，在public目录下会发现生成了 <code>sitemap.xml</code> 和 <code>baidusitemap.xml</code> 两个文件，这表示成功了。接下来就是如何操作让百度、谷歌收录我们的博客了。</p>
-<p>3、站点收录，由于并没有想被搜索引擎检索的需求，私下里自己先玩一玩，所以，此项，To Do….</p>
-<h3 id="实现统计功能"><a href="#实现统计功能" class="headerlink" title="实现统计功能"></a>实现统计功能</h3><p>在Hexo的根目录下执行 <code>npm install hexo-wordcount --save</code>   指令，进行字数统计模块的安装，然后修改主题配置文件，将对应的开关打开，即 <code>false</code> 改为<code>true</code>。</p>
-<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/wordcount.png" alt="wordcount"></p>
-<p>使用 <code>sublime</code>打开文件 <code>\themes\next\layout\_macro\post.swig</code> ，<code>ctrl+f</code>搜索如下代码字段，并在后面添加<code>字</code>、<code>分钟</code>。  </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">title</span>=<span class="string">"&#123;&#123; __('post.wordcount') &#125;&#125;"</span>&gt;</span></span><br><span class="line">    &#123;&#123; wordcount(post.content) &#125;&#125; 字</span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">title</span>=<span class="string">"&#123;&#123; __('post.min2read') &#125;&#125;"</span>&gt;</span></span><br><span class="line">    &#123;&#123; min2read(post.content) &#125;&#125; 分钟</span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>最终的效果图，如下： </p>
-<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/wordcount_press.png" alt="字数统计效果展示"></p>
-<h2 id="集成第三方服务"><a href="#集成第三方服务" class="headerlink" title="集成第三方服务"></a>集成第三方服务</h2><h4 id="Valine评论系统"><a href="#Valine评论系统" class="headerlink" title="Valine评论系统"></a>Valine评论系统</h4><h4 id="卜算子统计"><a href="#卜算子统计" class="headerlink" title="卜算子统计"></a>卜算子统计</h4><h2 id="To-DO-List"><a href="#To-DO-List" class="headerlink" title="To DO List"></a>To DO List</h2><ul>
+</ol>
+<h4 id="卜算子统计"><a href="#卜算子统计" class="headerlink" title="卜算子统计"></a>卜算子统计</h4><h2 id="To-DO-List"><a href="#To-DO-List" class="headerlink" title="To DO List"></a>To DO List</h2><ul>
 <li>SEO优化</li>
 <li>CND优化</li>
 <li>静态资源压缩（github pages提供的免费空间有限）</li>
@@ -747,6 +731,9 @@
 
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -903,7 +890,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础环境搭建"><span class="nav-number">2.</span> <span class="nav-text">基础环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册GitHub账号并创建IO仓库"><span class="nav-number">2.1.</span> <span class="nav-text">注册GitHub账号并创建IO仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装node-js"><span class="nav-number">2.2.</span> <span class="nav-text">安装node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Git并配置SSH-Key"><span class="nav-number">2.3.</span> <span class="nav-text">安装Ｇit并配置SSH Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装sublime"><span class="nav-number">2.4.</span> <span class="nav-text">安装sublime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo"><span class="nav-number">2.5.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域名购买及解析"><span class="nav-number">2.6.</span> <span class="nav-text">域名购买及解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地与Github连接"><span class="nav-number">2.7.</span> <span class="nav-text">本地与Github连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置NexT主题"><span class="nav-number">2.8.</span> <span class="nav-text">配置NexT主题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT主题个性化设计"><span class="nav-number">3.</span> <span class="nav-text">NexT主题个性化设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置网站图标-Favicon"><span class="nav-number">3.1.</span> <span class="nav-text">设置网站图标 Favicon</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改文章底部-号标签样式"><span class="nav-number">3.2.</span> <span class="nav-text">修改文章底部 # 号标签样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文章末尾添加-本文结束-标记"><span class="nav-number">3.3.</span> <span class="nav-text">文章末尾添加 本文结束 标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加顶部加载条"><span class="nav-number">3.4.</span> <span class="nav-text">添加顶部加载条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐藏网站底部-由hexo强力驱动"><span class="nav-number">3.5.</span> <span class="nav-text">隐藏网站底部 由hexo强力驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#博文置顶"><span class="nav-number">3.6.</span> <span class="nav-text">博文置顶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加分享"><span class="nav-number">3.7.</span> <span class="nav-text">添加分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示当前页面的浏览进度"><span class="nav-number">3.8.</span> <span class="nav-text">显示当前页面的浏览进度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#首页博文自动卷起"><span class="nav-number">3.9.</span> <span class="nav-text">首页博文自动卷起</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现鼠标点击出现桃心"><span class="nav-number">3.10.</span> <span class="nav-text">实现鼠标点击出现桃心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加站内搜索"><span class="nav-number">3.11.</span> <span class="nav-text">添加站内搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成站点地图"><span class="nav-number">3.12.</span> <span class="nav-text">生成站点地图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现统计功能"><span class="nav-number">3.13.</span> <span class="nav-text">实现统计功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成第三方服务"><span class="nav-number">4.</span> <span class="nav-text">集成第三方服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Valine评论系统"><span class="nav-number">4.0.1.</span> <span class="nav-text">Valine评论系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卜算子统计"><span class="nav-number">4.0.2.</span> <span class="nav-text">卜算子统计</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#To-DO-List"><span class="nav-number">5.</span> <span class="nav-text">To DO List</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础环境搭建"><span class="nav-number">2.</span> <span class="nav-text">基础环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册GitHub账号并创建IO仓库"><span class="nav-number">2.1.</span> <span class="nav-text">注册GitHub账号并创建IO仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装node-js"><span class="nav-number">2.2.</span> <span class="nav-text">安装node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Git并配置SSH-Key"><span class="nav-number">2.3.</span> <span class="nav-text">安装Ｇit并配置SSH Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装sublime"><span class="nav-number">2.4.</span> <span class="nav-text">安装sublime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo"><span class="nav-number">2.5.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域名购买及解析"><span class="nav-number">2.6.</span> <span class="nav-text">域名购买及解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地与Github连接"><span class="nav-number">2.7.</span> <span class="nav-text">本地与Github连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置NexT主题"><span class="nav-number">2.8.</span> <span class="nav-text">配置NexT主题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT主题个性化设计"><span class="nav-number">3.</span> <span class="nav-text">NexT主题个性化设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置网站图标-Favicon"><span class="nav-number">3.1.</span> <span class="nav-text">设置网站图标 Favicon</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改文章底部-号标签样式"><span class="nav-number">3.2.</span> <span class="nav-text">修改文章底部 # 号标签样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文章末尾添加-本文结束-标记"><span class="nav-number">3.3.</span> <span class="nav-text">文章末尾添加 本文结束 标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加顶部加载条"><span class="nav-number">3.4.</span> <span class="nav-text">添加顶部加载条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐藏网站底部-由hexo强力驱动"><span class="nav-number">3.5.</span> <span class="nav-text">隐藏网站底部 由hexo强力驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#博文置顶"><span class="nav-number">3.6.</span> <span class="nav-text">博文置顶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加分享"><span class="nav-number">3.7.</span> <span class="nav-text">添加分享</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#卜算子统计"><span class="nav-number">3.7.1.</span> <span class="nav-text">卜算子统计</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#To-DO-List"><span class="nav-number">4.</span> <span class="nav-text">To DO List</span></a></li></ol></div>
             
 
           </div>
@@ -937,7 +924,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">4k</span>
+    <span title="Site words total count">4.7k</span>
   
 </div>
 
@@ -1109,6 +1096,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'B31yiwrejjIOHiBSE6OpWt5u-gzGzoHsz',
+        appKey: 'iK4kp1lzdo6WOfMHzUm0CJMG',
+        placeholder: '来呀，互相交流，互相伤害啊~~~',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
@@ -1436,6 +1445,113 @@
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("B31yiwrejjIOHiBSE6OpWt5u-gzGzoHsz", "iK4kp1lzdo6WOfMHzUm0CJMG");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
