@@ -126,7 +126,7 @@
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/search_press.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/wordcount.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/wordcount_press.png">
-<meta property="og:updated_time" content="2018-09-24T08:48:42.377Z">
+<meta property="og:updated_time" content="2018-09-24T13:04:33.789Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitHub Pages+Hexo+Next博客搭建记录">
 <meta name="twitter:description" content="前言　　大二的时候看见学长搭建的个人博客，感觉好高大上的样子，想着自己啥时候不再是哪个只会喊：哇、牛批、666、厉害厉害的傻逼选手，然后浪啊浪，突然有一天，CSP考试上考到了一个Markdown转HTML的大模拟题：现场狂写2小时，黑箱测试最后只得20分，从此心理对MD留下了挥之不去的阴影，然后就没有了然后，此事不来了了之。大二的时候在CSDN上写过，但是感觉CSDN的广告是越来也严重了，上面，下">
@@ -430,7 +430,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.6k
+                  3.9k 字
                 </span>
               
 
@@ -446,7 +446,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  13
+                  15 分钟
                 </span>
               
             </div>
@@ -541,6 +541,9 @@
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/404warning.png" alt="404warning"></p>
 <p>两种解决方案，一种是关掉浏览器对此站点的保护功能，但却不是很实用，因为你不能要求所有人解除对你站点的保护。  </p>
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/404prevent.png" alt="解除浏览器的保护"></p>
+<p>第二种解决方案是，将官网提供的404页面的代码做一下修改，具体如下：   </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"content-type"</span> <span class="attr">content</span>=<span class="string">"text/html;charset=utf-8;"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge,chrome=1"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"robots"</span> <span class="attr">content</span>=<span class="string">"all"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"robots"</span> <span class="attr">content</span>=<span class="string">"index,follow"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js"</span> <span class="attr">homePageName</span>=<span class="string">"返回主页"</span> <span class="attr">homePageUrl</span>=<span class="string">"https://ymwangzhuan.com"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以看到，改版后的404页面的<code>src</code>字段并没有指明使用的是<code>http</code>协议还是<code>https</code>协议，会自动根据你的站点做适配，问题完美解决[<em>注意将404.html放到站点根目录的<code>source</code>文件夹中</em>]。</p>
 </li>
 <li><p>站点建立时间</p>
 </li>
@@ -622,9 +625,24 @@
 <p>3、站点收录，由于并没有想被搜索引擎检索的需求，私下里自己先玩一玩，所以，此项，To Do….</p>
 <h3 id="实现统计功能"><a href="#实现统计功能" class="headerlink" title="实现统计功能"></a>实现统计功能</h3><p>在Hexo的根目录下执行 <code>npm install hexo-wordcount --save</code>   指令，进行字数统计模块的安装，然后修改主题配置文件，将对应的开关打开，即 <code>false</code> 改为<code>true</code>。</p>
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/wordcount.png" alt="wordcount"></p>
+<p>使用 <code>sublime</code>打开文件 <code>\themes\next\layout\_macro\post.swig</code> ，<code>ctrl+f</code>搜索如下代码字段，并在后面添加<code>字</code>、<code>分钟</code>。  </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">title</span>=<span class="string">"&#123;&#123; __('post.wordcount') &#125;&#125;"</span>&gt;</span></span><br><span class="line">    &#123;&#123; wordcount(post.content) &#125;&#125; 字</span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">title</span>=<span class="string">"&#123;&#123; __('post.min2read') &#125;&#125;"</span>&gt;</span></span><br><span class="line">    &#123;&#123; min2read(post.content) &#125;&#125; 分钟</span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>最终的效果图，如下： </p>
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/wordcount_press.png" alt="字数统计效果展示"></p>
-<h2 id="集成第三方服务"><a href="#集成第三方服务" class="headerlink" title="集成第三方服务"></a>集成第三方服务</h2><p>adsf</p>
+<h2 id="集成第三方服务"><a href="#集成第三方服务" class="headerlink" title="集成第三方服务"></a>集成第三方服务</h2><h4 id="Valine评论系统"><a href="#Valine评论系统" class="headerlink" title="Valine评论系统"></a>Valine评论系统</h4><h4 id="卜算子统计"><a href="#卜算子统计" class="headerlink" title="卜算子统计"></a>卜算子统计</h4><h2 id="To-DO-List"><a href="#To-DO-List" class="headerlink" title="To DO List"></a>To DO List</h2><ul>
+<li>SEO优化</li>
+<li>CND优化</li>
+<li>静态资源压缩（github pages提供的免费空间有限）</li>
+<li>添加动态萌宠</li>
+<li>代码区添加<code>点击复制</code>按钮</li>
+<li>隐私博文加密访问</li>
+<li>设置背景及透明度</li>
+<li>添加网易云音乐</li>
+<li>个性化字体设置</li>
+<li>文章顶部添加最近更新时间</li>
+<li>个性设置文章间分割线</li>
+<li>。。。。。。</li>
+</ul>
 
       
     </div>
@@ -885,7 +903,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础环境搭建"><span class="nav-number">2.</span> <span class="nav-text">基础环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册GitHub账号并创建IO仓库"><span class="nav-number">2.1.</span> <span class="nav-text">注册GitHub账号并创建IO仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装node-js"><span class="nav-number">2.2.</span> <span class="nav-text">安装node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Git并配置SSH-Key"><span class="nav-number">2.3.</span> <span class="nav-text">安装Ｇit并配置SSH Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装sublime"><span class="nav-number">2.4.</span> <span class="nav-text">安装sublime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo"><span class="nav-number">2.5.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域名购买及解析"><span class="nav-number">2.6.</span> <span class="nav-text">域名购买及解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地与Github连接"><span class="nav-number">2.7.</span> <span class="nav-text">本地与Github连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置NexT主题"><span class="nav-number">2.8.</span> <span class="nav-text">配置NexT主题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT主题个性化设计"><span class="nav-number">3.</span> <span class="nav-text">NexT主题个性化设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置网站图标-Favicon"><span class="nav-number">3.1.</span> <span class="nav-text">设置网站图标 Favicon</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改文章底部-号标签样式"><span class="nav-number">3.2.</span> <span class="nav-text">修改文章底部 # 号标签样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文章末尾添加-本文结束-标记"><span class="nav-number">3.3.</span> <span class="nav-text">文章末尾添加 本文结束 标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加顶部加载条"><span class="nav-number">3.4.</span> <span class="nav-text">添加顶部加载条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐藏网站底部-由hexo强力驱动"><span class="nav-number">3.5.</span> <span class="nav-text">隐藏网站底部 由hexo强力驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#博文置顶"><span class="nav-number">3.6.</span> <span class="nav-text">博文置顶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加分享"><span class="nav-number">3.7.</span> <span class="nav-text">添加分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示当前页面的浏览进度"><span class="nav-number">3.8.</span> <span class="nav-text">显示当前页面的浏览进度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#首页博文自动卷起"><span class="nav-number">3.9.</span> <span class="nav-text">首页博文自动卷起</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现鼠标点击出现桃心"><span class="nav-number">3.10.</span> <span class="nav-text">实现鼠标点击出现桃心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加站内搜索"><span class="nav-number">3.11.</span> <span class="nav-text">添加站内搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成站点地图"><span class="nav-number">3.12.</span> <span class="nav-text">生成站点地图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现统计功能"><span class="nav-number">3.13.</span> <span class="nav-text">实现统计功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成第三方服务"><span class="nav-number">4.</span> <span class="nav-text">集成第三方服务</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础环境搭建"><span class="nav-number">2.</span> <span class="nav-text">基础环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册GitHub账号并创建IO仓库"><span class="nav-number">2.1.</span> <span class="nav-text">注册GitHub账号并创建IO仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装node-js"><span class="nav-number">2.2.</span> <span class="nav-text">安装node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Git并配置SSH-Key"><span class="nav-number">2.3.</span> <span class="nav-text">安装Ｇit并配置SSH Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装sublime"><span class="nav-number">2.4.</span> <span class="nav-text">安装sublime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo"><span class="nav-number">2.5.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域名购买及解析"><span class="nav-number">2.6.</span> <span class="nav-text">域名购买及解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地与Github连接"><span class="nav-number">2.7.</span> <span class="nav-text">本地与Github连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置NexT主题"><span class="nav-number">2.8.</span> <span class="nav-text">配置NexT主题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT主题个性化设计"><span class="nav-number">3.</span> <span class="nav-text">NexT主题个性化设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置网站图标-Favicon"><span class="nav-number">3.1.</span> <span class="nav-text">设置网站图标 Favicon</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改文章底部-号标签样式"><span class="nav-number">3.2.</span> <span class="nav-text">修改文章底部 # 号标签样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文章末尾添加-本文结束-标记"><span class="nav-number">3.3.</span> <span class="nav-text">文章末尾添加 本文结束 标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加顶部加载条"><span class="nav-number">3.4.</span> <span class="nav-text">添加顶部加载条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐藏网站底部-由hexo强力驱动"><span class="nav-number">3.5.</span> <span class="nav-text">隐藏网站底部 由hexo强力驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#博文置顶"><span class="nav-number">3.6.</span> <span class="nav-text">博文置顶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加分享"><span class="nav-number">3.7.</span> <span class="nav-text">添加分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示当前页面的浏览进度"><span class="nav-number">3.8.</span> <span class="nav-text">显示当前页面的浏览进度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#首页博文自动卷起"><span class="nav-number">3.9.</span> <span class="nav-text">首页博文自动卷起</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现鼠标点击出现桃心"><span class="nav-number">3.10.</span> <span class="nav-text">实现鼠标点击出现桃心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加站内搜索"><span class="nav-number">3.11.</span> <span class="nav-text">添加站内搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成站点地图"><span class="nav-number">3.12.</span> <span class="nav-text">生成站点地图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现统计功能"><span class="nav-number">3.13.</span> <span class="nav-text">实现统计功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成第三方服务"><span class="nav-number">4.</span> <span class="nav-text">集成第三方服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Valine评论系统"><span class="nav-number">4.0.1.</span> <span class="nav-text">Valine评论系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卜算子统计"><span class="nav-number">4.0.2.</span> <span class="nav-text">卜算子统计</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#To-DO-List"><span class="nav-number">5.</span> <span class="nav-text">To DO List</span></a></li></ol></div>
             
 
           </div>
@@ -919,7 +937,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">3.7k</span>
+    <span title="Site words total count">4k</span>
   
 </div>
 
