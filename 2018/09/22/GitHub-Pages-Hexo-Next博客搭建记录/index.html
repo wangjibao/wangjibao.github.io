@@ -117,7 +117,10 @@
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/hide_footer_press.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/template.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/valine.png">
-<meta property="og:updated_time" content="2018-09-24T15:38:54.314Z">
+<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/guanli.png">
+<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/counter.png">
+<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/comment.png">
+<meta property="og:updated_time" content="2018-09-24T16:41:40.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitHub Pages+Hexo+Next博客搭建记录">
 <meta name="twitter:description" content="前言　　大二的时候看见学长搭建的个人博客，感觉好高大上的样子，想着自己啥时候不再是哪个只会喊：哇、牛批、666、厉害厉害的傻逼选手，然后浪啊浪，突然有一天，CSP考试上考到了一个Markdown转HTML的大模拟题：现场狂写2小时，黑箱测试最后只得20分，从此心理对MD留下了挥之不去的阴影，然后就没有了然后，此事不来了了之。大二的时候在CSDN上写过，但是感觉CSDN的广告是越来也严重了，上面，下">
@@ -442,7 +445,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4.7k 字
+                  4.9k 字
                 </span>
               
 
@@ -609,8 +612,22 @@
 <p>搜索<code>valine</code>字段，将 <code>enable</code>字段设置为 <code>true</code>，<code>app_id</code>和<code>app_key</code>填写之前获得的值，此时，就可以在页面中启用博文评论及回复功能。其中的<code>notify</code>字段代表有评论时邮件提醒，<code>verify</code>字段代表开启验证码，<code>avatar</code>代表评论者的头像，<code>placeholder</code>字段代表初始评论框中显示的文字，等等。。。</p>
 </li>
 <li><p><strong>最终效果展示</strong></p>
+<p>后台数据管理：</p>
+<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/guanli.png" alt="后台数据管理"></p>
+<p>阅读次数统计：</p>
+<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/counter.png" alt="阅读次数统计"></p>
+<p>底部评论区：</p>
+<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/comment.png" alt="评论区"></p>
 </li>
 <li><p><strong>邮件提醒功能配置</strong></p>
+<p>至此，已经能够使用评论系统了，但它虽然支持邮件提醒（基于密码重置提醒邮件），功能却很弱，无法提示到具体文章，也无法给评论者进行有效的回复通知，通常别人留完言，怎么还会再来你的博客看你是否回复了呢？所以，这里我们引用GitHub上某位大佬的<a href="https://github.com/panjunwen/Valine-Admin" target="_blank" rel="noopener">配置</a>，满足：</p>
+<ul>
+<li>完善的邮件通知，自定义 SMTP 发件频率和内容不再受限</li>
+<li>基于 Akismet 的垃圾评论自动标注和过滤</li>
+<li>评论管理，避免直接操作数据库</li>
+<li>……</li>
+</ul>
+<p>邮件效果如下图所示：</p>
 </li>
 </ol>
 <h4 id="卜算子统计"><a href="#卜算子统计" class="headerlink" title="卜算子统计"></a>卜算子统计</h4><h2 id="To-DO-List"><a href="#To-DO-List" class="headerlink" title="To DO List"></a>To DO List</h2><ul>
@@ -924,7 +941,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">4.7k</span>
+    <span title="Site words total count">4.9k</span>
   
 </div>
 
@@ -937,6 +954,26 @@
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
 
 
 
