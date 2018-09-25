@@ -120,7 +120,11 @@
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/guanli.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/counter.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/comment.png">
-<meta property="og:updated_time" content="2018-09-24T16:41:40.881Z">
+<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/mail_press.png">
+<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/comment_press.png">
+<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/busuanzi.png">
+<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/busuanzi_press.png">
+<meta property="og:updated_time" content="2018-09-25T02:49:38.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitHub Pages+Hexo+Next博客搭建记录">
 <meta name="twitter:description" content="前言　　大二的时候看见学长搭建的个人博客，感觉好高大上的样子，想着自己啥时候不再是哪个只会喊：哇、牛批、666、厉害厉害的傻逼选手，然后浪啊浪，突然有一天，CSP考试上考到了一个Markdown转HTML的大模拟题：现场狂写2小时，黑箱测试最后只得20分，从此心理对MD留下了挥之不去的阴影，然后就没有了然后，此事不来了了之。大二的时候在CSDN上写过，但是感觉CSDN的广告是越来也严重了，上面，下">
@@ -445,7 +449,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4.9k 字
+                  5k 字
                 </span>
               
 
@@ -461,7 +465,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  18 分钟
+                  19 分钟
                 </span>
               
             </div>
@@ -620,7 +624,7 @@
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/comment.png" alt="评论区"></p>
 </li>
 <li><p><strong>邮件提醒功能配置</strong></p>
-<p>至此，已经能够使用评论系统了，但它虽然支持邮件提醒（基于密码重置提醒邮件），功能却很弱，无法提示到具体文章，也无法给评论者进行有效的回复通知，通常别人留完言，怎么还会再来你的博客看你是否回复了呢？所以，这里我们引用GitHub上某位大佬的<a href="https://github.com/panjunwen/Valine-Admin" target="_blank" rel="noopener">配置</a>，满足：</p>
+<p>至此，已经能够使用评论系统了，但它虽然支持邮件提醒（基于密码重置提醒邮件），功能却很弱，无法提示到具体文章，也无法给评论者进行有效的回复通知，通常别人留完言，怎么还会再来你的博客看你是否回复了呢？所以，这里我们引用GitHub上某位大佬的<a href="https://github.com/panjunwen/Valine-Admin" target="_blank" rel="noopener">配置</a>，它满足了：</p>
 <ul>
 <li>完善的邮件通知，自定义 SMTP 发件频率和内容不再受限</li>
 <li>基于 Akismet 的垃圾评论自动标注和过滤</li>
@@ -628,9 +632,20 @@
 <li>……</li>
 </ul>
 <p>邮件效果如下图所示：</p>
+<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/mail_press.png" alt="邮件展示"></p>
+<p>管理界面如下图：</p>
+<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/comment_press.png" alt="评论管理"></p>
 </li>
 </ol>
-<h4 id="卜算子统计"><a href="#卜算子统计" class="headerlink" title="卜算子统计"></a>卜算子统计</h4><h2 id="To-DO-List"><a href="#To-DO-List" class="headerlink" title="To DO List"></a>To DO List</h2><ul>
+<h4 id="卜算子统计"><a href="#卜算子统计" class="headerlink" title="卜算子统计"></a>卜算子统计</h4><p>在<code>主题配置文件</code>中搜索 <code>busuanzi_count</code>，将开关打开，并做如下图修改，即可统计站点的 <code>UV</code>和<code>PV</code>：</p>
+<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/busuanzi.png" alt="卜算子统计"></p>
+<p>实现效果如下图：</p>
+<p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/busuanzi_press.png" alt="站点统计"></p>
+<p>第一行的 <code>Site words total count</code>很是刺眼，改！之前的leancloud留下来的历史问题。在 <code>\themes\next\layout\_partials\footer.swig</code>中第19行做如下修改：  </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#125;&#123;&#123; totalcount(site, '0,0.0a') &#125;&#125; 字&#123;#</span><br></pre></td></tr></table></figure>
+<p>在<code>\themes\next\language\zh-Hans.yml</code>文件中，修改第36行，如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#修改前：</span><br><span class="line">	totalcount: Site words total count</span><br><span class="line">#修改后：</span><br><span class="line">	totalcount: 本站共计</span><br></pre></td></tr></table></figure>
+<h2 id="To-DO-List"><a href="#To-DO-List" class="headerlink" title="To DO List"></a>To DO List</h2><ul>
 <li>SEO优化</li>
 <li>CND优化</li>
 <li>静态资源压缩（github pages提供的免费空间有限）</li>
@@ -939,9 +954,9 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-      <span class="post-meta-item-text">Site words total count&#58;</span>
+      <span class="post-meta-item-text">本站共计&#58;</span>
     
-    <span title="Site words total count">4.9k</span>
+    <span title="本站共计">5.1k 字</span>
   
 </div>
 
