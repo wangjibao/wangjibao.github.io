@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjibao.com.cn/"/>
-  <updated>2018-09-29T02:51:16.522Z</updated>
+  <updated>2018-09-29T09:40:21.977Z</updated>
   <id>http://wangjibao.com.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>矩阵求导</title>
+    <link href="http://wangjibao.com.cn/2018/09/29/%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC/"/>
+    <id>http://wangjibao.com.cn/2018/09/29/矩阵求导/</id>
+    <published>2018-09-29T09:36:07.000Z</published>
+    <updated>2018-09-29T09:40:21.977Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近上课，各种机器学习，深度学习的求导公式，直接蒙圈了，一个不错的教程文档，分享一下。</p><p>{ % pdf     matrix_rules.pdf %}</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近上课，各种机器学习，深度学习的求导公式，直接蒙圈了，一个不错的教程文档，分享一下。&lt;/p&gt;
+&lt;p&gt;{ % pdf     matrix_rules.pdf %}&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="学习" scheme="http://wangjibao.com.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="http://wangjibao.com.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode</title>
