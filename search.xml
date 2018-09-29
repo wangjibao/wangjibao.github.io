@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[矩阵求导]]></title>
     <url>%2F2018%2F09%2F29%2F%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC%2F</url>
-    <content type="text"><![CDATA[最近上课，各种机器学习，深度学习的求导公式，直接蒙圈了，一个不错的教程文档，分享一下。 { % pdf matrix_rules.pdf %}]]></content>
+    <content type="text"><![CDATA[最近上课，各种机器学习，深度学习的求导公式，直接蒙圈了，一个不错的教程文档，分享一下。]]></content>
       <categories>
         <category>学习</category>
       </categories>

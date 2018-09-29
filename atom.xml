@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjibao.com.cn/"/>
-  <updated>2018-09-29T09:40:21.977Z</updated>
+  <updated>2018-09-29T09:42:41.295Z</updated>
   <id>http://wangjibao.com.cn/</id>
   
   <author>
@@ -21,17 +21,19 @@
     <link href="http://wangjibao.com.cn/2018/09/29/%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC/"/>
     <id>http://wangjibao.com.cn/2018/09/29/矩阵求导/</id>
     <published>2018-09-29T09:36:07.000Z</published>
-    <updated>2018-09-29T09:40:21.977Z</updated>
+    <updated>2018-09-29T09:42:41.295Z</updated>
     
-    <content type="html"><![CDATA[<p>最近上课，各种机器学习，深度学习的求导公式，直接蒙圈了，一个不错的教程文档，分享一下。</p><p>{ % pdf     matrix_rules.pdf %}</p>]]></content>
+    <content type="html"><![CDATA[<p>最近上课，各种机器学习，深度学习的求导公式，直接蒙圈了，一个不错的教程文档，分享一下。</p><div class="row">    <embed src="matrix_rules.pdf" width="100%" height="550" type="application/pdf"></div>]]></content>
     
     <summary type="html">
     
       
       
         &lt;p&gt;最近上课，各种机器学习，深度学习的求导公式，直接蒙圈了，一个不错的教程文档，分享一下。&lt;/p&gt;
-&lt;p&gt;{ % pdf     matrix_rules.pdf %}&lt;/p&gt;
 
+
+	&lt;div class=&quot;row&quot;&gt;
+    &lt;embed src=&quot;matrix_rules.pdf&quot; width=&quot;100%&quot; height=&quot;550&quot; type=&quot;ap
       
     
     </summary>
