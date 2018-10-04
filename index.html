@@ -1070,7 +1070,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-05T00:21:32+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-05T00:23:48+08:00">
                 2018-10-05
               </time>
             
@@ -1181,7 +1181,7 @@
           
             <h1 id="算法课第一次作业-选做1-5-6"><a href="#算法课第一次作业-选做1-5-6" class="headerlink" title="算法课第一次作业-选做1-5-6"></a>算法课第一次作业-选做1-5-6</h1><h3 id="一、Divide-and-Conquer"><a href="#一、Divide-and-Conquer" class="headerlink" title="一、Divide and Conquer"></a>一、Divide and Conquer</h3><p>　　You are interested in analyzing some hard-to-obtain data from two separate databases. Each database contains n numerical values, so there are 2n values total and you may assume that no two values are the same. You’d like to determine the median of this set of 2n values, which we will deﬁne here to be the nth　smallest value.</p>
 <p>　　However, the only way you can access these values is through queries to the databases. In a single query, you can specify a value k to one of the two databases, and the chosen database will return the kth smallest value that it contains. Since queries are expensive, you would like to compute the median using as few queries as possible.</p>
-<p>Give an algorithm that ﬁnds the median value using at most O(logn) queries.　　</p>
+<p>Give an algorithm that finds the median value using at most O(logn) queries.　　</p>
 <h4 id="1、problem-solving-ideas-and-pseudo-code"><a href="#1、problem-solving-ideas-and-pseudo-code" class="headerlink" title="1、problem-solving ideas and pseudo-code"></a>1、problem-solving ideas and pseudo-code</h4><p>首先将现实问题转化一下，变成计算机算法问题，即 <strong>找2个有序数组的并集的中位数</strong> ，<a href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/description/" target="_blank" rel="noopener">LeetCode 第四题</a>。</p>
 <p><strong>(1）problem-solving ideas</strong></p>
 <p>求中位数需要根据数组长度是奇数还是偶数分别讨论，奇数长度时中位数为最中间的一个数，偶数长度时中位数为最中间的两个数的平均值，为了方便，可以实现一个比题目更一般化的函数，求A和B的第k小数的函数，那么中位数的问题很容易解决。</p>
