@@ -137,7 +137,7 @@
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/comment_press.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/busuanzi.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/busuanzi_press.png">
-<meta property="og:updated_time" content="2018-10-05T14:59:27.334Z">
+<meta property="og:updated_time" content="2018-10-05T15:05:04.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitHub Pages+Hexo+Next博客搭建记录">
 <meta name="twitter:description" content="1、前言　　大二的时候看见学长搭建的个人博客，感觉好高大上的样子，想着自己啥时候不再是哪个只会喊：哇、牛批、666、厉害厉害的傻逼选手，然后浪啊浪，突然有一天，CSP考试上考到了一个Markdown转HTML的大模拟题：现场狂写2小时，黑箱测试最后只得20分，从此心理对MD留下了挥之不去的阴影，然后就没有了然后，此事不来了了之。大二的时候在CSDN上写过，但是感觉CSDN的广告是越来也严重了，上面">
@@ -403,7 +403,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-05T22:59:27+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-05T23:05:04+08:00">
                 2018-10-05
               </time>
             
@@ -655,7 +655,7 @@
 <p>实现效果为每次鼠标点击页面的时候，会出现一个彩色的桃心，如下图所示：  </p>
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/love.png" alt="桃心"></p>
 <h3 id="3-11-添加站内搜索"><a href="#3-11-添加站内搜索" class="headerlink" title="3.11 添加站内搜索"></a>3.11 添加站内搜索</h3><p>NexT主题支持多种搜索插件，我们这里使用 <code>hexo-generator-searchdb</code>插件，原理是在本地生成一个<code>search.xml</code>文件，搜索的时候从这个文件中根据关键字检索出相应的链接。首先执行 <code>npm install hexo-generatordb --save</code> 指令进行插件的安装，之后将下面的代码复制进<strong>站点配置文件</strong>的末尾。  </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">	path: search.xml</span><br><span class="line">	field: post</span><br><span class="line">    format: html</span><br><span class="line">    limit: <span class="number">10000</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">    path: search.xml</span><br><span class="line">	field: post</span><br><span class="line">    format: html</span><br><span class="line">    limit: <span class="number">10000</span></span><br></pre></td></tr></table></figure>
 <p>然后将主题配置文件中的对应字段设置为 <code>true</code> 即可。</p>
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/search.png" alt="设置搜索字段的值"></p>
 <p>最终，会在网站的侧栏出现<code>搜索</code> 选项，搜索效果如下图所示： </p>
