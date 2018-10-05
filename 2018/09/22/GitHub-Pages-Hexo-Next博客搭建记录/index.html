@@ -137,7 +137,8 @@
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/comment_press.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/busuanzi.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/busuanzi_press.png">
-<meta property="og:updated_time" content="2018-10-05T16:30:03.905Z">
+<meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/pdf.png">
+<meta property="og:updated_time" content="2018-10-05T16:48:59.920Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitHub Pages+Hexo+Next博客搭建记录">
 <meta name="twitter:description" content="1、前言　　大二的时候看见学长搭建的个人博客，感觉好高大上的样子，想着自己啥时候不再是哪个只会喊：哇、牛批、666、厉害厉害的傻逼选手，然后浪啊浪，突然有一天，CSP考试上考到了一个Markdown转HTML的大模拟题：现场狂写2小时，黑箱测试最后只得20分，从此心理对MD留下了挥之不去的阴影，然后就没有了然后，此事不来了了之。大二的时候在CSDN上写过，但是感觉CSDN的广告是越来也严重了，上面">
@@ -403,7 +404,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-06T00:30:03+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-06T00:48:59+08:00">
                 2018-10-06
               </time>
             
@@ -733,7 +734,7 @@
 </li>
 <li><p>设置背景及透明度</p>
 <p>打开 <code>\themes\next\source\css\_custom\custom.styl</code>文件，添加如下代码即可：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">　　<span class="attribute">background</span>:<span class="built_in">url</span>(https://source.unsplash.com/random/1920x1080);    </span><br><span class="line">　　<span class="attribute">background-repeat</span>: repeat;    </span><br><span class="line">　　<span class="attribute">background-attachment</span>:fixed;    </span><br><span class="line">　　<span class="attribute">background-position</span>:<span class="number">50%</span> <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br><span class="line">//改变背景色和透明度</span><br><span class="line"><span class="selector-class">.main-inner</span> &#123;</span><br><span class="line"> 　　<span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line"> 　　<span class="attribute">opacity</span>: <span class="number">0.9</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">　　<span class="attribute">background</span>:<span class="built_in">url</span>(https://source.unsplash.com/random/1920x1080);    </span><br><span class="line">　　<span class="attribute">background-repeat</span>: repeat;    </span><br><span class="line">　　<span class="attribute">background-attachment</span>:fixed;    </span><br><span class="line">　　<span class="attribute">background-position</span>:<span class="number">50%</span> <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br><span class="line">//改变背景色和透明度</span><br><span class="line"><span class="selector-class">.main-inner</span> &#123;</span><br><span class="line">　　<span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">　　<span class="attribute">opacity</span>: <span class="number">0.9</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>添加网易云音乐</p>
 </li>
@@ -747,17 +748,10 @@
 <li><p>个性设置文章间分割线</p>
 </li>
 <li><p>取消博文段落自动编号</p>
-<p>将主题配置文件中的 <code>toc ： number</code> 字段设置为 <code>false</code></p>
+<p>将主题配置文件中的 <code>toc ：number</code> 字段设置为 <code>false</code></p>
 </li>
 <li><p>安装PDF插件</p>
-<p>执行命令 <code>npm install hexo-pdf --save</code>，之后编辑博客的时候即可使用 <code>
-
-	<div class="row">
-    <embed src="xxx.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-</code>引用本地的pdf文件。</p>
+<p>执行命令 <code>npm install hexo-pdf --save</code>，之后编辑博客的时候即可使用 标签：<img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/pdf.png" alt="">引用本地的pdf文件。</p>
 </li>
 <li><p>。。。。。。</p>
 </li>
