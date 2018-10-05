@@ -137,7 +137,7 @@
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/comment_press.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/busuanzi.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/busuanzi_press.png">
-<meta property="og:updated_time" content="2018-10-05T15:07:12.703Z">
+<meta property="og:updated_time" content="2018-10-05T16:02:37.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitHub Pages+Hexo+Next博客搭建记录">
 <meta name="twitter:description" content="1、前言　　大二的时候看见学长搭建的个人博客，感觉好高大上的样子，想着自己啥时候不再是哪个只会喊：哇、牛批、666、厉害厉害的傻逼选手，然后浪啊浪，突然有一天，CSP考试上考到了一个Markdown转HTML的大模拟题：现场狂写2小时，黑箱测试最后只得20分，从此心理对MD留下了挥之不去的阴影，然后就没有了然后，此事不来了了之。大二的时候在CSDN上写过，但是感觉CSDN的广告是越来也严重了，上面">
@@ -403,8 +403,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-05T23:07:12+08:00">
-                2018-10-05
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-06T00:02:37+08:00">
+                2018-10-06
               </time>
             
           </span>
@@ -474,7 +474,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5.1k 字
+                  5.5k 字
                 </span>
               
 
@@ -490,7 +490,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  20 分钟
+                  21 分钟
                 </span>
               
             </div>
@@ -673,7 +673,11 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">title</span>=<span class="string">"&#123;&#123; __('post.wordcount') &#125;&#125;"</span>&gt;</span></span><br><span class="line">    &#123;&#123; wordcount(post.content) &#125;&#125; 字</span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">title</span>=<span class="string">"&#123;&#123; __('post.min2read') &#125;&#125;"</span>&gt;</span></span><br><span class="line">    &#123;&#123; min2read(post.content) &#125;&#125; 分钟</span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>最终的效果图，如下： </p>
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/wordcount_press.png" alt="字数统计效果展示"></p>
-<h3 id="3-14-上传本地图片"><a href="#3-14-上传本地图片" class="headerlink" title="3.14 上传本地图片"></a>3.14 上传本地图片</h3><p>在<strong>站点配置文件</strong>中将 <code>post_asset_folder</code>字段设置为 <code>true</code>，同时安装对应的插件 <code>npm install hexo-asset-image --save</code>。以后运行<code>hexo n &quot;xxxx&quot;</code>来生成md博文时，<code>/source/_posts</code>文件夹内除了<code>xxxx.md</code>文件还有一个同名的文件夹，该文件夹用于存储本地图片。在<code>xxxx.md</code>中想引入图片时，先把图片复制到xxxx这个文件夹中，然后只需要在xxxx.md中按照markdown的格式引入图片：<code>![你想输入的替代文字](xxxx\图片名.jpg)</code></p>
+<h3 id="3-14-上传本地图片"><a href="#3-14-上传本地图片" class="headerlink" title="3.14 上传本地图片"></a>3.14 上传本地图片</h3><p>在<strong>站点配置文件</strong>中将 <code>post_asset_folder</code>字段设置为 <code>true</code>，同时安装对应的插件 <code>npm install hexo-asset-image --save</code>。以后运行<code>hexo n &quot;xxxx&quot;</code>来生成md博文时，<code>/source/_posts</code>文件夹内除了<code>xxxx.md</code>文件还有一个同名的文件夹，该文件夹用于存储本地图片。在<code>xxxx.md</code>中想引入图片时，先把图片复制到xxxx这个文件夹中，然后只需要在xxxx.md中按照markdown的格式引入图片：<code>![你想输入的替代文字](xxxx\图片名.jpg)</code>  </p>
+<h3 id="3-15-添加近期文章模块"><a href="#3-15-添加近期文章模块" class="headerlink" title="3.15 添加近期文章模块"></a>3.15 添加近期文章模块</h3><p>将下面的代码贴在 <code>next/layout/_macro/sidebar.swig</code> 中的 <code>if theme.links</code> 对应的 <code>endif</code> 后面，就ok了，是不是很简单。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.recent_posts %&#125;</span><br><span class="line">    &lt;div class=&quot;links-of-blogroll motion-element &#123;&#123; &quot;links-of-blogroll-&quot; + theme.recent_posts_layout  &#125;&#125;&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;links-of-blogroll-title&quot;&gt;</span><br><span class="line">        &lt;!-- modify icon to fire by szw --&gt;</span><br><span class="line">        &lt;i class=&quot;fa fa-history fa-&#123;&#123; theme.recent_posts_icon | lower &#125;&#125;&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;</span><br><span class="line">        &#123;&#123; theme.recent_posts_title &#125;&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;ul class=&quot;links-of-blogroll-list&quot;&gt;</span><br><span class="line">        &#123;% set posts = site.posts.sort(&apos;-date&apos;) %&#125;</span><br><span class="line">        &#123;% for post in posts.slice(&apos;0&apos;, &apos;5&apos;) %&#125;</span><br><span class="line">          &lt;li&gt;</span><br><span class="line">            &lt;a href=&quot;&#123;&#123; url_for(post.path) &#125;&#125;&quot; title=&quot;&#123;&#123; post.title &#125;&#125;&quot; target=&quot;_blank&quot;&gt;&#123;&#123; post.title &#125;&#125;&lt;/a&gt;</span><br><span class="line">          &lt;/li&gt;</span><br><span class="line">        &#123;% endfor %&#125;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<p>为了配置方便，在主题的 <code>_config.yml</code> 中添加了几个变量，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">recent_posts_title: 近期文章</span><br><span class="line">recent_posts_layout: block</span><br><span class="line">recent_posts: true</span><br></pre></td></tr></table></figure>
 <h2 id="4、集成第三方服务"><a href="#4、集成第三方服务" class="headerlink" title="4、集成第三方服务"></a>4、集成第三方服务</h2><h3 id="4-1-Valine评论系统"><a href="#4-1-Valine评论系统" class="headerlink" title="4.1 Valine评论系统"></a>4.1 Valine评论系统</h3><p>针对评论系统来讲的话，多说和网易云已经倒了，畅言需要备案，Disqus，Hypercomments和LiveRe等都是国外的，不仅加载速度慢还容易被墙，找来找去，决定使用valine（2017年8月诞生的一款基于<code>LeanCloud</code>的极简风评论系统）。<code>NexT</code>主题本身就已经集成了valine，所以设置起来也比较简单。  </p>
 <h4 id="4-1-1-注册LeanCloud，获取appid和appkey"><a href="#4-1-1-注册LeanCloud，获取appid和appkey" class="headerlink" title="4.1.1 注册LeanCloud，获取appid和appkey"></a>4.1.1 注册LeanCloud，获取<code>appid</code>和<code>appkey</code></h4><p>在<a href="https://leancloud.cn/" target="_blank" rel="noopener">官网</a>注册账号并<code>创建应用</code>，应用选择<code>开发版</code>即可，毕竟穷孩子，免费的好啊。应用名字随便起，创建完成后，在 <code>设置 &gt;&gt; 应用key</code> 中可以看到此应用的appid和appkey。</p>
 <p><img src="/2018/09/22/GitHub-Pages-Hexo-Next博客搭建记录/appkey.png" alt="appid和appkey"></p>
@@ -718,6 +722,10 @@
 <li><p>静态资源压缩（github pages提供的免费空间有限）</p>
 </li>
 <li><p>添加动态萌宠</p>
+<p>先安装必要的模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br><span class="line">npm install live2d-widget-model-hijiki  #此行不同的萌宠，对应不同的模块</span><br></pre></td></tr></table></figure>
+<p>在站点配置文件的末尾添加如下代码段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># live2d    </span><br><span class="line">live2d:</span><br><span class="line">  enable: true</span><br><span class="line">  scriptFrom: local</span><br><span class="line">  pluginRootPath: live2dw/</span><br><span class="line">  pluginJsPath: lib/</span><br><span class="line">  pluginModelPath: assets/</span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-hijiki/</span><br><span class="line">  display:</span><br><span class="line">    position: left</span><br><span class="line">    width: 80</span><br><span class="line">    height: 300</span><br><span class="line">    hOffset: 20 #水平相对位移</span><br><span class="line">    vOffset: -200 #垂直相对位移</span><br><span class="line">  mobile:</span><br><span class="line">    show: true</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>代码区添加<code>点击复制</code>按钮</p>
 </li>
@@ -999,7 +1007,39 @@
               </ul>
             </div>
           
-
+          
+			<div class="links-of-blogroll motion-element links-of-blogroll-block">
+			  <div class="links-of-blogroll-title">
+			    <!-- modify icon to fire by szw -->
+			    <i class="fa fa-history fa-" aria-hidden="true"></i>
+			    近期文章
+			  </div>
+			  <ul class="links-of-blogroll-list">
+			    
+			    
+			      <li>
+			        <a href="/2018/10/04/colab免费云GPU使用教程/" title="colab免费云GPU使用教程" target="_blank">colab免费云GPU使用教程</a>
+			      </li>
+			    
+			      <li>
+			        <a href="/2018/10/04/Ubuntu16-04安装Tensorflow-GPU/" title="Ubuntu16.04安装Tensorflow-GPU" target="_blank">Ubuntu16.04安装Tensorflow-GPU</a>
+			      </li>
+			    
+			      <li>
+			        <a href="/2018/10/04/算法课第一次作业-选做1-5-6/" title="算法课第一次作业-选做1-5-6" target="_blank">算法课第一次作业-选做1-5-6</a>
+			      </li>
+			    
+			      <li>
+			        <a href="/2018/10/03/算法课OJ作业/" title="算法课OJ作业" target="_blank">算法课OJ作业</a>
+			      </li>
+			    
+			      <li>
+			        <a href="/2018/09/29/矩阵求导/" title="矩阵求导" target="_blank">矩阵求导</a>
+			      </li>
+			    
+			  </ul>
+			</div>
+		  
           
 
         </div>
@@ -1015,7 +1055,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、前言"><span class="nav-text">1、前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、基础环境搭建"><span class="nav-text">2、基础环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-注册GitHub账号并创建IO仓库"><span class="nav-text">2.1 注册GitHub账号并创建IO仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-安装node-js"><span class="nav-text">2.2 安装node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-安装Git并配置SSH-Key"><span class="nav-text">2.3 安装Ｇit并配置SSH Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-安装sublime"><span class="nav-text">2.4 安装sublime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-安装hexo"><span class="nav-text">2.5 安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-域名购买及解析"><span class="nav-text">2.6 域名购买及解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-本地与Github连接"><span class="nav-text">2.7 本地与Github连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-配置NexT主题"><span class="nav-text">2.8 配置NexT主题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、NexT主题个性化设计"><span class="nav-text">3、NexT主题个性化设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-设置网站图标-Favicon"><span class="nav-text">3.1 设置网站图标 Favicon</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-修改文章底部-号标签样式"><span class="nav-text">3.2 修改文章底部 # 号标签样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-文章末尾添加-本文结束-标记"><span class="nav-text">3.3 文章末尾添加 本文结束 标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-添加顶部加载条"><span class="nav-text">3.4 添加顶部加载条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-隐藏网站底部-由hexo强力驱动"><span class="nav-text">3.5 隐藏网站底部 由hexo强力驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-博文置顶"><span class="nav-text">3.6 博文置顶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-添加分享"><span class="nav-text">3.7 添加分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-8-显示当前页面的浏览进度"><span class="nav-text">3.8 显示当前页面的浏览进度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-9-首页博文自动卷起"><span class="nav-text">3.9 首页博文自动卷起</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-10-实现鼠标点击出现桃心"><span class="nav-text">3.10 实现鼠标点击出现桃心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-11-添加站内搜索"><span class="nav-text">3.11 添加站内搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-12-生成站点地图"><span class="nav-text">3.12 生成站点地图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-13-实现统计功能"><span class="nav-text">3.13 实现统计功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-14-上传本地图片"><span class="nav-text">3.14 上传本地图片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、集成第三方服务"><span class="nav-text">4、集成第三方服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Valine评论系统"><span class="nav-text">4.1 Valine评论系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-1-注册LeanCloud，获取appid和appkey"><span class="nav-text">4.1.1 注册LeanCloud，获取appid和appkey</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-2-配置web安全域名"><span class="nav-text">4.1.2 配置web安全域名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-3-创建Class对象"><span class="nav-text">4.1.3 创建Class对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-4-修改主题配置文件"><span class="nav-text">4.1.4 修改主题配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-5-最终效果展示"><span class="nav-text">4.1.5 最终效果展示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-6-邮件提醒功能配置"><span class="nav-text">4.1.6 邮件提醒功能配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-卜算子统计"><span class="nav-text">4.2 卜算子统计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、To-DO-List"><span class="nav-text">5、To DO List</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、前言"><span class="nav-text">1、前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、基础环境搭建"><span class="nav-text">2、基础环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-注册GitHub账号并创建IO仓库"><span class="nav-text">2.1 注册GitHub账号并创建IO仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-安装node-js"><span class="nav-text">2.2 安装node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-安装Git并配置SSH-Key"><span class="nav-text">2.3 安装Ｇit并配置SSH Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-安装sublime"><span class="nav-text">2.4 安装sublime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-安装hexo"><span class="nav-text">2.5 安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-域名购买及解析"><span class="nav-text">2.6 域名购买及解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-本地与Github连接"><span class="nav-text">2.7 本地与Github连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-配置NexT主题"><span class="nav-text">2.8 配置NexT主题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、NexT主题个性化设计"><span class="nav-text">3、NexT主题个性化设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-设置网站图标-Favicon"><span class="nav-text">3.1 设置网站图标 Favicon</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-修改文章底部-号标签样式"><span class="nav-text">3.2 修改文章底部 # 号标签样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-文章末尾添加-本文结束-标记"><span class="nav-text">3.3 文章末尾添加 本文结束 标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-添加顶部加载条"><span class="nav-text">3.4 添加顶部加载条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-隐藏网站底部-由hexo强力驱动"><span class="nav-text">3.5 隐藏网站底部 由hexo强力驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-博文置顶"><span class="nav-text">3.6 博文置顶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-添加分享"><span class="nav-text">3.7 添加分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-8-显示当前页面的浏览进度"><span class="nav-text">3.8 显示当前页面的浏览进度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-9-首页博文自动卷起"><span class="nav-text">3.9 首页博文自动卷起</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-10-实现鼠标点击出现桃心"><span class="nav-text">3.10 实现鼠标点击出现桃心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-11-添加站内搜索"><span class="nav-text">3.11 添加站内搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-12-生成站点地图"><span class="nav-text">3.12 生成站点地图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-13-实现统计功能"><span class="nav-text">3.13 实现统计功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-14-上传本地图片"><span class="nav-text">3.14 上传本地图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-15-添加近期文章模块"><span class="nav-text">3.15 添加近期文章模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、集成第三方服务"><span class="nav-text">4、集成第三方服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Valine评论系统"><span class="nav-text">4.1 Valine评论系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-1-注册LeanCloud，获取appid和appkey"><span class="nav-text">4.1.1 注册LeanCloud，获取appid和appkey</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-2-配置web安全域名"><span class="nav-text">4.1.2 配置web安全域名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-3-创建Class对象"><span class="nav-text">4.1.3 创建Class对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-4-修改主题配置文件"><span class="nav-text">4.1.4 修改主题配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-5-最终效果展示"><span class="nav-text">4.1.5 最终效果展示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-6-邮件提醒功能配置"><span class="nav-text">4.1.6 邮件提醒功能配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-卜算子统计"><span class="nav-text">4.2 卜算子统计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、To-DO-List"><span class="nav-text">5、To DO List</span></a></li></ol></div>
             
 
           </div>
@@ -1049,7 +1089,7 @@
     
       <span class="post-meta-item-text">本站共计&#58;</span>
     
-    <span title="本站共计">11k 字</span>
+    <span title="本站共计">11.3k 字</span>
   
 </div>
 
@@ -1738,5 +1778,5 @@
 
   <!-- 页面点击小红心 -->
   <script type="text/javascript" src="/js/src/love.js"></script>
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":80,"height":300,"hOffset":20,"vOffset":-200},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
 </html>
