@@ -117,7 +117,7 @@
 <meta property="og:image" content="http://wangjibao.com.cn/2018/10/04/算法课第一次作业-选做1-5-6/312.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/10/04/算法课第一次作业-选做1-5-6/43.png">
 <meta property="og:image" content="http://wangjibao.com.cn/2018/10/04/算法课第一次作业-选做1-5-6/44.png">
-<meta property="og:updated_time" content="2018-10-05T16:08:50.779Z">
+<meta property="og:updated_time" content="2018-10-05T16:24:29.752Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法课第一次作业-选做1-5-6">
 <meta name="twitter:description" content="一、Divide and Conquer　　You are interested in analyzing some hard-to-obtain data from two separate databases. Each database contains n numerical values, so there are 2n values total and you may assume t">
@@ -383,7 +383,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-06T00:08:50+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-06T00:24:29+08:00">
                 2018-10-06
               </time>
             
@@ -490,7 +490,7 @@
       
 
       
-        <h3 id="一、Divide-and-Conquer"><a href="#一、Divide-and-Conquer" class="headerlink" title="一、Divide and Conquer"></a>一、Divide and Conquer</h3><p>　　You are interested in analyzing some hard-to-obtain data from two separate databases. Each database contains n numerical values, so there are 2n values total and you may assume that no two values are the same. You’d like to determine the median of this set of 2n values, which we will deﬁne here to be the nth　smallest value.</p>
+        <h3 id="一、Divide-and-Conquer"><a href="#一、Divide-and-Conquer" class="headerlink" title="一、Divide and Conquer"></a>一、Divide and Conquer</h3><p>　　You are interested in analyzing some hard-to-obtain data from two separate databases. Each database contains n numerical values, so there are 2n values total and you may assume that no two values are the same. You’d like to determine the median of this set of 2n values, which we will define here to be the n-th　smallest value.</p>
 <p>　　However, the only way you can access these values is through queries to the databases. In a single query, you can specify a value k to one of the two databases, and the chosen database will return the kth smallest value that it contains. Since queries are expensive, you would like to compute the median using as few queries as possible.</p>
 <p>Give an algorithm that finds the median value using at most O(logn) queries.　　</p>
 <h4 id="1、problem-solving-ideas-and-pseudo-code"><a href="#1、problem-solving-ideas-and-pseudo-code" class="headerlink" title="1、problem-solving ideas and pseudo-code"></a>1、problem-solving ideas and pseudo-code</h4><p>首先将现实问题转化一下，变成计算机算法问题，即 <strong>找2个有序数组的并集的中位数</strong> ，<a href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/description/" target="_blank" rel="noopener">LeetCode 第四题</a>。</p>
@@ -525,7 +525,7 @@
 <p>然后，计算跨左右两边的数对所形成的显著逆序的个数。</p>
 <p>最后，将这三者的显著逆序数求和，即为整个数组的显著逆序数。</p>
 <p><strong>(2）pseudo code</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Sort-and-Count(A) </span><br><span class="line">1: Divide A into two sub-sequences L and R; </span><br><span class="line">2: (RCL,L) = Sort-and-Count(L); </span><br><span class="line">3: (RCR,R) = Sort-and-Count(R); </span><br><span class="line">4: (C,A) = Merge-and-Count(L,R); </span><br><span class="line">5: return (RC = RCL +RCR +C,A); </span><br><span class="line"></span><br><span class="line">Merge-and-Count (L,R) </span><br><span class="line">1: RC = 0; i = 0; j = 0; </span><br><span class="line">2: for k = 0 to ∥L∥+∥R∥−1 do </span><br><span class="line">3:     if L[i] &gt; 3*R[j] then </span><br><span class="line">4: 	       A[k] = R[j]; </span><br><span class="line">5: 		   j+ +; </span><br><span class="line">6: 		   RC+ = (∥L∥−i); </span><br><span class="line">7: 	   else </span><br><span class="line">8: 		   A[k] = L[i]; </span><br><span class="line">9: 		   i+ +; </span><br><span class="line">10:    end if </span><br><span class="line">11: end for </span><br><span class="line">12: return (RC, A);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Sort-and-Count(A) </span><br><span class="line">1: Divide A into two sub-sequences L and R; </span><br><span class="line">2: (RCL,L) = Sort-and-Count(L); </span><br><span class="line">3: (RCR,R) = Sort-and-Count(R); </span><br><span class="line">4: (C,A) = Merge-and-Count(L,R); </span><br><span class="line">5: return (RC = RCL +RCR +C,A); </span><br><span class="line"></span><br><span class="line">Merge-and-Count (L,R) </span><br><span class="line">1: RC = 0; i = 0; j = 0; </span><br><span class="line">2: for k = 0 to ∥L∥+∥R∥−1 do </span><br><span class="line">3: 　　if L[i] &gt; 3*R[j] then</span><br><span class="line">4: 　　　　A[k] = R[j];</span><br><span class="line">5: 　　　　j+ +;</span><br><span class="line">6: 　　　　RC+ = (∥L∥−i);</span><br><span class="line">7: 　　else</span><br><span class="line">8: 　　　　A[k] = L[i];</span><br><span class="line">9: 　　　　i+ +;</span><br><span class="line">10:　　end if </span><br><span class="line">11: end for </span><br><span class="line">12: return (RC, A);</span><br></pre></td></tr></table></figure>
 <h4 id="2、subproblem-reduction-graph-1"><a href="#2、subproblem-reduction-graph-1" class="headerlink" title="2、subproblem reduction graph"></a>2、subproblem reduction graph</h4><p>先分：</p>
 <p><img src="/2018/10/04/算法课第一次作业-选做1-5-6/21.png" alt=""></p>
 <p>后合：</p>
