@@ -783,26 +783,22 @@
                 
                   <span class="links-of-author-item">
                     <a href="https://github.com/spring371327" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                      GitHub</a>
                   </span>
                 
                   <span class="links-of-author-item">
                     <a href="mailto:wangjibao1995@gmail.com" target="_blank" title="E-Mail">
-                      
-                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                      E-Mail</a>
                   </span>
                 
                   <span class="links-of-author-item">
                     <a href="https://instagram.com/spring371327" target="_blank" title="Instagram">
-                      
-                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                      Instagram</a>
                   </span>
                 
                   <span class="links-of-author-item">
                     <a href="skype:1625888175?call|chat" target="_blank" title="Skype">
-                      
-                        <i class="fa fa-fw fa-skype"></i>Skype</a>
+                      Skype</a>
                   </span>
                 
             </div>
@@ -828,38 +824,45 @@
             </div>
           
           
-			<div class="links-of-blogroll motion-element links-of-blogroll-block">
-			  <div class="links-of-blogroll-title">
-			    <!-- modify icon to fire by szw -->
-			    <i class="fa fa-history fa-" aria-hidden="true"></i>
-			    近期文章
-			  </div>
-			  <ul class="links-of-blogroll-list">
-			    
-			    
-			      <li>
-			        <a href="/2018/10/04/colab免费云GPU使用教程/" title="colab免费云GPU使用教程" target="_blank">colab免费云GPU使用教程</a>
-			      </li>
-			    
-			      <li>
-			        <a href="/2018/10/04/Ubuntu16-04安装Tensorflow-GPU/" title="Ubuntu16.04安装Tensorflow-GPU" target="_blank">Ubuntu16.04安装Tensorflow-GPU</a>
-			      </li>
-			    
-			      <li>
-			        <a href="/2018/10/04/算法课第一次作业-选做1-5-6/" title="算法课第一次作业-选做1-5-6" target="_blank">算法课第一次作业-选做1-5-6</a>
-			      </li>
-			    
-			      <li>
-			        <a href="/2018/10/03/算法课OJ作业/" title="算法课OJ作业" target="_blank">算法课OJ作业</a>
-			      </li>
-			    
-			      <li>
-			        <a href="/2018/09/29/矩阵求导/" title="矩阵求导" target="_blank">矩阵求导</a>
-			      </li>
-			    
-			  </ul>
-			</div>
-		  
+          
+      			<div class="links-of-blogroll motion-element links-of-blogroll-block">
+      			  <div class="links-of-blogroll-title">
+      			    <!-- modify icon to fire by szw -->
+      			    <i class="fa fa-history fa-" aria-hidden="true"></i>
+      			    近期文章
+      			  </div>
+      			  <ul class="links-of-blogroll-list">
+      			    
+      			    
+      			      <li>
+      			        <a href="/2018/10/04/colab免费云GPU使用教程/" title="colab免费云GPU使用教程" target="_blank">colab免费云GPU使用教程</a>
+      			      </li>
+      			    
+      			      <li>
+      			        <a href="/2018/10/04/Ubuntu16-04安装Tensorflow-GPU/" title="Ubuntu16.04安装Tensorflow-GPU" target="_blank">Ubuntu16.04安装Tensorflow-GPU</a>
+      			      </li>
+      			    
+      			      <li>
+      			        <a href="/2018/10/04/算法课第一次作业-选做1-5-6/" title="算法课第一次作业-选做1-5-6" target="_blank">算法课第一次作业-选做1-5-6</a>
+      			      </li>
+      			    
+      			      <li>
+      			        <a href="/2018/10/03/算法课OJ作业/" title="算法课OJ作业" target="_blank">算法课OJ作业</a>
+      			      </li>
+      			    
+      			      <li>
+      			        <a href="/2018/09/29/矩阵求导/" title="矩阵求导" target="_blank">矩阵求导</a>
+      			      </li>
+      			    
+      			  </ul>
+      			</div>
+      		
+
+          <!-- CloudCalendar -->
+          <div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+            <div class="widget" id="CloudCalendar"></div>
+          </div>
+
           
 
         </div>
@@ -909,7 +912,7 @@
     
       <span class="post-meta-item-text">本站共计&#58;</span>
     
-    <span title="本站共计">11.3k 字</span>
+    <span title="本站共计">11.4k 字</span>
   
 </div>
 
@@ -1595,6 +1598,26 @@
   
 
   
+
+  <!-- calendar widget -->
+
+
+    <script src="/lib/CloudCalendar/CloudCalendar.min.js"></script>
+    <script src="/lib/CloudCalendar/languages.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#CloudCalendar').aCalendar('zh-CN', 
+            $.extend(
+                '', {
+                    single:true,
+                    root:'/calendar/'
+                }
+            )
+        );
+    });
+    </script>
+
+
 
   <!-- 页面点击小红心 -->
   <script type="text/javascript" src="/js/src/love.js"></script>
