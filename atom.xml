@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjibao.com.cn/"/>
-  <updated>2018-10-05T14:17:38.415Z</updated>
+  <updated>2018-10-06T08:04:37.319Z</updated>
   <id>http://wangjibao.com.cn/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hehe3</title>
+    <link href="http://wangjibao.com.cn/2018/10/06/hehe3/"/>
+    <id>http://wangjibao.com.cn/2018/10/06/hehe3/</id>
+    <published>2018-10-06T08:04:37.000Z</published>
+    <updated>2018-10-06T08:04:37.319Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hehe2</title>
+    <link href="http://wangjibao.com.cn/2018/10/06/hehe2/"/>
+    <id>http://wangjibao.com.cn/2018/10/06/hehe2/</id>
+    <published>2018-10-06T08:04:21.000Z</published>
+    <updated>2018-10-06T08:04:21.266Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hehe1</title>
+    <link href="http://wangjibao.com.cn/2018/10/06/hehe1/"/>
+    <id>http://wangjibao.com.cn/2018/10/06/hehe1/</id>
+    <published>2018-10-06T08:04:12.000Z</published>
+    <updated>2018-10-06T08:04:12.072Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>colab免费云GPU使用教程</title>
