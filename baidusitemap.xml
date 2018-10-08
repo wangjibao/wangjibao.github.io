@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://wangjibao.com.cn/2018/09/28/LeetCode/</loc>
+    <lastmod>2018-10-08T07:04:16.427Z</lastmod>
+  </url>  <url>
     <loc>http://wangjibao.com.cn/2018/09/22/GitHub-Pages-Hexo-Next%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2018-10-06T12:48:12.202Z</lastmod>
   </url>  <url>
@@ -15,9 +18,6 @@
   </url>  <url>
     <loc>http://wangjibao.com.cn/2018/10/04/Ubuntu16-04%E5%AE%89%E8%A3%85Tensorflow-GPU/</loc>
     <lastmod>2018-10-05T14:19:22.531Z</lastmod>
-  </url>  <url>
-    <loc>http://wangjibao.com.cn/2018/09/28/LeetCode/</loc>
-    <lastmod>2018-10-05T14:18:32.663Z</lastmod>
   </url>  <url>
     <loc>http://wangjibao.com.cn/2018/10/04/colab%E5%85%8D%E8%B4%B9%E4%BA%91GPU%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2018-10-05T14:17:38.415Z</lastmod>
