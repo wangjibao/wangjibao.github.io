@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="LeetCode," />
 
 
 
@@ -88,17 +88,18 @@
 
 
 
-<meta name="description" content="机会总是留给有准备的人">
+<meta name="description" content="11、盛最多水的容器双指针，算法中一个很重要的技巧，之前的三数求和就用到了双指针的技巧。 我们在由线段长度构成的数组中使用两个指针，一个放在开始，一个置于末尾。 此外，我们会使用变量 maxArea 来持续存储到目前为止所获得的最大面积。 在每一步中，我们会找出指针所指向的两条线段形成的区域，更新 maxArea，并将指向较短线段的指针向较长线段那端移动一步。 123456789101112131">
+<meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode11-20">
 <meta property="og:url" content="http://wangjibao.com.cn/2018/10/09/LeetCode11-20/index.html">
 <meta property="og:site_name" content="来呀，不服抓个包~~">
-<meta property="og:description" content="机会总是留给有准备的人">
+<meta property="og:description" content="11、盛最多水的容器双指针，算法中一个很重要的技巧，之前的三数求和就用到了双指针的技巧。 我们在由线段长度构成的数组中使用两个指针，一个放在开始，一个置于末尾。 此外，我们会使用变量 maxArea 来持续存储到目前为止所获得的最大面积。 在每一步中，我们会找出指针所指向的两条线段形成的区域，更新 maxArea，并将指向较短线段的指针向较长线段那端移动一步。 123456789101112131">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-09T12:49:30.595Z">
+<meta property="og:updated_time" content="2018-10-09T13:09:08.294Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode11-20">
-<meta name="twitter:description" content="机会总是留给有准备的人">
+<meta name="twitter:description" content="11、盛最多水的容器双指针，算法中一个很重要的技巧，之前的三数求和就用到了双指针的技巧。 我们在由线段长度构成的数组中使用两个指针，一个放在开始，一个置于末尾。 此外，我们会使用变量 maxArea 来持续存储到目前为止所获得的最大面积。 在每一步中，我们会找出指针所指向的两条线段形成的区域，更新 maxArea，并将指向较短线段的指针向较长线段那端移动一步。 123456789101112131">
 
 
 
@@ -362,12 +363,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-09T20:49:30+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-09T21:09:08+08:00">
                 2018-10-09
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -411,7 +434,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0 字
+                  209 字
                 </span>
               
 
@@ -447,7 +470,11 @@
       
 
       
-        
+        <h2 id="11、盛最多水的容器"><a href="#11、盛最多水的容器" class="headerlink" title="11、盛最多水的容器"></a>11、<a href="https://leetcode-cn.com/problems/container-with-most-water" target="_blank" rel="noopener">盛最多水的容器</a></h2><p>双指针，算法中一个很重要的技巧，之前的三数求和就用到了双指针的技巧。</p>
+<p>我们在由线段长度构成的数组中使用两个指针，一个放在开始，一个置于末尾。 此外，我们会使用变量 <code>maxArea</code> 来持续存储到目前为止所获得的最大面积。 在每一步中，我们会找出指针所指向的两条线段形成的区域，更新 <code>maxArea</code>，并将指向较短线段的指针向较长线段那端移动一步。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; height)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxArea = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> frontPoint = <span class="number">0</span>, endPoint = height.size()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>( frontPoint&lt;endPoint )&#123;</span><br><span class="line">            maxArea = max( maxArea, (endPoint-frontPoint)*min(height[frontPoint], height[endPoint]) );</span><br><span class="line">            <span class="keyword">if</span>( height[frontPoint]&lt;height[endPoint] )</span><br><span class="line">                frontPoint++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                endPoint--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxArea;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="12、整数转罗马数字"><a href="#12、整数转罗马数字" class="headerlink" title="12、整数转罗马数字"></a>12、<a href="https://leetcode-cn.com/problems/integer-to-roman" target="_blank" rel="noopener">整数转罗马数字</a></h2>
       
     </div>
     <div>
@@ -496,6 +523,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
+          
+        </div>
       
 
       
@@ -569,8 +602,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -711,6 +753,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#11、盛最多水的容器"><span class="nav-text">11、盛最多水的容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12、整数转罗马数字"><span class="nav-text">12、整数转罗马数字</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -738,7 +796,7 @@
     
       <span class="post-meta-item-text">本站共计&#58;</span>
     
-    <span title="本站共计">12.6k 字</span>
+    <span title="本站共计">12.8k 字</span>
   
 </div>
 
