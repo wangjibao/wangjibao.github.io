@@ -99,7 +99,7 @@
 <meta property="og:image" content="https://wangjibao.com.cn/2018/10/12/Ubuntu中配置SS多用户模式并限制每个用户的流量/ssh.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/10/12/Ubuntu中配置SS多用户模式并限制每个用户的流量/bandwidth.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/10/12/Ubuntu中配置SS多用户模式并限制每个用户的流量/show.png">
-<meta property="og:updated_time" content="2018-10-12T12:52:48.716Z">
+<meta property="og:updated_time" content="2018-10-12T12:58:36.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu中配置SS多用户模式并限制每个用户的流量">
 <meta name="twitter:description" content="1、更新软件并安装vim123sudo apt-get updatesudo apt-get upgradesudo apt-get install vim 2、更改 SSH 默认端口1234sudo vim /etc/ssh/sshd_config找到 Port 字段，将其修改为自己想要的端口值sudo service ssh restart         #重启ssh服务sudo netst">
@@ -367,7 +367,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-12T20:52:48+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-12T20:58:36+08:00">
                 2018-10-12
               </time>
             
@@ -489,7 +489,7 @@
 <h3 id="4、多用户模式流量统计"><a href="#4、多用户模式流量统计" class="headerlink" title="4、多用户模式流量统计"></a>4、多用户模式流量统计</h3><p>说一下我为啥要搞这么个功能，前天，我TM大半夜的正嗨呢，突然，网断了！于是乎，打开4G，还是无法操作，这。。。。<del>我手纸都准备好了</del>，竟然发生这样的事？（开玩笑，哈哈，根正苗红的科研知识分子，油管看科研视频的好吧，为科研奉献全身！）收到邮件，告诉我流量用完了，呵。。。</p>
 <p><img src="/2018/10/12/Ubuntu中配置SS多用户模式并限制每个用户的流量/bandwidth.png" alt=""></p>
 <p>于是乎，大家公用的情况下，私开个个人账号，每到月末的时候应急用。于是乎用到了上面讲到的多用户模式，但是这样还不行，为每个用户限制流量使用上限才能达到目的。</p>
-<p>找了找，发现国内的某度是关于这方面是真的干净，上某歌，查到可以使用 <code>ss-bash</code> 实现，github上有，实现的原理就是：<code>不同的用户分配不同端口，使用iptables规则获取各端口的流量，脚本循环运行，在固定时间间隔根据iptables结果统计流量使用情况，并在流量超过限制时，添加对应端口的iptables reject规则以禁用端口。</code></p>
+<p>找了找，发现国内的某度关于这方面是真的干净，上某歌，查到可以使用 <code>ss-bash</code> 实现，<a href="https://github.com/hellofwy/ss-bash" target="_blank" rel="noopener">github上有</a>，实现的原理就是：<code>不同的用户分配不同端口，使用iptables规则获取各端口的流量，脚本循环运行，在固定时间间隔根据iptables结果统计流量使用情况，并在流量超过限制时，添加对应端口的iptables reject规则以禁用端口。</code></p>
 <p>安装shadowsocks与ss-bash之后，shadowsocks就不用做任何配置了，省去了上面的步骤，由ss-bash管理shadowsocks，包括配置的文件等等。有个缺点就是，ss-bash目前只支持python版Shadowsocks，只支持统计ipv4流量，但这问题影响不大。</p>
 <p>执行如下指令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apt-get install unzip       #下载解压工具</span><br><span class="line">apt-get install bc          #安装计算器，后面统计流量用</span><br><span class="line">wget https://github.com/hellofwy/ss-bash/archive/master.zip   #下载软件包</span><br><span class="line">unzip master.zip</span><br><span class="line">cd ss-bash-master/</span><br></pre></td></tr></table></figure>
