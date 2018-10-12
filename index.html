@@ -364,7 +364,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-12T20:58:36+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-12T21:05:44+08:00">
                 2018-10-12
               </time>
             
@@ -435,7 +435,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.7k 字
+                  1.6k 字
                 </span>
               
 
@@ -472,8 +472,8 @@
 
       
         
-          <h3 id="1、更新软件并安装vim"><a href="#1、更新软件并安装vim" class="headerlink" title="1、更新软件并安装vim"></a>1、更新软件并安装vim</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br><span class="line">sudo apt-get install vim</span><br></pre></td></tr></table></figure>
-<h3 id="2、更改-SSH-默认端口"><a href="#2、更改-SSH-默认端口" class="headerlink" title="2、更改 SSH 默认端口"></a>2、更改 SSH 默认端口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config</span><br><span class="line">找到 Port 字段，将其修改为自己想要的端口值</span><br><span class="line">sudo service ssh restart         #重启ssh服务</span><br><span class="line">sudo netstat -tunlp | grep ssh   #查看ssh服务监听的端口</span><br></pre></td></tr></table></figure>
+          <h3 id="1、更新软件并安装vim"><a href="#1、更新软件并安装vim" class="headerlink" title="1、更新软件并安装vim"></a>1、更新软件并安装vim</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br><span class="line">sudo apt-get install vim</span><br></pre></td></tr></table></figure>
+<h3 id="2、更改-SSH-默认端口"><a href="#2、更改-SSH-默认端口" class="headerlink" title="2、更改 SSH 默认端口"></a>2、更改 SSH 默认端口</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config</span><br><span class="line">找到 Port 字段，将其修改为自己想要的端口值</span><br><span class="line">sudo service ssh restart         #重启ssh服务</span><br><span class="line">sudo netstat -tunlp | grep ssh   #查看ssh服务监听的端口</span><br></pre></td></tr></table></figure>
 <p>这里将ssh端口改成了22222，如下图（PS:不要问我为啥强行改22号端口，就是任性，额，其实有点其他用途，青大校友表示当年我就是靠这个强行免费使用校园网）：</p>
 <p><img src="/2018/10/12/Ubuntu中配置SS多用户模式并限制每个用户的流量/ssh.png" alt=""></p>
 <h3 id="3、安装shadowsocks-python版本"><a href="#3、安装shadowsocks-python版本" class="headerlink" title="3、安装shadowsocks-python版本"></a>3、安装shadowsocks-python版本</h3>
