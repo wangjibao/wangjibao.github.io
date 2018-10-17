@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[背包九讲]]></title>
     <url>%2F2018%2F10%2F17%2F%E8%83%8C%E5%8C%85%E4%B9%9D%E8%AE%B2%2F</url>
-    <content type="text"><![CDATA[大二入门动态规划时，最先学得就是 LCS , LIS 和各种背包问题，后来接触二维DP和各种无厘头DP（数位DP啊，插头DP啊，树状DP啊等等），以我这种智商水平，听听名字就好了。最近的算法课讲到了 DP 专题，找出了之前看的 背包九讲看了看，放出来，纪念一发当年的岁月吧。]]></content>
+    <content type="text"><![CDATA[大二入门动态规划时，最先学得就是 LCS , LIS 和各种背包问题，后来接触二维DP和各种无厘头DP（数位DP啊，插头DP啊，状压DP啊，树状DP啊等等），以我这种智商水平，听听名字就好了。最近的算法课讲到了 DP 专题，找出了之前看的 背包九讲看了看，放出来，纪念一发当年的岁月吧。]]></content>
       <categories>
         <category>资料</category>
         <category>算法课</category>
