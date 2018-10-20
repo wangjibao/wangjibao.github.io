@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="来呀，不服抓个包~~">
 <meta property="og:description" content="11、盛最多水的容器双指针，算法中一个很重要的技巧，之前的三数求和就用到了双指针的技巧。 我们在由线段长度构成的数组中使用两个指针，一个放在开始，一个置于末尾。 此外，我们会使用变量 maxArea 来持续存储到目前为止所获得的最大面积。 在每一步中，我们会找出指针所指向的两条线段形成的区域，更新 maxArea，并将指向较短线段的指针向较长线段那端移动一步。 123456789101112131">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-20T05:49:36.384Z">
+<meta property="og:updated_time" content="2018-10-20T11:50:02.502Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode11-20">
 <meta name="twitter:description" content="11、盛最多水的容器双指针，算法中一个很重要的技巧，之前的三数求和就用到了双指针的技巧。 我们在由线段长度构成的数组中使用两个指针，一个放在开始，一个置于末尾。 此外，我们会使用变量 maxArea 来持续存储到目前为止所获得的最大面积。 在每一步中，我们会找出指针所指向的两条线段形成的区域，更新 maxArea，并将指向较短线段的指针向较长线段那端移动一步。 123456789101112131">
@@ -363,7 +363,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-20T13:49:36+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-20T19:50:02+08:00">
                 2018-10-20
               </time>
             
@@ -384,6 +384,17 @@
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/LeetCode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/LeetCode11-20/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode11-20</span>
                   </a>
                 </span>
 
@@ -434,7 +445,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.7k 字
+                  1.9k 字
                 </span>
               
 
@@ -450,7 +461,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8 分钟
+                  9 分钟
                 </span>
               
             </div>
@@ -493,6 +504,10 @@
 <p>第四种：使用深搜操作，理论上来讲，此种方法可以求 <code>m</code> 数之和，时间复杂度为 $ O(n^{m-1}) $。</p>
 <p>方案一代码：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; fourSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt; <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; ans;</span><br><span class="line">        <span class="keyword">if</span>( nums.size()&lt;<span class="number">4</span> )</span><br><span class="line">            <span class="keyword">return</span> ans;</span><br><span class="line">        sort( nums.begin(), nums.end() );</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.size()<span class="number">-3</span>; i++ )&#123;</span><br><span class="line">            <span class="keyword">for</span>( <span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;nums.size()<span class="number">-2</span>; j++ )&#123;</span><br><span class="line">                <span class="keyword">int</span> f = j+<span class="number">1</span>, e = nums.size()<span class="number">-1</span>;</span><br><span class="line">                <span class="keyword">while</span>( f&lt;e )&#123;</span><br><span class="line">                    <span class="keyword">int</span> sum = nums[i]+nums[j]+nums[f]+nums[e];</span><br><span class="line">                    <span class="keyword">if</span>( sum==target )&#123;</span><br><span class="line">                        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; tmp_ans;</span><br><span class="line">                        tmp_ans.push_back(nums[i]);</span><br><span class="line">                        tmp_ans.push_back(nums[j]);</span><br><span class="line">                        tmp_ans.push_back(nums[f]);</span><br><span class="line">                        tmp_ans.push_back(nums[e]);</span><br><span class="line">                        ans.push_back( tmp_ans );</span><br><span class="line">                        f++;</span><br><span class="line">                        <span class="keyword">while</span>( f&lt;e &amp;&amp; nums[f<span class="number">-1</span>]==nums[f] )&#123;</span><br><span class="line">                            f++;</span><br><span class="line">                        &#125;</span><br><span class="line">                        e--;</span><br><span class="line">                        <span class="keyword">while</span>( e&gt;f &amp;&amp; nums[e+<span class="number">1</span>]==nums[e] )&#123;</span><br><span class="line">                            e--;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>( sum&gt;target )&#123;</span><br><span class="line">                        e--;</span><br><span class="line">                        <span class="keyword">while</span>( e&gt;f &amp;&amp; nums[e+<span class="number">1</span>]==nums[e] )&#123;</span><br><span class="line">                            e--;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span>&#123;</span><br><span class="line">                        f++;</span><br><span class="line">                        <span class="keyword">while</span>( f&lt;e &amp;&amp; nums[f<span class="number">-1</span>]==nums[f] )&#123;</span><br><span class="line">                            f++;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">while</span>( j+<span class="number">1</span>&lt;nums.size()<span class="number">-2</span> &amp;&amp; nums[j+<span class="number">1</span>]==nums[j] )&#123;</span><br><span class="line">                    j++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span>( i+<span class="number">1</span>&lt;nums.size()<span class="number">-3</span> &amp;&amp; nums[i+<span class="number">1</span>]==nums[i] )&#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="19、删除链表的倒数第N个节点"><a href="#19、删除链表的倒数第N个节点" class="headerlink" title="19、删除链表的倒数第N个节点"></a>19、<a href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list" target="_blank" rel="noopener">删除链表的倒数第N个节点</a></h2><p>一遍遍历即可，其实也是双指针的思想.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        ListNode *dummy = (ListNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(ListNode));</span><br><span class="line">        dummy-&gt;next = head;</span><br><span class="line">        ListNode *f = dummy, *e = dummy;</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++ )</span><br><span class="line">            e = e-&gt;next;</span><br><span class="line">        <span class="keyword">while</span>( e-&gt;next )&#123;</span><br><span class="line">            f = f-&gt;next;</span><br><span class="line">            e = e-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        f-&gt;next = f-&gt;next-&gt;next;</span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="20、有效的括号"><a href="#20、有效的括号" class="headerlink" title="20、有效的括号"></a>20、<a href="https://leetcode-cn.com/problems/valid-parentheses" target="_blank" rel="noopener">有效的括号</a></h2><p>水题，使用栈匹配一下即可，遇到左括号进栈，遇见右括号出栈，最后判断栈是否为空。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValid</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">char</span>&gt; ans;</span><br><span class="line">        ans.push(<span class="string">'#'</span>); <span class="comment">//加栈底后期就不用判断空不空了</span></span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.length(); i++ )&#123;</span><br><span class="line">            <span class="keyword">if</span>( s[i]==<span class="string">'('</span> || s[i]==<span class="string">'['</span> || s[i]==<span class="string">'&#123;'</span> )</span><br><span class="line">                ans.push(s[i]);</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>( (s[i]==<span class="string">')'</span>&amp;&amp;ans.top()!=<span class="string">'('</span>) || (s[i]==<span class="string">']'</span>&amp;&amp;ans.top()!=<span class="string">'['</span>) || (s[i]==<span class="string">'&#125;'</span>&amp;&amp;ans.top()!=<span class="string">'&#123;'</span>) )</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    ans.pop();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans.top()==<span class="string">'#'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -654,7 +669,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -665,7 +680,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -742,6 +757,10 @@
       			    
       			    
       			      <li>
+      			        <a href="/2018/10/20/LeetCode21-30/" title="LeetCode21-30" target="_blank">LeetCode21-30</a>
+      			      </li>
+      			    
+      			      <li>
       			        <a href="/2018/10/17/背包九讲/" title="背包九讲" target="_blank">背包九讲</a>
       			      </li>
       			    
@@ -755,10 +774,6 @@
       			    
       			      <li>
       			        <a href="/2018/10/04/colab免费云GPU使用教程/" title="colab免费云GPU使用教程" target="_blank">colab免费云GPU使用教程</a>
-      			      </li>
-      			    
-      			      <li>
-      			        <a href="/2018/10/04/Ubuntu16-04安装Tensorflow-GPU/" title="Ubuntu16.04安装Tensorflow-GPU" target="_blank">Ubuntu16.04安装Tensorflow-GPU</a>
       			      </li>
       			    
       			  </ul>
@@ -785,7 +800,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#11、盛最多水的容器"><span class="nav-text">11、盛最多水的容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12、整数转罗马数字"><span class="nav-text">12、整数转罗马数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13、罗马数字转整数"><span class="nav-text">13、罗马数字转整数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14、最长公共前缀"><span class="nav-text">14、最长公共前缀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15、三数之和"><span class="nav-text">15、三数之和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16、最接近的三数之和"><span class="nav-text">16、最接近的三数之和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17、电话号码的字母组合"><span class="nav-text">17、电话号码的字母组合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18、四数之和"><span class="nav-text">18、四数之和</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#11、盛最多水的容器"><span class="nav-text">11、盛最多水的容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12、整数转罗马数字"><span class="nav-text">12、整数转罗马数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13、罗马数字转整数"><span class="nav-text">13、罗马数字转整数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14、最长公共前缀"><span class="nav-text">14、最长公共前缀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15、三数之和"><span class="nav-text">15、三数之和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16、最接近的三数之和"><span class="nav-text">16、最接近的三数之和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17、电话号码的字母组合"><span class="nav-text">17、电话号码的字母组合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18、四数之和"><span class="nav-text">18、四数之和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19、删除链表的倒数第N个节点"><span class="nav-text">19、删除链表的倒数第N个节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20、有效的括号"><span class="nav-text">20、有效的括号</span></a></li></ol></div>
             
 
           </div>
@@ -819,7 +834,7 @@
     
       <span class="post-meta-item-text">本站共计&#58;</span>
     
-    <span title="本站共计">16.7k 字</span>
+    <span title="本站共计">17k 字</span>
   
 </div>
 
