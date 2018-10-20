@@ -117,7 +117,7 @@
 <meta property="og:image" content="https://wangjibao.com.cn/2018/10/04/算法课第一次作业-选做1-5-6/312.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/10/04/算法课第一次作业-选做1-5-6/43.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/10/04/算法课第一次作业-选做1-5-6/44.png">
-<meta property="og:updated_time" content="2018-10-05T16:24:29.752Z">
+<meta property="og:updated_time" content="2018-10-20T03:06:49.294Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法课第一次作业-选做1-5-6">
 <meta name="twitter:description" content="一、Divide and Conquer　　You are interested in analyzing some hard-to-obtain data from two separate databases. Each database contains n numerical values, so there are 2n values total and you may assume t">
@@ -385,8 +385,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-06T00:24:29+08:00">
-                2018-10-06
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-20T11:06:49+08:00">
+                2018-10-20
               </time>
             
           </span>
@@ -456,7 +456,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.6k 字
+                  2.7k 字
                 </span>
               
 
@@ -472,7 +472,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  11 分钟
+                  12 分钟
                 </span>
               
             </div>
@@ -527,7 +527,7 @@
 <p>然后，计算跨左右两边的数对所形成的显著逆序的个数。</p>
 <p>最后，将这三者的显著逆序数求和，即为整个数组的显著逆序数。</p>
 <p><strong>(2）pseudo code</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Sort-and-Count(A) </span><br><span class="line">1: Divide A into two sub-sequences L and R; </span><br><span class="line">2: (RCL,L) = Sort-and-Count(L); </span><br><span class="line">3: (RCR,R) = Sort-and-Count(R); </span><br><span class="line">4: (C,A) = Merge-and-Count(L,R); </span><br><span class="line">5: return (RC = RCL +RCR +C,A); </span><br><span class="line"></span><br><span class="line">Merge-and-Count (L,R) </span><br><span class="line">1: RC = 0; i = 0; j = 0; </span><br><span class="line">2: for k = 0 to ∥L∥+∥R∥−1 do </span><br><span class="line">3: 　　if L[i] &gt; 3*R[j] then</span><br><span class="line">4: 　　　　A[k] = R[j];</span><br><span class="line">5: 　　　　j+ +;</span><br><span class="line">6: 　　　　RC+ = (∥L∥−i);</span><br><span class="line">7: 　　else</span><br><span class="line">8: 　　　　A[k] = L[i];</span><br><span class="line">9: 　　　　i+ +;</span><br><span class="line">10:　　end if </span><br><span class="line">11: end for </span><br><span class="line">12: return (RC, A);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">//统计变量num为全局变量</span><br><span class="line">void mergesort(int begin, int end)&#123;</span><br><span class="line">	if (begin &gt;= end)</span><br><span class="line">		return;</span><br><span class="line">	int mid = (begin + end) / 2;</span><br><span class="line">	mergesort(begin, mid);</span><br><span class="line">	mergesort(mid + 1, end);</span><br><span class="line">	mcount(begin, mid, end);</span><br><span class="line">	merge(begin, mid, end);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void mcount(int begin, int mid, int end)&#123;</span><br><span class="line">	int i = begin;</span><br><span class="line">	int j = mid + 1;</span><br><span class="line">	int k = begin;</span><br><span class="line">	while (i &lt;= mid &amp;&amp; j &lt;= end)&#123;</span><br><span class="line">		if (a[i] &gt; 2 * a[j])&#123;</span><br><span class="line">			num += mid - i + 1;</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">			i++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">void merge(int begin, int mid, int end)&#123;</span><br><span class="line">	int i = begin;</span><br><span class="line">	int j = mid + 1;</span><br><span class="line">	int k = begin;</span><br><span class="line"> </span><br><span class="line">	while (i &lt;= mid &amp;&amp; j &lt;= end)&#123;</span><br><span class="line">		if (a[i] &gt; a[j])&#123;</span><br><span class="line">			temp[k] = a[j];</span><br><span class="line">			k++;</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			temp[k] = a[i];</span><br><span class="line">			k++;</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	while (i &lt;= mid)&#123;</span><br><span class="line">		temp[k] = a[i];</span><br><span class="line">		k++;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">	while (j &lt;= end)&#123;</span><br><span class="line">		temp[k] = a[j];</span><br><span class="line">		k++;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	for (int p = begin; p &lt;= end; p++)</span><br><span class="line">		a[p] = temp[p];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="2、subproblem-reduction-graph-1"><a href="#2、subproblem-reduction-graph-1" class="headerlink" title="2、subproblem reduction graph"></a>2、subproblem reduction graph</h4><p>先分：</p>
 <p><img src="/2018/10/04/算法课第一次作业-选做1-5-6/21.png" alt=""></p>
 <p>后合：</p>
@@ -904,7 +904,7 @@
     
       <span class="post-meta-item-text">本站共计&#58;</span>
     
-    <span title="本站共计">16.5k 字</span>
+    <span title="本站共计">16.6k 字</span>
   
 </div>
 
