@@ -577,7 +577,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-05T00:15:51+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-05T00:20:33+08:00">
                 2018-11-05
               </time>
             
@@ -703,7 +703,7 @@
 <h4 id="1、更改juypter默认工作路径"><a href="#1、更改juypter默认工作路径" class="headerlink" title="1、更改juypter默认工作路径"></a>1、更改juypter默认工作路径</h4><p>在 <code>anaconda prompt</code> 中执行命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
 <p>即可查看 <code>jupyter_notebook_config.py</code> 配置文件的位置，打开配置文件 <code>jupyter_notebook_config.py</code>，搜索关键字 <code>notebook_dir</code> ，将值设置为自己想要的工作目录并取消注释即可（注意路径中不能有中文）；</p>
-<p><img src="/2018/11/04/数据科学导论作业/C:/Users/spring/Desktop/%E7%AC%94%E8%AE%B0/juypter-notebook%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/juypter.png" alt=""></p>
+<p><img src="/2018/11/04/数据科学导论作业/juypter.png" alt=""></p>
 <p>然后右击 <code>jupyter notebook</code> 快捷方式，将属性中的 “目标” 字段的值，去掉末尾的 <code>%USERPROFILE%</code> ，点击 <code>应用</code>，<code>确定</code>即可。</p>
 <h4 id="2、jupyter使用anaconda虚拟python环境"><a href="#2、jupyter使用anaconda虚拟python环境" class="headerlink" title="2、jupyter使用anaconda虚拟python环境"></a>2、jupyter使用anaconda虚拟python环境</h4><p>打开 <code>anaconda prompt</code>，激活之前创建的某个python虚拟环境，在<strong>当前虚拟环境</strong>中执行 <code>conda install nb_conda</code>。重启 <code>juypter notebook</code> 服务器即可出现想要的虚拟环境 <code>kernal</code> 。</p>
 <h4 id="3、jupyter两种工作模式及其快捷键"><a href="#3、jupyter两种工作模式及其快捷键" class="headerlink" title="3、jupyter两种工作模式及其快捷键"></a>3、jupyter两种工作模式及其快捷键</h4><ul>
