@@ -96,14 +96,16 @@
 <meta property="og:site_name" content="来呀，不服抓个包~~">
 <meta property="og:description" content="一、Money robbing1、optimal substructure and DP equation对于第 i 家，有两种选择，抢或者不抢。如果抢第 i 家，那么最大收益为：value[i] + 抢前 i-2 家的最优收益； 如果第 i 家不抢，那么最大收益为：抢前 i-1 家的最优收益。 状态转移方程可写为：$$dp[i] = max( dp[i-1], dp[i-2]+value[i]">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/05/算法课第二次作业/form1.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/05/算法课第二次作业/form2.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/05/算法课第二次作业/ycb.jpeg">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/05/算法课第二次作业/dp1.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/05/算法课第二次作业/dp2.png">
-<meta property="og:updated_time" content="2018-11-04T16:42:18.992Z">
+<meta property="og:updated_time" content="2018-11-04T16:52:13.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法课第二次作业">
 <meta name="twitter:description" content="一、Money robbing1、optimal substructure and DP equation对于第 i 家，有两种选择，抢或者不抢。如果抢第 i 家，那么最大收益为：value[i] + 抢前 i-2 家的最优收益； 如果第 i 家不抢，那么最大收益为：抢前 i-1 家的最优收益。 状态转移方程可写为：$$dp[i] = max( dp[i-1], dp[i-2]+value[i]">
-<meta name="twitter:image" content="https://wangjibao.com.cn/2018/11/05/算法课第二次作业/ycb.jpeg">
+<meta name="twitter:image" content="https://wangjibao.com.cn/2018/11/05/算法课第二次作业/form1.png">
 
 
 
@@ -367,7 +369,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-05T00:42:18+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-05T00:52:13+08:00">
                 2018-11-05
               </time>
             
@@ -386,8 +388,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/作业，算法课第二次作业/" itemprop="url" rel="index">
-                    <span itemprop="name">作业，算法课第二次作业</span>
+                  <a href="/categories/作业/" itemprop="url" rel="index">
+                    <span itemprop="name">作业</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/作业/算法课第二次作业/" itemprop="url" rel="index">
+                    <span itemprop="name">算法课第二次作业</span>
                   </a>
                 </span>
 
@@ -438,7 +451,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2k 字
+                  1.9k 字
                 </span>
               
 
@@ -454,7 +467,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  9 分钟
+                  8 分钟
                 </span>
               
             </div>
@@ -486,12 +499,14 @@
 <p><a href="https://leetcode-cn.com/problems/house-robber-ii/description/" target="_blank" rel="noopener">LeetCode 213题</a></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>( nums.size()==<span class="number">0</span> )</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>( nums.size()==<span class="number">1</span> )</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">return</span> max( func(nums, <span class="number">0</span>), func(nums, nums.size()<span class="number">-1</span> ));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">func</span><span class="params">( <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; nums, <span class="keyword">int</span> pos )</span></span>&#123;</span><br><span class="line">        nums.erase(nums.begin()+pos);</span><br><span class="line">        <span class="keyword">if</span>( nums.size()==<span class="number">0</span> )</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>( nums.size()==<span class="number">1</span> )</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dp(nums.size(),<span class="number">0</span>);</span><br><span class="line">        dp[<span class="number">0</span>] = nums[<span class="number">0</span>];</span><br><span class="line">        dp[<span class="number">1</span>] = max( nums[<span class="number">0</span>], nums[<span class="number">1</span>] );</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> i=<span class="number">2</span>; i&lt;nums.size(); i++ )&#123;</span><br><span class="line">            dp[i] = max( dp[i<span class="number">-1</span>], dp[i<span class="number">-2</span>]+nums[i] );</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[nums.size()<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="二、Node-selection"><a href="#二、Node-selection" class="headerlink" title="二、Node selection"></a>二、Node selection</h3><h4 id="1、optimal-substructure-and-DP-equation-1"><a href="#1、optimal-substructure-and-DP-equation-1" class="headerlink" title="1、optimal substructure and DP equation"></a>1、optimal substructure and DP equation</h4><p>对于当前根节点，有两种可能性，选取或者不选取。如果选取了当前的根节点，那么其孩子节点就不能选取，即最优值变为：root-&gt;value + 4个孙子的最优值之和； 如果当前根节点没有选取，最优值变为：两个孩子节点最优值之和。</p>
-<p>给定任意一个根，假设我们能够得到当前根选取与不选取的最优值，结果保存在一个长度为2的数组里，array[0]代表根节点不选取，array[1]代表根节点选取，那么最优解为：<br>$$<br>\begin{align}<br>&amp;//根节点不选 \<br>&amp;opt_ans[0] = max( left_ans[0], left_ans[1] ) + max( right_ans[0], right_ans[1] )\<br>&amp;//选择根节点 \<br>&amp;opt_ans[1] = root \to val + left_ans[0] + right_ans[0] \<br>&amp;ANS = max( opt_ans[0], opt_ans[1] )<br>\end{align}<br>$$</p>
+<p>给定任意一个根，假设我们能够得到当前根选取与不选取的最优值，结果保存在一个长度为2的数组里，array[0]代表根节点不选取，array[1]代表根节点选取，那么最优解为：</p>
+<p><img src="/2018/11/05/算法课第二次作业/form1.png" alt=""></p>
 <h4 id="2、-pseudo-code-1"><a href="#2、-pseudo-code-1" class="headerlink" title="2、 pseudo-code"></a>2、 pseudo-code</h4><p><a href="https://leetcode-cn.com/problems/house-robber-iii/description/" target="_blank" rel="noopener">LeetCode 337题</a></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans = solve( root );</span><br><span class="line">        <span class="keyword">return</span> max( ans[<span class="number">0</span>], ans[<span class="number">1</span>] );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; solve( TreeNode* root )&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans(<span class="number">2</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span>( !root )</span><br><span class="line">            <span class="keyword">return</span> ans;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; left_ans = solve( root-&gt;left);</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; right_ans = solve( root-&gt;right );</span><br><span class="line">        ans[<span class="number">0</span>] = max( left_ans[<span class="number">0</span>], left_ans[<span class="number">1</span>] ) + max( right_ans[<span class="number">0</span>], right_ans[<span class="number">1</span>] ); <span class="comment">//根节点不选</span></span><br><span class="line">        ans[<span class="number">1</span>] = root-&gt;val + left_ans[<span class="number">0</span>] + right_ans[<span class="number">0</span>]; <span class="comment">//选择根节点</span></span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h4 id="3、correctness-of-algorithm"><a href="#3、correctness-of-algorithm" class="headerlink" title="3、correctness of algorithm"></a>3、correctness of algorithm</h4><p>当前节点的最优值，依赖于其儿子节点的最优值（当前节点没选，最优值等于选其左孩子节点最优值+选其右孩子节点最优值）或其孙子节点的最优值（选取了当前节点，最优值等于根节点值+其左孩子不选左根的最优值+右孩子不选右根的最优值），由此可知算法的正确性。</p>
 <h4 id="4、complexity-of-algorithm"><a href="#4、complexity-of-algorithm" class="headerlink" title="4、complexity of algorithm"></a>4、complexity of algorithm</h4><p>整个算法相当于一个深度优先搜索（DFS），树中的每个节点都会遍历一次，故算法的时间复杂度为$O(n)$。</p>
-<h3 id="三、Decoding"><a href="#三、Decoding" class="headerlink" title="三、Decoding"></a>三、Decoding</h3><h4 id="1、optimal-substructure-and-DP-equation-2"><a href="#1、optimal-substructure-and-DP-equation-2" class="headerlink" title="1、optimal substructure and DP equation"></a>1、optimal substructure and DP equation</h4><p><code>dp[i]</code>表示从字符<code>0~i</code>的字符串包含最多的编码种数。不考虑特殊情况，该题的递推式是$dp[i]=dp[i-1]+dp[i-2]$，因为一个数字可以表示一个编码，两个数字也有可能表示一个编码，所以<code>dp[i]</code>应该等于<code>0~i-1</code>的字符串包含的最多编码种数加上<code>0~i-2</code>的字符串包含的最多编码种数。但是考虑到一共只有26种基础编码加上特殊情况0，所以递推式可以表示为：<br>$$<br>\begin{align}<br>dp[i] =<br>\begin{cases}<br>1 &amp;i==0\<br>1&amp;i==1 \ \&amp;\&amp; \ ( s[1]==’0’\  ||\  (s[0]-‘0’)<em>10+(s[1]-‘0’)&gt;26)\<br>2&amp;i==1 \ \&amp;\&amp; \ ( s[1]!=’0’\  \&amp;\&amp;\  (s[0]-‘0’)</em>10+(s[1]-‘0’)&lt;=26)\<br>dp[i-1] &amp;s[i-1]==’0’ \  || \ (s[i-1]-‘0’)*10+(s[i]-‘0’)&gt;26 \<br>dp[i-2] &amp;s[i]==’0’\<br>dp[i-1] + dp[i-2] &amp;其他情况<br>\end{cases}<br>\end{align}<br>$$</p>
+<h3 id="三、Decoding"><a href="#三、Decoding" class="headerlink" title="三、Decoding"></a>三、Decoding</h3><h4 id="1、optimal-substructure-and-DP-equation-2"><a href="#1、optimal-substructure-and-DP-equation-2" class="headerlink" title="1、optimal substructure and DP equation"></a>1、optimal substructure and DP equation</h4><p><code>dp[i]</code>表示从字符<code>0~i</code>的字符串包含最多的编码种数。不考虑特殊情况，该题的递推式是$dp[i]=dp[i-1]+dp[i-2]$，因为一个数字可以表示一个编码，两个数字也有可能表示一个编码，所以<code>dp[i]</code>应该等于<code>0~i-1</code>的字符串包含的最多编码种数加上<code>0~i-2</code>的字符串包含的最多编码种数。但是考虑到一共只有26种基础编码加上特殊情况0，所以递推式可以表示为：</p>
+<p><img src="/2018/11/05/算法课第二次作业/form2.png" alt=""></p>
 <h4 id="2、-pseudo-code-2"><a href="#2、-pseudo-code-2" class="headerlink" title="2、 pseudo-code"></a>2、 pseudo-code</h4><p><a href="https://leetcode-cn.com/problems/decode-ways/description/" target="_blank" rel="noopener">LeetCode 91题</a></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numDecodings</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>( s.length()==<span class="number">0</span> || s[<span class="number">0</span>]==<span class="string">'0'</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dp(s.length()+<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">        dp[<span class="number">0</span>] = dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> i=<span class="number">1</span>; i&lt;s.length(); i++ )&#123;</span><br><span class="line">            <span class="keyword">if</span>( s[i]!=<span class="string">'0'</span> )</span><br><span class="line">                dp[i+<span class="number">1</span>] += dp[i];</span><br><span class="line">            <span class="keyword">if</span>( s[i<span class="number">-1</span>]!=<span class="string">'0'</span> &amp;&amp; (s[i<span class="number">-1</span>]-<span class="string">'0'</span>)*<span class="number">10</span>+(s[i]-<span class="string">'0'</span>)&lt;=<span class="number">26</span> )</span><br><span class="line">                dp[i+<span class="number">1</span>] += dp[i<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[s.length()];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h4 id="3、correctness-of-algorithm-1"><a href="#3、correctness-of-algorithm-1" class="headerlink" title="3、correctness of algorithm"></a>3、correctness of algorithm</h4><p>首先该问题包含最优子结构的性质，求<code>0~n</code>的字符串包含最多的编码种数包含了求<code>0~n-1</code>的字符串包含最多的编码种数或<code>0~n-2</code>的字符串包含最多的编码种数。其次该问题包含重叠子性质，大量子问题会重复计算，如求dp[5]需要计算dp[4]或dp[3],求dp[4]需要求dp[3]或dp[2]，因此dp[3]被重复计算。综上该问题可以用动态规划方法解且求解方程正确。</p>
@@ -672,7 +687,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -826,7 +841,7 @@
     
       <span class="post-meta-item-text">本站共计&#58;</span>
     
-    <span title="本站共计">19.8k 字</span>
+    <span title="本站共计">19.7k 字</span>
   
 </div>
 
