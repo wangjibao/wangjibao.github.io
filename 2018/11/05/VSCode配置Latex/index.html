@@ -99,7 +99,7 @@
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/05/VSCode配置Latex/plugin.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/05/VSCode配置Latex/jsoncode.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/05/VSCode配置Latex/show.png">
-<meta property="og:updated_time" content="2018-11-05T02:40:57.902Z">
+<meta property="og:updated_time" content="2018-11-05T02:44:26.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VSCode配置Latex">
 <meta name="twitter:description" content="因为CTeX套装自带WinEdt编辑器难用、收费且不能实时编译显示pdf效果，本笔记主要记录如何在VSCode中编辑Tex文件，实现代码自动补全及实时查看文本编辑效果等功能。 1、软件下载CTEX下载地址：http://www.ctex.org/HomePage，建议下载完整版套装。 VSCode下载地址：https://code.visualstudio.com/ 2、软件配置在VSCode中安">
@@ -367,7 +367,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-05T10:40:57+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-05T10:44:26+08:00">
                 2018-11-05
               </time>
             
@@ -479,6 +479,7 @@
 <p>VSCode下载地址：<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">https://code.visualstudio.com/</a></p>
 <h4 id="2、软件配置"><a href="#2、软件配置" class="headerlink" title="2、软件配置"></a>2、软件配置</h4><h5 id="在VSCode中安装对应的插件"><a href="#在VSCode中安装对应的插件" class="headerlink" title="在VSCode中安装对应的插件"></a>在VSCode中安装对应的插件</h5><p><img src="/2018/11/05/VSCode配置Latex/plugin.png" alt=""></p>
 <h5 id="更改配置文件"><a href="#更改配置文件" class="headerlink" title="更改配置文件"></a>更改配置文件</h5><p>在<code>file &gt;&gt; preferences &gt;&gt; setting &gt;&gt; User Setting &gt;&gt; Extensions &gt;&gt; LaTex Workshop configuration &gt;&gt; active</code> 中，打开 <code>Edit in setting.json</code> 文件。在文件中添加如下字段：</p>
+<a id="more"></a>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">"latex-workshop.latex.recipes": [&#123;</span><br><span class="line">	"name": "xelatex",</span><br><span class="line">	"tools": ["xelatex"]</span><br><span class="line">&#125;, &#123;</span><br><span class="line">	"name": "latexmk",</span><br><span class="line">	"tools": ["latexmk"]</span><br><span class="line">&#125;, &#123;</span><br><span class="line">	"name": "pdflatex -&gt; bibtex -&gt; pdflatex*2",</span><br><span class="line">	"tools": ["pdflatex", "bibtex", "pdflatex", "pdflatex"]</span><br><span class="line">&#125;],</span><br></pre></td></tr></table></figure>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">"latex-workshop.latex.tools": [&#123;</span><br><span class="line">	"name": "latexmk",</span><br><span class="line">	"command": "latexmk",</span><br><span class="line">	"args": ["-synctex=1", "-interaction=nonstopmode", "-file-line-error", "-pdf", "%DOC%"]</span><br><span class="line">&#125;, &#123;</span><br><span class="line">	"name": "xelatex",</span><br><span class="line">	"command": "xelatex",</span><br><span class="line">	"args": ["-synctex=1", "-interaction=nonstopmode", "-file-line-error", "%DOC%"]</span><br><span class="line">&#125;, &#123;</span><br><span class="line">	"name": "pdflatex",</span><br><span class="line">	"command": "pdflatex",</span><br><span class="line">	"args": ["-synctex=1", "-interaction=nonstopmode", "-file-line-error", "%DOC%"]</span><br><span class="line">&#125;, &#123;</span><br><span class="line">	"name": "bibtex",</span><br><span class="line">	"command": "bibtex",</span><br><span class="line">	"args": ["%DOCFILE%"]</span><br><span class="line">&#125;],</span><br></pre></td></tr></table></figure>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"latex-workshop.view.pdf.viewer": "tab",</span><br></pre></td></tr></table></figure>
