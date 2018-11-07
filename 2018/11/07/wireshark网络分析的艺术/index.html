@@ -98,7 +98,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/NTLM.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/kerberos.png">
-<meta property="og:updated_time" content="2018-11-07T08:23:40.676Z">
+<meta property="og:updated_time" content="2018-11-07T08:27:22.153Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wireshark网络分析的艺术">
 <meta name="twitter:description" content="1、Linux服务器在收到 SSH 访问请求时，会先查询该客户端 IP 所对应的 PTR 记录（ IP 反向解析，由 IP 地址 获得对应的DNS，常用在垃圾邮件过滤）。假如经过5秒钟还没有收到回复，就再发一次查询。如果第二次查询还是等了5秒还没回复，就彻底放弃查询。 解决方式： cat /etc/ssh/sshd_config | grep -i usedns ，如果显示 usedns yes">
@@ -366,7 +366,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-07T16:23:40+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-07T16:27:22+08:00">
                 2018-11-07
               </time>
             
@@ -1493,6 +1493,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
