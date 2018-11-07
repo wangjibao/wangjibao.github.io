@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="笔记," />
 
 
 
@@ -88,16 +88,21 @@
 
 
 
-<meta name="description" content="机会总是留给有准备的人">
-<meta property="og:type" content="website">
-<meta property="og:title" content="来呀，不服抓个包~~">
-<meta property="og:url" content="https://wangjibao.com.cn/categories/作业/算法课第一次作业/index.html">
+<meta name="description" content="1、Linux服务器在收到 SSH 访问请求时，会先查询该客户端 IP 所对应的 PTR 记录（ IP 反向解析，由 IP 地址 获得对应的DNS，常用在垃圾邮件过滤）。假如经过5秒钟还没有收到回复，就再发一次查询。如果第二次查询还是等了5秒还没回复，就彻底放弃查询。 解决方式： cat /etc/ssh/sshd_config | grep -i usedns ，如果显示 usedns yes">
+<meta name="keywords" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wireshark网络分析的艺术">
+<meta property="og:url" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/index.html">
 <meta property="og:site_name" content="来呀，不服抓个包~~">
-<meta property="og:description" content="机会总是留给有准备的人">
+<meta property="og:description" content="1、Linux服务器在收到 SSH 访问请求时，会先查询该客户端 IP 所对应的 PTR 记录（ IP 反向解析，由 IP 地址 获得对应的DNS，常用在垃圾邮件过滤）。假如经过5秒钟还没有收到回复，就再发一次查询。如果第二次查询还是等了5秒还没回复，就彻底放弃查询。 解决方式： cat /etc/ssh/sshd_config | grep -i usedns ，如果显示 usedns yes">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/NTLM.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/kerberos.png">
+<meta property="og:updated_time" content="2018-11-07T08:23:40.676Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="来呀，不服抓个包~~">
-<meta name="twitter:description" content="机会总是留给有准备的人">
+<meta name="twitter:title" content="wireshark网络分析的艺术">
+<meta name="twitter:description" content="1、Linux服务器在收到 SSH 访问请求时，会先查询该客户端 IP 所对应的 PTR 记录（ IP 反向解析，由 IP 地址 获得对应的DNS，常用在垃圾邮件过滤）。假如经过5秒钟还没有收到回复，就再发一次查询。如果第二次查询还是等了5秒还没回复，就彻底放弃查询。 解决方式： cat /etc/ssh/sshd_config | grep -i usedns ，如果显示 usedns yes">
+<meta name="twitter:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/NTLM.png">
 
 
 
@@ -127,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://wangjibao.com.cn/categories/作业/算法课第一次作业/"/>
+  <link rel="canonical" href="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/"/>
 
 
 
 
 
-  <title>分类: 算法课第一次作业 | 来呀，不服抓个包~~</title>
+  <title>wireshark网络分析的艺术 | 来呀，不服抓个包~~</title>
   
 
 
@@ -152,7 +157,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://github.com/wangjibao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -302,55 +307,307 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>算法课第一次作业<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="大宝哥spring">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="来呀，不服抓个包~~">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/10/04/算法课第一次作业/" itemprop="url">
-              
-                <span itemprop="name">算法课第一次作业</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">wireshark网络分析的艺术</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-04T23:56:17+08:00"
-              content="2018-10-04" >
-          10-04
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T16:21:17+08:00">
+                2018-11-07
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-07T16:23:40+08:00">
+                2018-11-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/07/wireshark网络分析的艺术/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/07/wireshark网络分析的艺术/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/11/07/wireshark网络分析的艺术/" class="leancloud_visitors" data-flag-title="wireshark网络分析的艺术">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1、Linux服务器在收到 SSH 访问请求时，会先查询该客户端 IP 所对应的 PTR 记录（ IP 反向解析，由 IP 地址 获得对应的DNS，常用在垃圾邮件过滤）。假如经过5秒钟还没有收到回复，就再发一次查询。如果第二次查询还是等了5秒还没回复，就彻底放弃查询。</p>
+<p>解决方式： <code>cat /etc/ssh/sshd_config | grep -i usedns</code> ，如果显示 <code>usedns yes</code> ,将其设置成 <code>no</code>即可。</p>
+<p> 其中 <code>grep</code>是文本处理工具，同 <code>sed</code>、<code>awk</code>被称为文本处理三剑客。<code>-i</code> 代表忽略大小写的区别（ignore)。</p>
+<p>2、启用 <code>TCP SACK</code>（ selective acknowledgement) 功能，在大量丢包时，不需要每个重传包都确认一次。可以在 <code>ack</code> 数据包中，告知对方哪些包我已经收到了，比如说，当前 <code>ack = 100</code> ，包中的 <code>sack 字段等于 107--120</code>，那么可以一次性完成 <code>100--106</code> 号包的重传，节约时间。</p>
+<p>3、延迟确认</p>
+<p>当要发送一个 <code>ack</code> 数据包的时候，因为纯粹的ack数据包只是单纯的确认，不含有其他有用信息。启用延迟确认，当收到一个 <code>seq</code>时，不立即发送 <code>ack</code>，而是稍等一会，当本地有数据要发送时，将信息加在 <code>ack</code>数据包里，就一起带过去了，节省带宽。</p>
+<p>4、数据接收方可以积累一些包才对发送方 <code>ack</code> 一次。</p>
+<p>5、愚笨窗口综合症（silly window syndrome)—“小包问题“</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">纳格（Nagle)算法:</span><br><span class="line">if 有新数据要发送</span><br><span class="line">	if 数据量超过 MSS (即一个 TCP 包所能携带的最大数据量，通常为 1500-20tcp头-20ip头)</span><br><span class="line">		立即发送</span><br><span class="line">	else</span><br><span class="line">		if 之前发出去的数据尚未确认</span><br><span class="line">			把新数据缓存起来，凑够 MSS 或等确认到达再发送</span><br><span class="line">		else</span><br><span class="line">			立即发送</span><br><span class="line">		end if</span><br><span class="line">	end if</span><br><span class="line">end if</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>6、延迟确认和 nagle 算法不能一起用，容易造成网络延迟大的要命</p>
+<p>7、虽然说是 TCP 的三次握手，四次挥手，但是有时候，四次挥手，并不一定就是4个数据包，有可能是3个，即中间的 2号包的 <code>ACK</code> 和3号包的 <code>FIN</code> 结合在一起，形成一个数据包。</p>
+<p>8、NTLM（ NT LAN Manager）,一种身份认证协议</p>
+<p><img src="/2018/11/07/wireshark网络分析的艺术/NTLM.png" alt=""></p>
+<ul>
+<li>客户端向服务器发送一个 NTLM 协商请求，然后服务器立即回复一个随机字符串作为 challenge。</li>
+<li>客户端收到 challenge 之后，向服务器回复 用户名，以及两个 response(用hash过的用户密码对 challenge加密得到的)</li>
+<li>服务器不知道如何验证真假，所以将 <code>challenge</code> 和 两个<code>response</code> 都转发给 域控<code>Domain Controller</code> ，让域控去帮忙验证真假。</li>
+<li>域控收到后，也用 <code>hash</code>过的用户密码对 <code>challenge</code>进行加密。如果加密结果和 <code>reponse</code>一样，说明密码正确，身份验证通过。</li>
+</ul>
+<p>由于从数据包里就能看到 <code>challenge</code> 和 <code>response</code> ，算法也是固定的，所以并不安全。</p>
+<p>9、Kerberos（安全认证协议）</p>
+<p>认证过程如下图，<code>kerberos</code> 认证是个双向的过程，即<code>client</code>可以验证<code>server</code>，<code>server</code> 也可以认证 <code>client</code>。</p>
+<p><img src="/2018/11/07/wireshark网络分析的艺术/kerberos.png" alt=""></p>
+<p>$\blacksquare$ <strong>相关名词解释</strong></p>
+<ul>
+<li>KDC ( key distributed center ): 整个安全认证过程的票据生成管理服务，包括 AS 和 TGS 服务。</li>
+<li>AS ( authentication service ): 为 client 生成TGT的服务。</li>
+<li>TGS( ticket granting service ): 为 client 生成某个服务器的 ticket。</li>
+<li>TGT ( ticket-granting ticket ): 用于获取 ticket 的票据。  </li>
+</ul>
+<p>$\blacksquare$ <strong>认证过程</strong></p>
+<p>(1) client 向 KDC 中的 AS  发送数据，表明自己的身份，AS对client的身份进行验证，验证通过后返给 client一个 TGT.</p>
+<p>(2) client 拿着这个 TGT，给TGS发送数据，说我想访问某个 server。然后TGS会将会话密钥$K_{client-server}$用 client master key加密后传送给client；与此同时，TGS也会将会话密钥$K_{client-server}$连同client的基本信息打包用server master key加密也发client，并经client转发给server，至此client与KDC的交互完成。</p>
+<p>(3) client用自己的 master key 解密 TGS 传过来的第一个包，解密后获得会话密钥$K_{client-server}$，并用这个密钥加密自己的的信息和时间戳打包后传送给server。</p>
+<p>(4) server会收到两个数据包，一个用会话密钥加密，一个用自己的master key加密，server先用自己的master<br>key解密获取会话密钥和一份关于client的信息，然后server拿到解密后获取到的会话密钥再解开另外一个数据包，获得另一份关于client的信息和时间戳，对比一下这两份数据，一样即可验证通过。</p>
+<p>详细过程请参照：<a href="https://blog.csdn.net/yangyang19920306/article/details/51673460" target="_blank" rel="noopener">https://blog.csdn.net/yangyang19920306/article/details/51673460</a></p>
+<p>10、<code>TCP Fast Retransmission</code> ，当发送方收到3个及以上 <code>[TCP Dup ACK]</code> 时，就立刻重传它。</p>
+<p><code>[TCP window Full]</code> 和 <code>[TCP zerowindow]</code> ，前者表示这个包的发送方暂时没办法再发送数据了（比如说接收方之前告诉我，接收窗口是100，我把100个数据发送过去了，但是都没有收到回复，可能在去的途中，所以为了保险起见，我不能再接着发送了）。后者表示这个包的发送方没办法再接收数据了（告诉对方，我的接收窗口满了，别再发了）。</p>
+<p>11、LSO（ large segment offload）</p>
+<p>传统的网络工作方式是这样的：应用层把产生的数据交给TCP层，TCP层再根据MSS大小进行分段（有CPU负责）,然后再交给网卡。而启用LSO之后，TCP层就可以把大于MSS的数据块直接传给网卡，让网卡来负责分段的工作。</p>
 
       
     </div>
+    <div>
+      
+          <div> 
+     
+      	<div style="text-align:center;color: #ccc;font-size:14px;">
+            -------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------
+        </div>
+     
+</div>
+      
+    </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的鼓励就是我创作的动力，求打赏买面包~~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="大宝哥spring 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/05/VSCode配置Latex/" rel="next" title="VSCode配置Latex">
+                <i class="fa fa-chevron-left"></i> VSCode配置Latex
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -358,6 +615,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -697,6 +961,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1225,26 +1493,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
