@@ -103,7 +103,7 @@
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/tcppcap.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/sackshow.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/tcppack.png">
-<meta property="og:updated_time" content="2018-11-08T03:20:58.136Z">
+<meta property="og:updated_time" content="2018-11-08T03:24:39.849Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wireshark网络分析的艺术">
 <meta name="twitter:description" content="1、Linux服务器在收到 SSH 访问请求时，会先查询该客户端 IP 所对应的 PTR 记录（ IP 反向解析，由 IP 地址 获得对应的DNS，常用在垃圾邮件过滤）。假如经过5秒钟还没有收到回复，就再发一次查询。如果第二次查询还是等了5秒还没回复，就彻底放弃查询。 解决方式： cat /etc/ssh/sshd_config | grep -i usedns ，如果显示 usedns yes">
@@ -371,7 +371,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-08T11:20:58+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-08T11:24:39+08:00">
                 2018-11-08
               </time>
             
@@ -528,7 +528,7 @@
 <p>13、有一种 拥塞窗口的计算方式： $ cwnd = cwnd + MSS*\frac{n \times MSS}{cwnd} $ .  n 代表当前接收到的 ack 的个数，当每个数据片返回一个 ack的时候，这个算法是没问题的，即 $\frac{n \times MSS}{cwnd} = 1$ , 每次拥塞窗口增大一个，如上图中的“拥塞避免”状态。但是，我们之前说过，并不是每个数据片都会返回一个 ack 的，有可能攒了好几个才 ack 一次，所以，这种计算方法存在问题，解决方法是关掉网卡中的 <code>Large Receive Offload</code>。</p>
 <p>14、前面逼逼了辣么多，真实环境抓几个包说道说道。</p>
 <p><img src="/2018/11/07/wireshark网络分析的艺术/tcppcap.png" alt=""></p>
-<p>就拿上面截图的数据包说事吧，数据包<a href="">下载链接</a></p>
+<p>就拿上面截图的数据包说事吧，数据包<a href="/download/tcppcap.pcap">下载链接</a></p>
 <center>185.199.109.153 为服务器端，192.168.199.160 为 客户端。</center>
 
 <p>(1) 通信过程详解</p>
