@@ -98,7 +98,12 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/NTLM.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/kerberos.png">
-<meta property="og:updated_time" content="2018-11-07T08:27:22.153Z">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/lso.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/cwnd.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/tcppcap.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/sackshow.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/tcppack.png">
+<meta property="og:updated_time" content="2018-11-08T03:20:58.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wireshark网络分析的艺术">
 <meta name="twitter:description" content="1、Linux服务器在收到 SSH 访问请求时，会先查询该客户端 IP 所对应的 PTR 记录（ IP 反向解析，由 IP 地址 获得对应的DNS，常用在垃圾邮件过滤）。假如经过5秒钟还没有收到回复，就再发一次查询。如果第二次查询还是等了5秒还没回复，就彻底放弃查询。 解决方式： cat /etc/ssh/sshd_config | grep -i usedns ，如果显示 usedns yes">
@@ -366,8 +371,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-07T16:27:22+08:00">
-                2018-11-07
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-08T11:20:58+08:00">
+                2018-11-08
               </time>
             
           </span>
@@ -437,7 +442,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.4k 字
+                  2.8k 字
                 </span>
               
 
@@ -453,7 +458,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5 分钟
+                  10 分钟
                 </span>
               
             </div>
@@ -513,7 +518,42 @@
 <p>10、<code>TCP Fast Retransmission</code> ，当发送方收到3个及以上 <code>[TCP Dup ACK]</code> 时，就立刻重传它。</p>
 <p><code>[TCP window Full]</code> 和 <code>[TCP zerowindow]</code> ，前者表示这个包的发送方暂时没办法再发送数据了（比如说接收方之前告诉我，接收窗口是100，我把100个数据发送过去了，但是都没有收到回复，可能在去的途中，所以为了保险起见，我不能再接着发送了）。后者表示这个包的发送方没办法再接收数据了（告诉对方，我的接收窗口满了，别再发了）。</p>
 <p>11、LSO（ large segment offload）</p>
-<p>传统的网络工作方式是这样的：应用层把产生的数据交给TCP层，TCP层再根据MSS大小进行分段（有CPU负责）,然后再交给网卡。而启用LSO之后，TCP层就可以把大于MSS的数据块直接传给网卡，让网卡来负责分段的工作。</p>
+<p>传统的网络工作方式是这样的：应用层把产生的数据交给TCP层，TCP层再根据MSS大小进行分段（有CPU负责）,然后再交给网卡。而启用LSO之后，TCP层就可以把大于MSS的数据块直接传给网卡，让网卡来负责分段的工作。其实在数据量较大时，数据分段计算校验和等简单操作也挺浪费CPU资源的。在计算机的网卡，高级设置里可以启用这一功能，如下图：</p>
+<p><img src="/2018/11/07/wireshark网络分析的艺术/lso.png" alt=""></p>
+<p>详细说明：<a href="https://www.cnblogs.com/tcicy/p/8442225.html" target="_blank" rel="noopener">https://www.cnblogs.com/tcicy/p/8442225.html</a></p>
+<p>12、TCP中的拥塞控制机制</p>
+<p><img src="/2018/11/07/wireshark网络分析的艺术/cwnd.png" alt=""></p>
+<p>了解其中的 慢开始、拥塞避免、快重传、快恢复机制。</p>
+<p>详细说明：<a href="https://blog.csdn.net/jtracydy/article/details/52366461" target="_blank" rel="noopener">https://blog.csdn.net/jtracydy/article/details/52366461</a></p>
+<p>13、有一种 拥塞窗口的计算方式： $ cwnd = cwnd + MSS*\frac{n \times MSS}{cwnd} $ .  n 代表当前接收到的 ack 的个数，当每个数据片返回一个 ack的时候，这个算法是没问题的，即 $\frac{n \times MSS}{cwnd} = 1$ , 每次拥塞窗口增大一个，如上图中的“拥塞避免”状态。但是，我们之前说过，并不是每个数据片都会返回一个 ack 的，有可能攒了好几个才 ack 一次，所以，这种计算方法存在问题，解决方法是关掉网卡中的 <code>Large Receive Offload</code>。</p>
+<p>14、前面逼逼了辣么多，真实环境抓几个包说道说道。</p>
+<p><img src="/2018/11/07/wireshark网络分析的艺术/tcppcap.png" alt=""></p>
+<p>就拿上面截图的数据包说事吧，数据包<a href="">下载链接</a></p>
+<center>185.199.109.153 为服务器端，192.168.199.160 为 客户端。</center>
+
+<p>(1) 通信过程详解</p>
+<p>首先，<strong>1203号</strong>包服务器端发送了seq = 939400，len = 1460。</p>
+<p>紧接着客户端回复 <strong>1204号包</strong>，说我已经收到了 ack = 939400+1460 = 940860号包。</p>
+<p>正常情况下，服务器接着应该发送 seq = 940860的包给客户端，但是，在 <strong>1205号</strong>包中，客户端却收到了 seq = 942320 , len = 1460 的数据包，wireshark显示 [ TCP Previous segment not captured ]，说明前一个包（seq = 940860的数据包）可能丢了。</p>
+<p>既然数据包丢了，客户端就得发送 ack 接着请求，所以，在<strong>1206号</strong>包中，客户端第二次要求服务器端发送 seq = 940860 的数据，wireshark显示 [ TCP Dup ACK 1204#1 ]，代表这是1204号包的再一次请求。</p>
+<p>接着，<strong>1207号</strong>包，客户端收到了 seq = 943780，len = 1460 的数据包（ 942320 + 1460 = 943780） 。</p>
+<p><strong>1208号</strong>包，还没收到 seq = 940860  的数据包，客户端那个气啊，妹的，我再一次重复要求服务器重发 ack = 940860，出现了[ TCP Dup ACK 1204#2 ].</p>
+<p>在<strong>1209号</strong>包中，客户端收到了 seq = 946700 ， len = 1460 的数据包，现在问题比较大了，两个应该收到的数据包却没有收到，分别是 seq = 940860, seq = 945240 (1207中：943780+1460 = 945240）。同样的，wireshark显示 [ TCP Previous segment not captured  ]。</p>
+<p>接着，问题得到了改善，在<strong>1210号</strong>包中，客户端收到了本应该早收到的 seq = 945240, len = 1460 的数据包。wireshark显示 [ TCP Out-Of-Order ]，这也说明了，在真实的网络环境中，数据包并不一定是按序到达的。</p>
+<p>客户端收到了 seq = 945240 ，seq = 946700(945240+1460) 的数据包，应该发送确认，直到此时，那个 seq = 940860 的包还是没给我发来，丫丫的，在<strong>1211号</strong>包 和 <strong>1212号</strong>包中客户端再一次发送 ack = 940860，要求服务器发送 seq = 940860号包给我，wireshark显示[ TCP Dup ACK 1204#3 ]，[TCP Dup ACK 1204#4 ]。</p>
+<p>在下面的<strong>1213</strong> ( seq = 946700+1460 = 948160 )、<strong>1214</strong>、<strong>1215</strong> (seq = 948160+1460 = 949620 )、<strong>1216</strong>、<strong>1217</strong> ( seq = 949620+1460 = 951080 )、<strong>1218</strong>号，6个数据包还是重演之前的画面，客户端收到的是后面的数据包，每收到一个包，就重复确认一次 ack = 940860, 于是出现了图中的 [ TCP Dup ACK 1204#5 ] 、 [ TCP Dup ACK 1204#6 ]、 [ TCP Dup ACK 1204#7 ] 。</p>
+<p>最终，好现象终于出现，<strong>1219号</strong>包，服务器终于发来了盼望已久的 seq = 940860， len = 1460 。一起顺利，所有问题已经解决。由于是乱序到达的，wireshark显示 [ TCP Out-Of-Order ]。</p>
+<p>在 <strong>1220号</strong>包中，客户端发送对 seq = 940860 的确认，因为之前已经接收到了 seq = 951080+1460 = 952540，所以此时就显示的 ack = 952540 。</p>
+<p>接下来，一切正常。</p>
+<p>(2) SACK字段展示</p>
+<p><img src="/2018/11/07/wireshark网络分析的艺术/sackshow.png" alt=""></p>
+<p>拿 1211 号数据包详细说一下之前提到的 <code>SACK</code> 字段。1211数据包是 ack 1209号数据包的吧。有个事实是：我本应该收到 seq = 940860 的，但是，从1205和1207号包中，我收到的是 seq = 942320, seq = 943780 ，所以此时，1211的TCP头部可选字段的 <code>sack : 942320---945240</code> (943780+1460 = 955240)。从1209号数据包中我收到的是 seq = 946700，所以 1211数据包的TCP头部字段记录第二个 <code>sack : 946700---948160</code> (946700+1460 = 948160) 。</p>
+<p>在TCP的头部可选字段记录这个两个字段值，花掉了 20 字节，所以TCP的头部长度变成了 20 + 20 = 40 Bytes.</p>
+<p>同样的，当客户端收到了 1210 号数据包的时候，是不是就把这两个字段中间空缺的那 1460 ( 946700-945240 = 1460 ) 字节给补上了。所以，在 <strong>1212号</strong> ack 数据包中，<code>sack : 942320---948160</code> ,如上图所示。</p>
+<p>那么当之前没收到的 seq = 940860 也收到的时候，这个 sack字段就没啥意义了，直接没有了，如 1220号ack包展示的那样。到此，一切那么的完美。</p>
+<p>sack字段在变化，同样的，ack 数据包的头部长度也在变化，如上图中： 74 &gt;&gt; 66 &gt;&gt; 54。每次 ack 都会 <del>浪费</del> 一定的带宽，所以，出现了下面的收到多个 seq ，客户端才 ack 一次。</p>
+<p>(3) 之前说过，真实的环境中，并不会每个数据包都 ack 一次，如下图，在这里是每收到 2 个数据包才发送一个 ack。</p>
+<p><img src="/2018/11/07/wireshark网络分析的艺术/tcppack.png" alt=""></p>
 
       
     </div>
@@ -811,7 +851,7 @@
     
       <span class="post-meta-item-text">本站共计&#58;</span>
     
-    <span title="本站共计">21.4k 字</span>
+    <span title="本站共计">22.8k 字</span>
   
 </div>
 
