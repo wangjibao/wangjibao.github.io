@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wangjibao.com.cn/"/>
-  <updated>2018-11-12T03:38:29.334Z</updated>
+  <updated>2018-11-12T17:04:19.417Z</updated>
   <id>https://wangjibao.com.cn/</id>
   
   <author>
@@ -15,6 +15,94 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HTTP抓包实战</title>
+    <link href="https://wangjibao.com.cn/2018/11/13/HTTP%E6%8A%93%E5%8C%85%E5%AE%9E%E6%88%98/"/>
+    <id>https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/</id>
+    <published>2018-11-13T15:39:06.000Z</published>
+    <updated>2018-11-12T17:04:19.417Z</updated>
+    
+    <content type="html"><![CDATA[<p>开始读《HTTP抓包实战》，在这个作业满天飞的日子里，计划2周读完，本篇博文对其中的部分知识点做一下简单的记录。</p><p>1、HTTP抓包分析使用的工具不再是wireshark（研究TCP/IP协议使用），而是使用 <a href="https://www.telerik.com/fiddler" target="_blank" rel="noopener">fiddler</a>，版本4。其实 fiddler 做HTTP数据包分析的原理就是相当于一个<strong>web代理</strong>，如下图：</p><p><img src="/2018/11/13/HTTP抓包实战/web_proxy.png" alt=""></p><p>fiddler在中间，可以记录所用的HTTP流量。fiddler启动时，会偷偷把 Internet 选项中的代理修改为 ：127.0.0.1,端口： 8888; fiddler在关闭时，会自动在Internet选项中取消代理，这样就不会对其他程序产生影响。如下图：</p><p><img src="/2018/11/13/HTTP抓包实战/127001.png" alt=""></p><a id="more"></a><p>fiddler界面如下图，使用方法请自行百度或google.</p><p><img src="/2018/11/13/HTTP抓包实战/fiddler.png" alt=""></p><p>2、</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;开始读《HTTP抓包实战》，在这个作业满天飞的日子里，计划2周读完，本篇博文对其中的部分知识点做一下简单的记录。&lt;/p&gt;
+&lt;p&gt;1、HTTP抓包分析使用的工具不再是wireshark（研究TCP/IP协议使用），而是使用 &lt;a href=&quot;https://www.telerik.com/fiddler&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;fiddler&lt;/a&gt;，版本4。其实 fiddler 做HTTP数据包分析的原理就是相当于一个&lt;strong&gt;web代理&lt;/strong&gt;，如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2018/11/13/HTTP抓包实战/web_proxy.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;fiddler在中间，可以记录所用的HTTP流量。fiddler启动时，会偷偷把 Internet 选项中的代理修改为 ：127.0.0.1,端口： 8888; fiddler在关闭时，会自动在Internet选项中取消代理，这样就不会对其他程序产生影响。如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2018/11/13/HTTP抓包实战/127001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://wangjibao.com.cn/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="笔记" scheme="https://wangjibao.com.cn/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小知识科普</title>
+    <link href="https://wangjibao.com.cn/2018/11/12/%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%A7%91%E6%99%AE/"/>
+    <id>https://wangjibao.com.cn/2018/11/12/小知识科普/</id>
+    <published>2018-11-12T15:52:28.000Z</published>
+    <updated>2018-11-12T16:26:51.535Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇博文记录一下平时生活中遇到的小知识，不定期更新。</p><h4 id="1、判断USB接口类型"><a href="#1、判断USB接口类型" class="headerlink" title="1、判断USB接口类型"></a>1、判断USB接口类型</h4><p>晚上同学过来借扩展坞，看了眼USB接口的颜色，问，这是2.0的口吗？很明显，本渣渣耗费 199大洋 采购的东东，怎么能不是 3.0 的口呢。其实凭借USB接口的颜色能够一定程度上判断接口类型，但并不一定准确。</p><p>准确的做法是：看<strong>接口的针脚数</strong> ，<code>USB2.0</code> 的针脚数目是 <strong>4</strong> 个，<code>USB3.0</code> 的针脚数目是 <strong>9</strong> 个。如下图：</p><p><img src="/2018/11/12/小知识科普/usb2.png" alt=""></p><p>上图是本渣18年从青大毕业时，学院发的纪念U盘，4个引脚，USB2.0的接口。为啥发U盘呢，18年在青岛开上合峰会的时候正值毕业季，各种大型活动统统不让搞，往年的毕业歌会也被无情的取消，那么办晚会的钱就拿来每人发个U盘吧，反正大家都是搞计算机的，以后也用得到，话说要发好歹也发个3.0口的u盘呗，吐槽一下。不过，当时每个U盘里都拷了毕业纪念视频，还是挺走心的，这个得表扬一波。</p><a id="more"></a><p>多说一句，<strong>信息安全班</strong>里当时毕业没有毕业聚餐你敢相信！？？其实知道现在想起来，还是耿耿于怀，原因大家也都心知肚明，怎么说，无愧于心就好！</p><p><img src="/2018/11/12/小知识科普/usb3.png" alt=""></p><p>上图是<strong>3.0</strong> 的口，<strong>9</strong>个引脚能看清不，外面 <strong>5</strong> 个，里面 <strong>4</strong> 个。想一下，为啥2.0的东西插到3.0的口也能正常使用，是不就是使用的里面那<strong>4</strong>个引脚，外面那<strong>5</strong>个是闲着的，当插入3.0的东西时，这9个引脚会全部起作用。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇博文记录一下平时生活中遇到的小知识，不定期更新。&lt;/p&gt;
+&lt;h4 id=&quot;1、判断USB接口类型&quot;&gt;&lt;a href=&quot;#1、判断USB接口类型&quot; class=&quot;headerlink&quot; title=&quot;1、判断USB接口类型&quot;&gt;&lt;/a&gt;1、判断USB接口类型&lt;/h4&gt;&lt;p&gt;晚上同学过来借扩展坞，看了眼USB接口的颜色，问，这是2.0的口吗？很明显，本渣渣耗费 199大洋 采购的东东，怎么能不是 3.0 的口呢。其实凭借USB接口的颜色能够一定程度上判断接口类型，但并不一定准确。&lt;/p&gt;
+&lt;p&gt;准确的做法是：看&lt;strong&gt;接口的针脚数&lt;/strong&gt; ，&lt;code&gt;USB2.0&lt;/code&gt; 的针脚数目是 &lt;strong&gt;4&lt;/strong&gt; 个，&lt;code&gt;USB3.0&lt;/code&gt; 的针脚数目是 &lt;strong&gt;9&lt;/strong&gt; 个。如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2018/11/12/小知识科普/usb2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;上图是本渣18年从青大毕业时，学院发的纪念U盘，4个引脚，USB2.0的接口。为啥发U盘呢，18年在青岛开上合峰会的时候正值毕业季，各种大型活动统统不让搞，往年的毕业歌会也被无情的取消，那么办晚会的钱就拿来每人发个U盘吧，反正大家都是搞计算机的，以后也用得到，话说要发好歹也发个3.0口的u盘呗，吐槽一下。不过，当时每个U盘里都拷了毕业纪念视频，还是挺走心的，这个得表扬一波。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://wangjibao.com.cn/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="笔记" scheme="https://wangjibao.com.cn/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>树莓派搭建智能路由器</title>
+    <link href="https://wangjibao.com.cn/2018/11/12/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BA%E6%99%BA%E8%83%BD%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
+    <id>https://wangjibao.com.cn/2018/11/12/树莓派搭建智能路由器/</id>
+    <published>2018-11-12T15:40:44.000Z</published>
+    <updated>2018-11-12T16:39:02.870Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用树莓派搭建一个小智能路由器，文档为当年做本科毕业设计时写的，单纯的一个环境搭建记录，放出来，喜欢玩的小伙伴说不定可以参考一下。</p><a id="more"></a><div class="row">    <embed src="树莓派搭建智能路由器.pdf" width="100%" height="550" type="application/pdf"></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用树莓派搭建一个小智能路由器，文档为当年做本科毕业设计时写的，单纯的一个环境搭建记录，放出来，喜欢玩的小伙伴说不定可以参考一下。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="资料" scheme="https://wangjibao.com.cn/categories/%E8%B5%84%E6%96%99/"/>
+    
+    
+      <category term="资料" scheme="https://wangjibao.com.cn/tags/%E8%B5%84%E6%96%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法课第三次作业</title>
+    <link href="https://wangjibao.com.cn/2018/11/12/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%BD%9C%E4%B8%9A/"/>
+    <id>https://wangjibao.com.cn/2018/11/12/算法课第三次作业/</id>
+    <published>2018-11-12T15:39:55.000Z</published>
+    <updated>2018-11-12T15:39:55.153Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>wireshark网络分析的艺术</title>
