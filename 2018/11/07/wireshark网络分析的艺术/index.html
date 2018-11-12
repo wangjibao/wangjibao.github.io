@@ -107,7 +107,8 @@
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/ICMP.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/WS.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/windowscale.png">
-<meta property="og:updated_time" content="2018-11-11T16:17:53.108Z">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/07/wireshark网络分析的艺术/dns.png">
+<meta property="og:updated_time" content="2018-11-12T03:33:54.157Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wireshark网络分析的艺术">
 <meta name="twitter:description" content="1、Linux服务器在收到 SSH 访问请求时，会先查询该客户端 IP 所对应的 PTR 记录（ IP 反向解析，由 IP 地址 获得对应的DNS，常用在垃圾邮件过滤）。假如经过5秒钟还没有收到回复，就再发一次查询。如果第二次查询还是等了5秒还没回复，就彻底放弃查询。 解决方式： cat /etc/ssh/sshd_config | grep -i usedns ，如果显示 usedns yes">
@@ -375,7 +376,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-12T00:17:53+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-12T11:33:54+08:00">
                 2018-11-12
               </time>
             
@@ -446,7 +447,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.5k 字
+                  3.9k 字
                 </span>
               
 
@@ -462,7 +463,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  13 分钟
+                  14 分钟
                 </span>
               
             </div>
@@ -576,7 +577,17 @@
 <p>从上图中可以看出，客户端告诉服务器，自己的 Win = 65535,放大倍数为 2 倍；接着服务器告诉客户端，自己的 Win = 13600, 放大倍数为 WS = 128 倍。</p>
 <p>数据包详情如下图：</p>
 <p><img src="/2018/11/07/wireshark网络分析的艺术/windowscale.png" alt=""></p>
-<p>19、</p>
+<p>19、思考：一个服务器是如何使用 80 端口同时为多个客户端提供服务的？根据连接建立时创建的<strong>五元组</strong>区分。详细点可以看 <strong>多路 I/O复用 epoll</strong>。</p>
+<p>20、在网络层，也就是IP层头部，有那么几个字段：<code>identification</code>、<code>flags</code>、<code>offset</code> 。因为IP层是无连接的，每产生一个数据报，<code>identification</code>就加 1 ，如果中途的路由器将其分片后，接收端可以根据 <code>flags</code> 中的 <code>MF</code>、<code>DF</code>字段以及<code>片偏移</code>字段，将同一个 <code>identification</code> 的数据报重新组装起来。</p>
+<p>21、一种流量劫持的手段如下图所示：</p>
+<p><img src="/2018/11/07/wireshark网络分析的艺术/dns.png" alt=""></p>
+<p>实线代表真实的流量，虚线代表劫持的流量。实现的原理就是，我假的服务比你真的服务先响应客户端，这样，等到真的数据来的时候，就会被用户无情的丢弃掉了。</p>
+<p>可以通过查看数据包中的 <code>TTL</code> 值，分析流量是否存在被劫持的可能性。</p>
+<p>22、HTTP &gt;&gt; HTTP1.1 &gt;&gt; SPDY &gt;&gt; HTTP2.0     QUIC(基于UDP)</p>
+<p>23、<code>[ TCP zerowindow ]</code> 表示这个包的发送方已经没有办法再<strong>接收</strong>数据了，对应包中显示 <code>win = 0</code> 。</p>
+<p><code>[ TCP window Full ]</code> 表示这个包的发送方暂时没有办法再<strong>发送</strong>数据了，已经把对方声称的接收窗口已经发满了确没收到ack，只能先暂停。<del>计算在途字节数</del></p>
+<p>24、书上午看完了，屁股后面跟着一堆作业，就这样吧。找个时间，读一下 <code>tshark</code> 的官方文档，感觉功能很强，用得好的话可以省很多事。</p>
+<p><a href="https://www.wireshark.org/docs/man-pages/tshark.html" target="_blank" rel="noopener">https://www.wireshark.org/docs/man-pages/tshark.html</a></p>
 
       
     </div>
@@ -874,7 +885,7 @@
     
       <span class="post-meta-item-text">本站共计&#58;</span>
     
-    <span title="本站共计">23.5k 字</span>
+    <span title="本站共计">23.9k 字</span>
   
 </div>
 
