@@ -102,10 +102,10 @@
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/ca.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/tunnelto.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/certmgr.png">
-<meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/301.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/HTTP抓包实战/http.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/post.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/user-agent.png">
-<meta property="og:updated_time" content="2018-11-15T03:06:37.347Z">
+<meta property="og:updated_time" content="2018-11-15T03:15:59.692Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP抓包实战">
 <meta name="twitter:description" content="开始读《HTTP抓包实战》，在这个作业满天飞的日子里，计划2周读完，本篇博文对其中的部分知识点做一下简单的记录。 1、HTTP抓包分析使用的工具不再是wireshark（研究TCP/IP协议使用），而是使用 fiddler，版本4。其实 fiddler 做HTTP数据包分析的原理就是相当于一个web代理，如下图：  fiddler在中间，可以记录所用的HTTP流量。fiddler启动时，会偷偷把">
@@ -373,7 +373,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-15T11:06:37+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-15T11:15:59+08:00">
                 2018-11-15
               </time>
             
@@ -500,7 +500,7 @@
 <p>6、HTTP的状态码，200类是成功，300类代表重定向，400类代表客户端错误，500类错误代表服务器错误。</p>
 <p>其中的<code>206(Partial Content)</code>代表的是部分内容，迅雷、HTTP下载工具就是使用<code>206</code>状态码来实现的断点续传。</p>
 <p>当遇到<code>301 或 302</code>的响应时，浏览器会自动根据<code>response</code>中的重定向<code>url</code>重新访问资源地址。如下图（京东之前叫<code>360buy</code>)：</p>
-<p><img src="/2018/11/13/HTTP抓包实战/301.png" alt=""></p>
+<p><img src="HTTP抓包实战/http.png" alt=""></p>
 <p>先访问<code>www.360buy.com</code>返回<code>301</code>说这个网址已经<code>move permanently</code>了，给了个<code>http://www.jd.com</code>，然后，浏览器就是访问这个网址，但是服务器说<code>302</code>，代表说，这次对了，但是为了安全，去访问另一个网址吧<code>https://www.jd.com</code>吧，接着就会发现，129号中显示了<code>tunnel to</code>，代表开始握手协商了。</p>
 <p>其实，这里<code>301或302</code>还是有区别的，<code>301</code>代表旧<code>url</code>已经永久移除了，搜索引擎会把权重计算到新的<code>url</code>上。但<code>302</code>代表旧<code>url</code>还在，只是临时重定向到新<code>url</code>上，搜索引擎会把权重计算到旧<code>url</code>上。</p>
 <p>7、常用的HTTP请求方法就是 <code>get</code>和<code>post</code>。</p>
