@@ -105,7 +105,11 @@
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/location.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/post.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/user-agent.png">
-<meta property="og:updated_time" content="2018-11-15T03:18:20.481Z">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/breakpoint.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/modifyresponse.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/lastmodify.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/nocache.png">
+<meta property="og:updated_time" content="2018-11-15T13:18:28.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP抓包实战">
 <meta name="twitter:description" content="开始读《HTTP抓包实战》，在这个作业满天飞的日子里，计划2周读完，本篇博文对其中的部分知识点做一下简单的记录。 1、HTTP抓包分析使用的工具不再是wireshark（研究TCP/IP协议使用），而是使用 fiddler，版本4。其实 fiddler 做HTTP数据包分析的原理就是相当于一个web代理，如下图：  fiddler在中间，可以记录所用的HTTP流量。fiddler启动时，会偷偷把">
@@ -373,7 +377,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-15T11:18:20+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-15T21:18:28+08:00">
                 2018-11-15
               </time>
             
@@ -444,7 +448,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  952 字
+                  1.5k 字
                 </span>
               
 
@@ -460,7 +464,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -508,7 +512,19 @@
 <p>我们登录国科大的选课网站，在 <code>fildder</code>中，可以清楚的看到，用户名和密码被包含在<code>post</code>请求的<code>body</code>中，发送给了服务器。同样，如果是<code>get</code>请求，包含在<code>url</code>中<code>?</code>后面的字段可以在<code>QueryString</code>中看到对应的<code>Name--Value</code>字段。</p>
 <p>8、可以在<code>fiddler &gt;&gt; tools &gt;&gt; user-agent</code>中修改<code>User-Agent</code>字段的值，如下图，再浏览某些网页时，就变成了对应的显示模式。</p>
 <p><img src="/2018/11/13/HTTP抓包实战/user-agent.png" alt=""></p>
-<p>9、</p>
+<p>9、Ajax (<strong>A</strong>synchronous  <strong>J</strong>avascript  <strong>A</strong>nd  <strong>X</strong>ML”: 异步 JavaScript 和 XML）,是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。</p>
+<p>10、在 <code>Rules &gt;&gt; Automatic Breakpoint &gt;&gt; after/before Response</code>中可以设置拦截<code>HTTP</code>请求。比如，我可以设置拦击HTTP的响应，然后在<code>raw</code>中修改页面的<code>title</code>字段，点击<code>Run to Completion</code>发成修改后的发送。</p>
+<p><img src="/2018/11/13/HTTP抓包实战/breakpoint.png" alt=""></p>
+<p>1号包中的红色代表拦截到了，这时别忘了，<strong>之前设置的全局断点给取消掉</strong>，不然会影响其他请求的发送和接收。效果如下图：</p>
+<p><img src="/2018/11/13/HTTP抓包实战/modifyresponse.png" alt=""></p>
+<p>注意：修改操作必须在<code>raw</code>选项框里。当然，也可以设置局部断点，<code>bpu www.baidu.com</code>设置只拦截百度的请求，取消拦截在页面左下角的命令框中输入<code>bpu</code>即可；<code>bpafter www.baidu.com</code>拦截响应，<code>bpafter</code>取消拦截响应。</p>
+<p>11、浏览器中的缓存</p>
+<p>如下图，浏览器想请求某个资源的时候，先检查本地缓存，如果本地缓存存在这个文件的时候，直接获取该文件的最后修改时间等信息，构造数据包发送请求（内含有<code>If-Modified-Since</code>字段和<code>If-None-Match</code>字段）给服务器，服务器根据这两个值，结合自身的<code>Last-Modified</code>字段和<code>Etag</code>字段来判断需不需要发送数据给浏览器，如果不需要（1、Request中的If-Modified-Since的时间大于或等于Resonse中的Last-Modified的时间；2、ETag值和If-None-Match相匹配，说明hash值不变文档没改变），则服务器发送 <code>304 Response</code>给浏览器，告诉它，直接使用缓存就行了，节省时间加快网页加载速度。</p>
+<p><img src="/2018/11/13/HTTP抓包实战/lastmodify.png" alt=""></p>
+<p>当然，我们也可以 <code>ctrl + F5</code>强制刷新浏览器，告诉服务器，我不使用缓存，请发送最新的数据资源给我。</p>
+<p><img src="/2018/11/13/HTTP抓包实战/nocache.png" alt=""></p>
+<p>其中的<code>pragma</code>是HTTP1.0中使用的，<code>Cache-Control</code>是现在HTTP1.1用的，同时存在这两个字段，完全是为了兼容。</p>
+<p>12、</p>
 
       
     </div>
@@ -806,7 +822,7 @@
     
       <span class="post-meta-item-text">本站共计&#58;</span>
     
-    <span title="本站共计">25.8k 字</span>
+    <span title="本站共计">26.3k 字</span>
   
 </div>
 
