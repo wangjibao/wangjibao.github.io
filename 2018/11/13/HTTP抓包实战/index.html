@@ -88,13 +88,13 @@
 
 
 
-<meta name="description" content="开始读《HTTP抓包实战》，在这个作业满天飞的日子里，计划2周读完，本篇博文对其中的部分知识点做一下简单的记录。 1、HTTP抓包分析使用的工具不再是wireshark（研究TCP/IP协议使用），而是使用 fiddler，版本4。其实 fiddler 做HTTP数据包分析的原理就是相当于一个web代理，如下图：  fiddler在中间，可以记录所用的HTTP流量。fiddler启动时，会偷偷把">
+<meta name="description" content="开始读《HTTP抓包实战》，在这个作业满天飞的日子里，计划1周读完，本篇博文对其中的部分知识点做一下简单的记录。 1、HTTP抓包分析使用的工具不再是wireshark（研究TCP/IP协议使用），而是使用 fiddler，版本4。其实 fiddler 做HTTP数据包分析的原理就是相当于一个web代理，如下图：  fiddler在中间，可以记录所用的HTTP流量。fiddler启动时，会偷偷把">
 <meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP抓包实战">
 <meta property="og:url" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/index.html">
 <meta property="og:site_name" content="来呀，不服抓个包~~">
-<meta property="og:description" content="开始读《HTTP抓包实战》，在这个作业满天飞的日子里，计划2周读完，本篇博文对其中的部分知识点做一下简单的记录。 1、HTTP抓包分析使用的工具不再是wireshark（研究TCP/IP协议使用），而是使用 fiddler，版本4。其实 fiddler 做HTTP数据包分析的原理就是相当于一个web代理，如下图：  fiddler在中间，可以记录所用的HTTP流量。fiddler启动时，会偷偷把">
+<meta property="og:description" content="开始读《HTTP抓包实战》，在这个作业满天飞的日子里，计划1周读完，本篇博文对其中的部分知识点做一下简单的记录。 1、HTTP抓包分析使用的工具不再是wireshark（研究TCP/IP协议使用），而是使用 fiddler，版本4。其实 fiddler 做HTTP数据包分析的原理就是相当于一个web代理，如下图：  fiddler在中间，可以记录所用的HTTP流量。fiddler启动时，会偷偷把">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/web_proxy.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/127001.png">
@@ -109,10 +109,17 @@
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/modifyresponse.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/lastmodify.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/nocache.png">
-<meta property="og:updated_time" content="2018-11-15T13:18:28.797Z">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/js.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/scripteditor.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/cookie.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/doubanaccount.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/accounts.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/relocation.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/composer.png">
+<meta property="og:updated_time" content="2018-11-16T16:33:47.860Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP抓包实战">
-<meta name="twitter:description" content="开始读《HTTP抓包实战》，在这个作业满天飞的日子里，计划2周读完，本篇博文对其中的部分知识点做一下简单的记录。 1、HTTP抓包分析使用的工具不再是wireshark（研究TCP/IP协议使用），而是使用 fiddler，版本4。其实 fiddler 做HTTP数据包分析的原理就是相当于一个web代理，如下图：  fiddler在中间，可以记录所用的HTTP流量。fiddler启动时，会偷偷把">
+<meta name="twitter:description" content="开始读《HTTP抓包实战》，在这个作业满天飞的日子里，计划1周读完，本篇博文对其中的部分知识点做一下简单的记录。 1、HTTP抓包分析使用的工具不再是wireshark（研究TCP/IP协议使用），而是使用 fiddler，版本4。其实 fiddler 做HTTP数据包分析的原理就是相当于一个web代理，如下图：  fiddler在中间，可以记录所用的HTTP流量。fiddler启动时，会偷偷把">
 <meta name="twitter:image" content="https://wangjibao.com.cn/2018/11/13/HTTP抓包实战/web_proxy.png">
 
 
@@ -377,8 +384,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-15T21:18:28+08:00">
-                2018-11-15
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-17T00:33:47+08:00">
+                2018-11-17
               </time>
             
           </span>
@@ -448,7 +455,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.5k 字
+                  2.8k 字
                 </span>
               
 
@@ -464,7 +471,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5 分钟
+                  10 分钟
                 </span>
               
             </div>
@@ -484,7 +491,7 @@
       
 
       
-        <p>开始读《HTTP抓包实战》，在这个作业满天飞的日子里，计划2周读完，本篇博文对其中的部分知识点做一下简单的记录。</p>
+        <p>开始读《HTTP抓包实战》，在这个作业满天飞的日子里，计划1周读完，本篇博文对其中的部分知识点做一下简单的记录。</p>
 <p>1、HTTP抓包分析使用的工具不再是wireshark（研究TCP/IP协议使用），而是使用 <a href="https://www.telerik.com/fiddler" target="_blank" rel="noopener">fiddler</a>，版本4。其实 fiddler 做HTTP数据包分析的原理就是相当于一个<strong>web代理</strong>，如下图：</p>
 <p><img src="/2018/11/13/HTTP抓包实战/web_proxy.png" alt=""></p>
 <p>fiddler在中间，可以记录所用的HTTP流量。fiddler启动时，会偷偷把 Internet 选项中的代理修改为 ：127.0.0.1,端口： 8888; fiddler在关闭时，会自动在Internet选项中取消代理，这样就不会对其他程序产生影响。如下图：</p>
@@ -524,7 +531,50 @@
 <p>当然，我们也可以 <code>ctrl + F5</code>强制刷新浏览器，告诉服务器，我不使用缓存，请发送最新的数据资源给我。</p>
 <p><img src="/2018/11/13/HTTP抓包实战/nocache.png" alt=""></p>
 <p>其中的<code>pragma</code>是HTTP1.0中使用的，<code>Cache-Control</code>是现在HTTP1.1用的，同时存在这两个字段，完全是为了兼容。</p>
-<p>12、</p>
+<p>12、<code>URL</code>只能使用英文字母、数字或者某些标点符号，URL Encode(URL 编码)就是把所有非英文字母、数字字符都替换成百分号（%）后加两位十六进制数。如：</p>
+<p><code>https://www.wangjibao.com.cn/2018/11/13/HTTP抓包实战</code> 编码后变成了如下模式，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.wangjibao.com.cn/2018/11/13/HTTP%E6%8A%93%E5%8C%85%E5%AE%9E%E6%88%98/</span><br></pre></td></tr></table></figure>
+<p>13、<code>Fiddler</code>提供了丰富的插件，可以在<a href="https://www.telerik.com/fiddler/add-ons中下载安装使用，如`Java" target="_blank" rel="noopener">https://www.telerik.com/fiddler/add-ons中下载安装使用，如`Java</a> Script Formatter<code>、</code>Gallery<code>、</code>WinDiff`（比较两个session的不同）等等。</p>
+<p>14、 <code>Fiddler</code>中可以在线调试 <code>JavaScript</code>文件，使用的是<code>AutoResponder</code>功能，如下图，其原理就是当命中某个文件时，自动替换成我们设置的文件返回给客户端，就不去服务器索取了。</p>
+<p><img src="/2018/11/13/HTTP抓包实战/js.png" alt=""></p>
+<p>当然，不仅可以替换 <code>JS</code> 文件，还可以替换网页中的图片为本地我们设置的图片。</p>
+<p>15、我们还可以直接编辑<code>Fiddler Script</code>来修改HTTP请求或者响应，并且不中断程序（之前介绍的设置断点的方式，会使得程序中断）。<code>Rules &gt;&gt; Coustomize Rules</code>中，打开<code>Fiddler ScriptEditor</code>来编辑<code>CustomRules.js</code>文件，如图：</p>
+<p><img src="/2018/11/13/HTTP抓包实战/scripteditor.png" alt=""></p>
+<p>16、HTTP的<code>Cookie</code>机制</p>
+<p>因为<code>HTTP</code>协议是无状态的，可以通过<code>Cookie</code>来维持会话。登录 <code>http://piaoweb.sstm.org.cn</code>，可以在<code>fiddler</code>中看到<code>cookie</code>的运行机制，如下图：</p>
+<p><img src="/2018/11/13/HTTP抓包实战/cookie.png" alt=""></p>
+<p>浏览器把<code>Cookie</code>通过HTTP请求中的<code>Header</code>发送给服务器，同时，服务器通过HTTP响应中的<code>Header</code>(Set-Cookie机制)把<code>Cookie</code>发送给浏览器。</p>
+<p>上图中的 <code>HttpOnly</code>字段是说通过<code>JavaScript</code>脚本无法读取到<code>Cookie</code>信息，可以有效防止<code>XSS</code>攻击。</p>
+<p>浏览器根据服务器返回的<code>Set-Cookie</code>设置好本地<code>Cookie</code>以后，浏览器每次请求服务器的资源时，就在<code>Header</code>中将<code>Cookie</code>附加上，这样，服务器就认为浏览器是登录状态。</p>
+<p>17、Cookie劫持攻击</p>
+<p>这里我们使用<code>豆瓣</code>网为例，演示一下<code>Cookie</code>劫持攻击。</p>
+<p>（1）登录<a href="https://www.douban.com/" target="_blank" rel="noopener">豆瓣网</a>，用<code>Fiddler</code>抓取登录过程产生的数据包，可以看到一个如下图中的包，里面含有我们需要的<code>cookie</code>。</p>
+<p><img src="/2018/11/13/HTTP抓包实战/doubanaccount.png" alt=""></p>
+<p>（2）我们打开这个会话的<code>session</code>，可以看到用户的<code>cookie</code>，其中的<code>dbcl2</code>是和用户登录相关的。</p>
+<p><img src="/2018/11/13/HTTP抓包实战/accounts.png" alt=""></p>
+<p>（3）我们在该会话上右键，<code>replay &gt;&gt; Reissue and Edit</code>，将cookie中的此字段删除，然后<code>Run to Completion</code>放行，可以看到此时我们现在是非登录状态，并且跳转到了登录界面，服务器返回<code>302</code>。</p>
+<p><img src="/2018/11/13/HTTP抓包实战/relocation.png" alt=""></p>
+<p>（4）现在我们知道，这个<code>cookie</code>字段就是和用户登录相关的，并且已经劫持到了，那么如何利用它呢？可以利用之前提到的<code>Fiddler Script</code>，编写脚本，每次发送数据包的时候，自动加上这个cookie不就行了，并且这个操作不会有任何中断。</p>
+<p>在 <code>Fiddler Script</code>中的<code>OnBeforeRequest</code>函数中添加如下代码段：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(oSession.uriContains(<span class="string">"douban.com"</span>))&#123;</span><br><span class="line">	<span class="keyword">var</span> sCookie = <span class="string">"dbcl2=\"170842457:NW8ZWiZHFUU\""</span>;</span><br><span class="line">	oSession.oRequest[<span class="string">"Cookie"</span>] = sCookie;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再次访问豆瓣网，发现自己已经处于登录状态了。</p>
+<p>18、<code>HTTP</code>基本验证</p>
+<p>把<code>用户名+冒号+密码</code>用<code>Base64</code>编码后生成字符串，放在<code>header</code>中的<code>Authorization</code>字段中，发送给服务器。</p>
+<p>19、手机<code>Fiddler</code>抓包</p>
+<p>手机和电脑处于同一局域网中，在<code>fiddler &gt;&gt; Tools &gt;&gt; Options &gt;&gt; Connections</code>中将<code>allow remote computers to connect</code>勾选上，同时在手机的<code>wlan</code>设置中，将其代理设置成电脑，<code>IP</code>为电脑IP，端口为<code>8888</code>；同时，在手机的安全设置中可以安装之前下载的<code>fiddler root</code>根证书，这样，就可以捕获到手机的<code>https</code>数据包了。</p>
+<p>20、<code>Replay</code>菜单的详细说明：</p>
+<p><code>Reissue Requests</code>：重新发送请求，和菜单栏上的<code>Replay</code>按钮是一样的功能。</p>
+<p><code>Reissue Unconditionally</code>：无条件反复发送选中的请求。</p>
+<p><code>Reissue and Edit</code>：把选中的请求以原来的形式重新发送，在每个新的<code>Session</code>中设置断点，在请求发送给服务器之前，可以修改请求。</p>
+<p><code>Reissue and Verify</code>：重新发送请求，检查响应，如果响应和上一个请求一样，就会变成绿色。</p>
+<p><code>Reissue Sequentially</code>：选中多个<code>Session</code>会按顺序一个一个重新发送请求，是单线程模式。</p>
+<p><code>Reissue from Composer</code>：在<code>Composer</code>中编辑该请求。</p>
+<p><code>Revisit in IE</code>：在<code>IE</code>浏览器中用<code>Get</code>方法访问这个请求。</p>
+<p>21、重放攻击，在<code>Fiddler</code>中，可以使用<code>Composer</code>编辑数据包并进行发送。</p>
+<p><img src="/2018/11/13/HTTP抓包实战/composer.png" alt=""></p>
+<p>其实，重放攻击危害很大，比如说，某网站的投票或者点赞功能，当我们抓取到某个点赞的包时，我们可以重复发送这个数据包来进行刷票。再比如说，某些软件的注册，当我们抓取到某个注册请求包的时候，我们进行大量重复发送，对<code>app</code>造成的损失还是很大的。</p>
+<p>解决方案：在<code>HTTP</code>请求中，添加时间戳<code>stamp</code>和数字签名<code>sign</code>。数字签名保证有效性，时间戳保证时效性。</p>
+<p>22、后面的3–4个章节是使用<code>JMeter</code>对网站做自动化测试和压力测试的，在此略过。</p>
 
       
     </div>
@@ -822,7 +872,7 @@
     
       <span class="post-meta-item-text">本站共计&#58;</span>
     
-    <span title="本站共计">26.3k 字</span>
+    <span title="本站共计">27.6k 字</span>
   
 </div>
 
