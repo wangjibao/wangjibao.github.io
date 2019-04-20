@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Ubuntu个性美化]]></title>
+    <url>%2F2019%2F04%2F20%2FUbuntu%E4%B8%AA%E6%80%A7%E7%BE%8E%E5%8C%96%2F</url>
+    <content type="text"><![CDATA[1、安装VMware Tools 在VMware中安装虚拟机后，记得安装VMware Tools。在虚拟机中找到名为VMwareTools…tar.gz的压缩包（一般在media文件夹中），复制到某个文件夹中后执行：tar -xvzf VMwareTools…tar.gz进行解压。之后会看到一个 ./vmware-install.pl的执行程序，执行后安装，一路默认即可，安装完成后，重启虚拟机。 2、卸载自带软件 123dpkg --list # 查看自带已安装程序sudo apt-get --purge remove &lt;programname&gt; # 卸载程序和所有配置文件sudo apt-get remove &lt;programname&gt; # 只卸载程序 当然也可以在软件管理中进行查看已安装软件，卸载软件等操作。 3、GTK,GTK+,Qt, KDE,GNOME, Unity的区别与联系 Linux本身没有图形界面，Linux现在的图形界面系统只是Linux下的应用程序。 GTK, GTK+, Qt是图形界面开发库(GUI Toolkit)，用户可以使用这些开发库编写GUI应用。 KDE，GNOME，Unity是linux下的桌面环境(Desktop Environment)，其中KDE使用Qt开发，GNOME使用GTK+开发，Unity是基于GNOME开发的一个桌面环境。 从 Ubuntu 16.04 LTS 到Ubuntu 18.04 LTS 最显著的变化是 Unity 用户界面被替换为了GNOME 桌面环境。 4、安装美化主题 参考博客，本文用到的主题工具包下载 美化过程中涉及的两个目录：/usr/share/themes 和 /usr/share/icons。 1）安装 TweakTool 工具： 123sudo apt-get updatesudo apt-get install gnome-tweak-toolsudo apt-get install gnome-shell-extensions # 解决Tweaks中shell无法设置的问题 2）安装GTK主题，修改图标，更改桌面shell，下载网址，将主题和桌面shell放到/usr/share/themes/目录下，图标包放到/usr/share/icons/文件夹下，之后在Tweaks工具中，即可选择使用它们 效果图如下： 3）更改开机动画，下载网址 1234将下载的开机动画解压并拷贝到： usr/share/plymouth/themessudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/***/***.plymouth 100sudo update-alternatives --config default.plymouth # 选择对应序号即可，*号代表当前使用sudo update-initramfs -u 4）更改登录界面的背景（也可只修改css文件中对应的图片链接即可） 12345cp 下载的登录界面.jpg /usr/share/backgrounds/# 备份自带登录css文件cp /usr/share/gnome-shell/theme/ubuntu.css /usr/share/gnome-shell/theme/ubuntu.css.bakcp 下载的并更名为ubuntu.css的文件 /usr/share/gnome-shell/theme/reboot 效果图： 4）修改桌面shell的宽度和字体等。]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Ubuntu官方源和PPA源简介]]></title>
     <url>%2F2019%2F04%2F20%2FUbuntu%E5%AE%98%E6%96%B9%E6%BA%90%E5%92%8CPPA%E6%BA%90%E7%AE%80%E4%BB%8B%2F</url>
     <content type="text"><![CDATA[在ubuntu中，软件的安装主要有3种方式： 通过apt包管理工具从官方软件源安装 通过deb格式的软件包安装，以安装搜狗输入法为例： 1234下载 sogou.debsudo dpkg -i sogou.deb #出现安装不成功，需要依赖sudo apt-get install -f #安装依赖sudo dpkg -i sogou.deb 使用软件的源码手动编译安装 下面我们主要介绍第一种安装方式，即apt命令从软件源安装。软件源分为 Ubuntu官方软件源 和 PPA软件源 两种。 1）Ubuntu 官方软件源，其中包含了系统中绝大多数的软件，对应的目录为 /etc/apt/sources.list，如下所示： 一般情况下，我们会将其改成国内的镜像源，因为访问国外的资源太慢了，国内开源镜像站点汇总。 安装和卸载软件也非常的简单： 12sudo apt-get install &lt;package-name&gt; # 安装sudo apt-get remove &lt;package-name&gt; # 卸载 每当通过 install 命令去安装一个软件时，apt 包管理工具就会从系统中的/etc/apt/sources.list文件或/etc/apt/sources.list.d文件夹中去读取软件源的网址信息，查找可以包含该软件的软件源的网址，然后就从这个网址上把指定的软件给下载下来，然后由 apt 包管理工具在本地进行一些解压和安装的其他操作。 2）PPA(Personal Package Archives)个人软件包集，它出现的原因是：系统自带的源是非常有限的 ，如果通过deb直接安装其他软件的话，得不到更新和维护，所以此时PPA软件源就应运而生。它其实是一个网站，开发者们在上面建立自己的仓库，上传开发的软件供用户安装。 12sudo add-apt-repository ppa:user/ppa-name # 添加ppa软件源sudo add-apt-repository --remove ppa:user/ppa-name # 删除ppa软件源 当添加完某个ppa软件源后，会在系统的 /etc/apt/sources.list.d 目录下生成对应的源文件： 可见，此操作就是在文件里添加了一个和软件源一模一样的东西，以 notepad++ 的使用为例： 1234567# 安装sudo add-apt-repository ppa:notepadqq-team/notepadqqsudo apt-get update # 记得此时要更新一下软件源sudo apt-get install notepadqq# 卸载sudo apt-get remove notepadqqsudo add-apt-repository --remove ppa:notepadqq-team/notepadqq 3）上面两个东西，其实要实现的功能是一样的，之所以在系统中存在/etc/apt/sources.list和/etc/apt/sources.list.d两套东西，是系统为了区分官方源与第三方源，毕竟第三方源存在安全问题的可能性比较大。]]></content>

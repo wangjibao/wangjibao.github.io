@@ -317,6 +317,239 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjibao.com.cn/2019/04/20/Ubuntu个性美化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="大宝哥spring">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="来呀，不服抓个包~~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/20/Ubuntu个性美化/" itemprop="url">Ubuntu个性美化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-20T16:26:33+08:00">
+                2019-04-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-20T16:31:26+08:00">
+                2019-04-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/20/Ubuntu个性美化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/20/Ubuntu个性美化/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/04/20/Ubuntu个性美化/" class="leancloud_visitors" data-flag-title="Ubuntu个性美化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  625 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、<strong>安装<code>VMware Tools</code></strong></p>
+<p>在<code>VMware</code>中安装虚拟机后，记得安装<code>VMware Tools</code>。在虚拟机中找到名为<code>VMwareTools…tar.gz</code>的压缩包（一般在<code>media</code>文件夹中），复制到某个文件夹中后执行：<code>tar -xvzf VMwareTools…tar.gz</code>进行解压。之后会看到一个 <code>./vmware-install.pl</code>的执行程序，执行后安装，一路默认即可，安装完成后，重启虚拟机。</p>
+<p>2、<strong>卸载自带软件</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dpkg --list   # 查看自带已安装程序</span><br><span class="line">sudo apt-get --purge remove &lt;programname&gt;      # 卸载程序和所有配置文件</span><br><span class="line">sudo apt-get remove &lt;programname&gt;              # 只卸载程序</span><br></pre></td></tr></table></figure>
+<p>当然也可以在<code>软件管理</code>中进行查看已安装软件，卸载软件等操作。</p>
+<p>3、<strong><code>GTK</code>,<code>GTK+</code>,<code>Qt</code>, <code>KDE</code>,<code>GNOME</code>, <code>Unity</code>的区别与联系</strong></p>
+<p>Linux本身没有图形界面，Linux现在的图形界面系统只是Linux下的应用程序。</p>
+<p><code>GTK</code>,  <code>GTK+</code>, <code>Qt</code>是图形界面开发库(GUI Toolkit)，用户可以使用这些开发库编写GUI应用。</p>
+<p><code>KDE</code>，<code>GNOME</code>，<code>Unity</code>是<code>linux</code>下的桌面环境(Desktop Environment)，其中<code>KDE</code>使用<code>Qt</code>开发，<code>GNOME</code>使用<code>GTK+</code>开发，<code>Unity</code>是基于<code>GNOME</code>开发的一个桌面环境。</p>
+<p>从 <code>Ubuntu 16.04 LTS</code> 到<code>Ubuntu 18.04 LTS</code> 最显著的变化是 Unity 用户界面被替换为了GNOME 桌面环境。</p>
+<p>4、<strong>安装美化主题</strong></p>
+<p><a href="https://www.cnblogs.com/feipeng8848/p/8970556.html" target="_blank" rel="noopener">参考博客</a>，本文用到的主题工具包<a href="/download/Ubuntu美化.rar">下载</a></p>
+<p>美化过程中涉及的两个目录：<code>/usr/share/themes</code> 和 <code>/usr/share/icons</code>。</p>
+<p>1）安装 <code>TweakTool</code> 工具：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install gnome-tweak-tool</span><br><span class="line">sudo apt-get install gnome-shell-extensions   # 解决Tweaks中shell无法设置的问题</span><br></pre></td></tr></table></figure>
+<p>2）安装<code>GTK</code>主题，修改图标，更改桌面<code>shell</code>，<a href="https://www.opendesktop.org/" target="_blank" rel="noopener">下载网址</a>，将主题和桌面shell放到<code>/usr/share/themes/</code>目录下，图标包放到<code>/usr/share/icons/</code>文件夹下，之后在<code>Tweaks</code>工具中，即可选择使用它们</p>
+<p><img src="/2019/04/20/Ubuntu个性美化/tweaks.png" alt=""></p>
+<p>效果图如下：</p>
+<p><img src="/2019/04/20/Ubuntu个性美化/macos.png" alt=""></p>
+<p>3）更改开机动画，<a href="https://www.gnome-look.org/" target="_blank" rel="noopener">下载网址</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">将下载的开机动画解压并拷贝到： usr/share/plymouth/themes</span><br><span class="line">sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/***/***.plymouth 100</span><br><span class="line">sudo update-alternatives --config default.plymouth  # 选择对应序号即可，*号代表当前使用</span><br><span class="line">sudo update-initramfs -u</span><br></pre></td></tr></table></figure>
+<p>4）更改<a href="https://github.com/taeven/Ocean-blue-GDM3" target="_blank" rel="noopener">登录界面的背景</a>（也可只修改<code>css</code>文件中对应的图片链接即可）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cp 下载的登录界面.jpg /usr/share/backgrounds/</span><br><span class="line"><span class="meta">#</span> 备份自带登录css文件</span><br><span class="line">cp /usr/share/gnome-shell/theme/ubuntu.css /usr/share/gnome-shell/theme/ubuntu.css.bak</span><br><span class="line">cp 下载的并更名为ubuntu.css的文件 /usr/share/gnome-shell/theme/</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<p>效果图：</p>
+<p><img src="/2019/04/20/Ubuntu个性美化/login.png" alt=""></p>
+<p>4）修改桌面<code>shell</code>的宽度和字体等。</p>
+
+          
+        
+      
+    </div>
+    <div>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://wangjibao.com.cn/2019/04/20/Ubuntu官方源和PPA源简介/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -364,7 +597,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-20T16:17:58+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-20T16:25:32+08:00">
                 2019-04-20
               </time>
             
@@ -472,8 +705,7 @@
 
       
         
-          
-            <p>在<code>ubuntu</code>中，软件的安装主要有3种方式：</p>
+          <p>在<code>ubuntu</code>中，软件的安装主要有3种方式：</p>
 <ul>
 <li><p>通过<code>apt</code>包管理工具从官方软件源安装</p>
 </li>
@@ -484,21 +716,13 @@
 </li>
 </ul>
 <p>下面我们主要介绍第一种安装方式，即<code>apt</code>命令从软件源安装。软件源分为 <code>Ubuntu官方软件源</code> 和 <code>PPA软件源</code> 两种。</p>
-<p>1）<code>Ubuntu</code> 官方软件源，其中包含了系统中绝大多数的软件，对应的目录为 <code>/etc/apt/sources.list</code>，如下所示：</p>
-<p><img src="/2019/04/20/Ubuntu官方源和PPA源简介/sources_list.png" alt=""></p>
-<p>一般情况下，我们会将其改成国内的镜像源，因为访问国外的资源太慢了，<a href="https://segmentfault.com/a/1190000000375848" target="_blank" rel="noopener">国内开源镜像站点汇总</a>。</p>
-<p>安装和卸载软件也非常的简单：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install &lt;package-name&gt;    # 安装</span><br><span class="line">sudo apt-get remove &lt;package-name&gt;     # 卸载</span><br></pre></td></tr></table></figure>
-<p>每当通过 <code>install</code> 命令去安装一个软件时，apt 包管理工具就会从系统中的<code>/etc/apt/sources.list</code>文件或<code>/etc/apt/sources.list.d</code>文件夹中去读取软件源的网址信息，查找可以包含该软件的软件源的网址，然后就从这个网址上把指定的软件给下载下来，然后由 apt 包管理工具在本地进行一些解压和安装的其他操作。</p>
-<p>2）<code>PPA(Personal Package Archives)</code>个人软件包集，它出现的原因是：系统自带的源是非常有限的 ，如果通过<code>deb</code>直接安装其他软件的话，得不到更新和维护，所以此时<code>PPA</code>软件源就应运而生。它其实是一个<a href="https://launchpad.net/" target="_blank" rel="noopener">网站</a>，开发者们在上面建立自己的仓库，上传开发的软件供用户安装。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:user/ppa-name    # 添加ppa软件源</span><br><span class="line">sudo add-apt-repository --remove ppa:user/ppa-name    # 删除ppa软件源</span><br></pre></td></tr></table></figure>
-<p>当添加完某个<code>ppa</code>软件源后，会在系统的 <code>/etc/apt/sources.list.d</code> 目录下生成对应的源文件：</p>
-<p><img src="/2019/04/20/Ubuntu官方源和PPA源简介/sources_list_d.png" alt=""></p>
-<p>可见，此操作就是在文件里添加了一个和软件源一模一样的东西，以 <code>notepad++</code> 的使用为例：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 安装</span><br><span class="line">sudo add-apt-repository ppa:notepadqq-team/notepadqq</span><br><span class="line">sudo apt-get update   # 记得此时要更新一下软件源</span><br><span class="line">sudo apt-get install notepadqq</span><br><span class="line"><span class="meta">#</span> 卸载</span><br><span class="line">sudo apt-get remove notepadqq</span><br><span class="line">sudo add-apt-repository --remove ppa:notepadqq-team/notepadqq</span><br></pre></td></tr></table></figure>
-<p>3）上面两个东西，其实要实现的功能是一样的，之所以在系统中存在<code>/etc/apt/sources.list</code>和<code>/etc/apt/sources.list.d</code>两套东西，是系统为了区分官方源与第三方源，毕竟第三方源存在安全问题的可能性比较大。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/20/Ubuntu官方源和PPA源简介/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2297,237 +2521,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjibao.com.cn/2018/10/28/算法课第二次作业/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="大宝哥spring">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="来呀，不服抓个包~~">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/28/算法课第二次作业/" itemprop="url">算法课第二次作业</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-28T00:22:15+08:00">
-                2018-10-28
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-05T00:58:50+08:00">
-                2018-11-05
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/作业/" itemprop="url" rel="index">
-                    <span itemprop="name">作业</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/作业/算法课第二次作业/" itemprop="url" rel="index">
-                    <span itemprop="name">算法课第二次作业</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/10/28/算法课第二次作业/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/28/算法课第二次作业/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/10/28/算法课第二次作业/" class="leancloud_visitors" data-flag-title="算法课第二次作业">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.9k 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  8 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="一、Money-robbing"><a href="#一、Money-robbing" class="headerlink" title="一、Money robbing"></a>一、Money robbing</h3><h4 id="1、optimal-substructure-and-DP-equation"><a href="#1、optimal-substructure-and-DP-equation" class="headerlink" title="1、optimal substructure and DP equation"></a>1、optimal substructure and DP equation</h4><p>对于第 i 家，有两种选择，抢或者不抢。如果抢第 i 家，那么最大收益为：value[i] + 抢前 i-2 家的最优收益； 如果第 i 家不抢，那么最大收益为：抢前 i-1 家的最优收益。</p>
-<p>状态转移方程可写为：<br>$$<br>dp[i] = max( dp[i-1], dp[i-2]+value[i] )<br>$$</p>
-<h4 id="2、-pseudo-code"><a href="#2、-pseudo-code" class="headerlink" title="2、 pseudo-code"></a>2、 pseudo-code</h4><p><a href="https://leetcode-cn.com/problems/house-robber/description/" target="_blank" rel="noopener">LeetCode 198题</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>( nums.size()==<span class="number">0</span> )</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>( nums.size()==<span class="number">1</span> )</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dp(nums.size(),<span class="number">0</span>);</span><br><span class="line">        dp[<span class="number">0</span>] = nums[<span class="number">0</span>];</span><br><span class="line">        dp[<span class="number">1</span>] = max( nums[<span class="number">0</span>], nums[<span class="number">1</span>] );</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> i=<span class="number">2</span>; i&lt;nums.size(); i++ )&#123;</span><br><span class="line">            dp[i] = max( dp[i<span class="number">-1</span>], dp[i<span class="number">-2</span>]+nums[i] );</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[nums.size()<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/10/28/算法课第二次作业/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    <div>
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2577,7 +2575,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2665,6 +2663,10 @@
       			    
       			    
       			      <li>
+      			        <a href="/2019/04/20/Ubuntu个性美化/" title="Ubuntu个性美化" target="_blank">Ubuntu个性美化</a>
+      			      </li>
+      			    
+      			      <li>
       			        <a href="/2019/04/20/Ubuntu官方源和PPA源简介/" title="Ubuntu官方源和PPA源简介" target="_blank">Ubuntu官方源和PPA源简介</a>
       			      </li>
       			    
@@ -2678,10 +2680,6 @@
       			    
       			      <li>
       			        <a href="/2018/11/12/树莓派搭建智能路由器/" title="树莓派搭建智能路由器" target="_blank">树莓派搭建智能路由器</a>
-      			      </li>
-      			    
-      			      <li>
-      			        <a href="/2018/11/12/算法课第三次作业/" title="算法课第三次作业" target="_blank">算法课第三次作业</a>
       			      </li>
       			    
       			  </ul>
@@ -2726,7 +2724,7 @@
     
       <span class="post-meta-item-text">本站共计&#58;</span>
     
-    <span title="本站共计">28.3k 字</span>
+    <span title="本站共计">29k 字</span>
   
 </div>
 
