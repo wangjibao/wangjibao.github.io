@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wangjibao.com.cn/"/>
-  <updated>2019-04-20T17:58:14.939Z</updated>
+  <updated>2019-04-21T17:59:44.587Z</updated>
   <id>https://wangjibao.com.cn/</id>
   
   <author>
@@ -17,19 +17,19 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>博客访问加速</title>
-    <link href="https://wangjibao.com.cn/2019/04/21/%E5%8D%9A%E5%AE%A2%E8%AE%BF%E9%97%AE%E5%8A%A0%E9%80%9F/"/>
-    <id>https://wangjibao.com.cn/2019/04/21/博客访问加速/</id>
-    <published>2019-04-20T17:44:13.000Z</published>
-    <updated>2019-04-20T17:58:14.939Z</updated>
+    <title>双仓库部署实现博客访问加速</title>
+    <link href="https://wangjibao.com.cn/2019/04/22/%E5%8F%8C%E4%BB%93%E5%BA%93%E9%83%A8%E7%BD%B2%E5%AE%9E%E7%8E%B0%E5%8D%9A%E5%AE%A2%E8%AE%BF%E9%97%AE%E5%8A%A0%E9%80%9F/"/>
+    <id>https://wangjibao.com.cn/2019/04/22/双仓库部署实现博客访问加速/</id>
+    <published>2019-04-21T16:53:40.000Z</published>
+    <updated>2019-04-21T17:59:44.587Z</updated>
     
-    <content type="html"><![CDATA[<p>博客停更了将近半年的时间，然后近期闲着打算接着写写记录下日常学习过程，其中被同学吐槽，你这访问太慢了啊，页面好大会转不出来，怎么回事？<code>github pages</code>国内访问的话，速度还是很慢的，想要更好的提升访问速度，得将博客迁移到国内才行，幸运的是，国内的<code>coding.net</code>也提供<code>pages</code>服务。下面，我们主要讲解如何实现个人博客的<strong>双仓库</strong>部署。</p><p>#### </p>]]></content>
+    <content type="html"><![CDATA[<p>博客停更了将近半年的时间，然后近期闲着打算接着写写记录下日常学习过程，其中被同学吐槽，你这访问太慢了啊，页面好大会转不出来，怎么回事小老弟？<code>github pages</code>国内访问的话，速度还是很慢的，想要更好的提升访问速度，得将博客迁移到国内才行，幸运的是，国内的<code>coding.net</code>也提供<code>pages</code>服务。下面，我们主要讲解如何实现个人博客的<strong>双仓库</strong>部署。</p><p>1、注册 <code>coding</code> 账号，创建一个和注册名一样的仓库，部署公钥，此处部署的公钥一定要和<code>github pages</code>上的公钥一致。运行 <code>ssh -T git@git.coding.net</code> 指令，测试公钥是否添加成功，如下图所示，代表成功添加了公钥。</p><p><img src="/2019/04/22/双仓库部署实现博客访问加速/public_key.png" alt=""></p><p>2、<code>deploy</code>部署配置，更改本地 根目录下的<code>_config.yml</code>文件，如下图，这样才可以实现两个仓库的同步推送。</p><p><img src="/2019/04/22/双仓库部署实现博客访问加速/deploy.png" alt=""></p><p>配置完成后，<code>hexo clean;   hexo g -d</code> 将博客内容同步到两个仓库，在 <code>coding.net</code>中记得同步完成后开启<code>pages 服务</code>，此时便可以访问地址 <code>localdomain.coding.net</code>来浏览博客内容了。</p><p><img src="/2019/04/22/双仓库部署实现博客访问加速/pages.png" alt=""></p><p>3、<code>Pages 服务 &gt;&gt; 设置</code>中，绑定个人域名。我对此步骤的理解是，因为后期要将自己个人域名的<code>CNAME</code>指向这里，所以要绑定一下个人域名来实现验证的效果，如果没有验证的话，任何人买个域名，然后设置<code>CNAME</code>指向这里，就可以通过其他人的域名肆意访问我的资源了，这是不能容忍的。通过绑定机制，属于我的资源我可以控制通过哪些域名可以来访问。</p><p><img src="/2019/04/22/双仓库部署实现博客访问加速/bind_dns.png" alt=""></p><p>4、之前在 阿里云 买的域名， 设置域名解析如图：</p><p><img src="/2019/04/22/双仓库部署实现博客访问加速/dns.png" alt=""></p><p>当在国内访问 <code>www.wangjibao.com.cn</code>时，会解析国内的<code>localdomain.coding.net</code>，这样速度比较快。</p><p>无论在国内还是国外访问<code>wangjibao.com.cn</code>时，会直接返回<code>185.199.111.153</code>的<code>github.io</code>的地址，虽然速度可能有些慢，但这样实现了无论加不加<code>www</code>的头都可以访问博客的目的。</p><p>当在国外访问<code>www.wangjibao.com.cn</code>时，会解析国外的<code>wangjibao.github.io</code>的地址，对外国人来说的话， 速度也不慢。</p><p><img src="/2019/04/22/双仓库部署实现博客访问加速/nslookup.png" alt=""></p><p>5、上图中的 <code>nslookup</code>印证了我们的想法，接下来使用站长之家的<a href="http://tool.chinaz.com/speedtest.aspx" target="_blank" rel="noopener">网站测速</a>功能，查看改造前与改造后的访问速度效果图，如下：</p><p><img src="/2019/04/22/双仓库部署实现博客访问加速/qian.png" alt=""></p><p><img src="/2019/04/22/双仓库部署实现博客访问加速/hou.png" alt=""></p><p>看着就舒坦啊，要想生活过得去，就需要来点绿。穷X一枚，等后期有空看看能不能通过免费的<code>CDN</code>再加速一波。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;博客停更了将近半年的时间，然后近期闲着打算接着写写记录下日常学习过程，其中被同学吐槽，你这访问太慢了啊，页面好大会转不出来，怎么回事？&lt;code&gt;github pages&lt;/code&gt;国内访问的话，速度还是很慢的，想要更好的提升访问速度，得将博客迁移到国内才行，幸运的是，国
+        &lt;p&gt;博客停更了将近半年的时间，然后近期闲着打算接着写写记录下日常学习过程，其中被同学吐槽，你这访问太慢了啊，页面好大会转不出来，怎么回事小老弟？&lt;code&gt;github pages&lt;/code&gt;国内访问的话，速度还是很慢的，想要更好的提升访问速度，得将博客迁移到国内才行，幸运的
       
     
     </summary>
