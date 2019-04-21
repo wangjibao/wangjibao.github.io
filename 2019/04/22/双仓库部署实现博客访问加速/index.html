@@ -104,7 +104,7 @@
 <meta property="og:image" content="https://wangjibao.com.cn/2019/04/22/双仓库部署实现博客访问加速/nslookup.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/04/22/双仓库部署实现博客访问加速/qian.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/04/22/双仓库部署实现博客访问加速/hou.png">
-<meta property="og:updated_time" content="2019-04-21T17:59:44.587Z">
+<meta property="og:updated_time" content="2019-04-21T18:03:28.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="双仓库部署实现博客访问加速">
 <meta name="twitter:description" content="博客停更了将近半年的时间，然后近期闲着打算接着写写记录下日常学习过程，其中被同学吐槽，你这访问太慢了啊，页面好大会转不出来，怎么回事小老弟？github pages国内访问的话，速度还是很慢的，想要更好的提升访问速度，得将博客迁移到国内才行，幸运的是，国内的coding.net也提供pages服务。下面，我们主要讲解如何实现个人博客的双仓库部署。 1、注册 coding 账号，创建一个和注册名一样">
@@ -372,7 +372,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-22T01:59:44+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-22T02:03:28+08:00">
                 2019-04-22
               </time>
             
@@ -483,6 +483,7 @@
 <p>1、注册 <code>coding</code> 账号，创建一个和注册名一样的仓库，部署公钥，此处部署的公钥一定要和<code>github pages</code>上的公钥一致。运行 <code>ssh -T git@git.coding.net</code> 指令，测试公钥是否添加成功，如下图所示，代表成功添加了公钥。</p>
 <p><img src="/2019/04/22/双仓库部署实现博客访问加速/public_key.png" alt=""></p>
 <p>2、<code>deploy</code>部署配置，更改本地 根目录下的<code>_config.yml</code>文件，如下图，这样才可以实现两个仓库的同步推送。</p>
+<a id="more"></a>
 <p><img src="/2019/04/22/双仓库部署实现博客访问加速/deploy.png" alt=""></p>
 <p>配置完成后，<code>hexo clean;   hexo g -d</code> 将博客内容同步到两个仓库，在 <code>coding.net</code>中记得同步完成后开启<code>pages 服务</code>，此时便可以访问地址 <code>localdomain.coding.net</code>来浏览博客内容了。</p>
 <p><img src="/2019/04/22/双仓库部署实现博客访问加速/pages.png" alt=""></p>
