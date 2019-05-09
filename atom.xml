@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wangjibao.com.cn/"/>
-  <updated>2019-05-09T06:50:40.877Z</updated>
+  <updated>2019-05-09T06:51:40.380Z</updated>
   <id>https://wangjibao.com.cn/</id>
   
   <author>
@@ -21,12 +21,25 @@
     <link href="https://wangjibao.com.cn/2019/05/09/LeetCode41-50/"/>
     <id>https://wangjibao.com.cn/2019/05/09/LeetCode41-50/</id>
     <published>2019-05-09T06:50:40.000Z</published>
-    <updated>2019-05-09T06:50:40.877Z</updated>
+    <updated>2019-05-09T06:51:40.380Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="41、缺失的第一个正数"><a href="#41、缺失的第一个正数" class="headerlink" title="41、缺失的第一个正数"></a>41、<a href="https://leetcode-cn.com/problems/first-missing-positive" target="_blank" rel="noopener">缺失的第一个正数</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
+      
+      
+        &lt;h2 id=&quot;41、缺失的第一个正数&quot;&gt;&lt;a href=&quot;#41、缺失的第一个正数&quot; class=&quot;headerlink&quot; title=&quot;41、缺失的第一个正数&quot;&gt;&lt;/a&gt;41、&lt;a href=&quot;https://leetcode-cn.com/problems/first-mi
+      
+    
     </summary>
     
+      <category term="LeetCode" scheme="https://wangjibao.com.cn/categories/LeetCode/"/>
+    
+      <category term="LeetCode41-50" scheme="https://wangjibao.com.cn/categories/LeetCode/LeetCode41-50/"/>
+    
+    
+      <category term="LeetCode" scheme="https://wangjibao.com.cn/tags/LeetCode/"/>
     
   </entry>
   
