@@ -364,8 +364,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-05-09T14:52:57+08:00">
-                2019-05-09
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-10T01:05:50+08:00">
+                2019-05-10
               </time>
             
           </span>
@@ -446,7 +446,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  10 字
+                  583 字
                 </span>
               
 
@@ -462,7 +462,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -483,7 +483,8 @@
 
       
         
-          <h2 id="41、缺失的第一个正数"><a href="#41、缺失的第一个正数" class="headerlink" title="41、缺失的第一个正数"></a>41、<a href="https://leetcode-cn.com/problems/first-missing-positive" target="_blank" rel="noopener">缺失的第一个正数</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          <h2 id="41、缺失的第一个正数"><a href="#41、缺失的第一个正数" class="headerlink" title="41、缺失的第一个正数"></a>41、<a href="https://leetcode-cn.com/problems/first-missing-positive" target="_blank" rel="noopener">缺失的第一个正数</a></h2><p>数组中元素互换，让元素大小与下标相对应。数值小于0或者大于数组长度的元素值，直接略过，之后遍历整个数组，第一次出现数值和下标不相等的位置就是<code>ans</code>，如果全部满足，返回数组长度即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">firstMissingPositive</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        nums.push_back(<span class="number">-1</span>);  <span class="comment">// 添加一个无用元素，方便后续操作</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>( nums[i]&lt;<span class="number">0</span> || nums[i]&gt;=nums.size() || nums[nums[i]]==nums[i] )</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            swap(nums[nums[i]], nums[i]);</span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;nums.size(); i++)&#123; <span class="comment">// i 从 1 开始，保证正整数</span></span><br><span class="line">            <span class="keyword">if</span>( nums[i]!=i )</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/05/09/LeetCode41-50/#more" rel="contents">
@@ -2682,7 +2683,7 @@
     
       <span class="post-meta-item-text">本站共计&#58;</span>
     
-    <span title="本站共计">32.2k 字</span>
+    <span title="本站共计">32.8k 字</span>
   
 </div>
 
