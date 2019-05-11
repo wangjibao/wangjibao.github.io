@@ -2142,8 +2142,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-05T22:17:38+08:00">
-                2018-10-05
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-12T00:39:46+08:00">
+                2019-05-12
               </time>
             
           </span>
@@ -2213,7 +2213,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  276 字
+                  416 字
                 </span>
               
 
@@ -2251,17 +2251,18 @@
       
         
           
-            <h1 id="谷歌coLab免费云GPU搭建教程"><a href="#谷歌coLab免费云GPU搭建教程" class="headerlink" title="谷歌coLab免费云GPU搭建教程"></a>谷歌coLab免费云GPU搭建教程</h1><h3 id="网上教程的链接"><a href="#网上教程的链接" class="headerlink" title="网上教程的链接"></a>网上教程的链接</h3><p>知乎  <a href="https://zhuanlan.zhihu.com/p/34436045" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/34436045</a></p>
+            <h1 id="谷歌coLab免费云GPU搭建教程"><a href="#谷歌coLab免费云GPU搭建教程" class="headerlink" title="谷歌coLab免费云GPU搭建教程"></a>谷歌coLab免费云GPU搭建教程</h1><h4 id="网上教程的链接"><a href="#网上教程的链接" class="headerlink" title="网上教程的链接"></a>网上教程的链接</h4><p>知乎  <a href="https://zhuanlan.zhihu.com/p/34436045" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/34436045</a></p>
 <p>cnblogs   <a href="http://www.cnblogs.com/kid551/p/8544908.html" target="_blank" rel="noopener">http://www.cnblogs.com/kid551/p/8544908.html</a></p>
-<p><strong>注意第11步的代码替换成下列的代码：</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">!apt-get install -y -qq software-properties-common python-software-properties module-init-tools</span><br><span class="line"><span class="meta">#</span>!add-apt-repository -y ppa:alessandro-strada/ppa 2&gt;&amp;1 &gt; /dev/null</span><br><span class="line"><span class="meta">#</span>!apt-get update -qq 2&gt;&amp;1 &gt; /dev/null</span><br><span class="line"><span class="meta">#</span>!apt-get -y install -qq google-drive-ocamlfuse fuse</span><br><span class="line">!wget https://launchpad.net/~alessandro-strada/+archive/ubuntu/google-drive-ocamlfuse-beta/+build/15331130/+files/google-drive-ocamlfuse_0.7.0-0ubuntu1_amd64.deb</span><br><span class="line">!dpkg -i google-drive-ocamlfuse_0.7.0-0ubuntu1_amd64.deb</span><br><span class="line">!apt-get install -f</span><br><span class="line">!apt-get -y install -qq fuse</span><br><span class="line">from google.colab import auth</span><br><span class="line">auth.authenticate_user()</span><br><span class="line">from oauth2client.client import GoogleCredentials</span><br><span class="line">creds = GoogleCredentials.get_application_default()</span><br><span class="line">import getpass</span><br><span class="line">!google-drive-ocamlfuse -headless -id=&#123;creds.client_id&#125; -secret=&#123;creds.client_secret&#125; &lt; /dev/null 2&gt;&amp;1 | grep URL</span><br><span class="line">vcode = getpass.getpass()</span><br><span class="line">!echo &#123;vcode&#125; | google-drive-ocamlfuse -headless -id=&#123;creds.client_id&#125; -secret=&#123;creds.client_secret&#125;</span><br></pre></td></tr></table></figure>
-<p>会报错，由于 <code>dpkg -i</code> 安装时依赖的原因，但是由于使用了 <code>install -f</code>，安装会成功的。</p>
-<p>接着使用 <code>google-drive-ocamlfuse</code>  将云盘文件夹和远程的VM链接起来，方便文件共享操作。</p>
+<p><strong>1、注意第11步的代码替换成下列的代码：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">!apt-get install -y -qq software-properties-common software-properties-common module-init-tools</span><br><span class="line">!add-apt-repository -y ppa:alessandro-strada/ppa 2&gt;&amp;1 &gt; /dev/null</span><br><span class="line">!apt-get update -qq 2&gt;&amp;1 &gt; /dev/null</span><br><span class="line">!apt-get -y install -qq google-drive-ocamlfuse fuse</span><br><span class="line"></span><br><span class="line">from google.colab import auth</span><br><span class="line">auth.authenticate_user()</span><br><span class="line"></span><br><span class="line">from oauth2client.client import GoogleCredentials</span><br><span class="line">creds = GoogleCredentials.get_application_default()</span><br><span class="line"></span><br><span class="line">import getpass</span><br><span class="line">!google-drive-ocamlfuse -headless -id=&#123;creds.client_id&#125; -secret=&#123;creds.client_secret&#125; &lt; /dev/null 2&gt;&amp;1 | grep URL</span><br><span class="line"></span><br><span class="line">vcode = getpass.getpass()</span><br><span class="line"></span><br><span class="line">!echo &#123;vcode&#125; | google-drive-ocamlfuse -headless -id=&#123;creds.client_id&#125; -secret=&#123;creds.client_secret&#125;</span><br></pre></td></tr></table></figure>
+<p>网上很多教程第一句中使用的是<code>python-software-properties</code>包，但是<code>colab</code>提供的操作系统是最新的<code>18.04 ubuntu</code>，使用该包会出错，显示<code>E: Package &#39;python-software-properties&#39; has no installation candidate</code>。所以改成使用<code>software-properties-common</code>。具体的，<code>software-properties-common</code> 包是 <code>python-software-properties</code> 的备用包，当系统版本在<code>12.04</code>一下，使用 <code>python-software-properties</code>，当系统版本在<code>12.10</code>以上，使用<code>software-properties-common</code>。</p>
+<p><strong>2、将google云盘当成一个盘符挂载到colab上</strong></p>
+<p>使用 <code>google-drive-ocamlfuse</code>  将云盘文件夹和远程的VM链接起来，方便文件共享操作。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!mkdir -p drive</span><br><span class="line">!google-drive-ocamlfuse drive</span><br></pre></td></tr></table></figure>
-<p>路径：</p>
-<p>\content\drive...</p>
-<p><strong>取消挂载</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fusermount -u ***</span><br></pre></td></tr></table></figure>
+<p>路径：<code>\content\drive\...</code>,后期文件操作啥的就可以与云盘交互了。</p>
+<p><strong>3、取消挂载</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fusermount -u ***pathName***</span><br></pre></td></tr></table></figure>
+<p>注意，<code>colab</code>一次只能免费使用最多<code>12</code>小时，过期会自动释放掉之前配置的虚拟环境，那么就需要每次使用时都执行上述操作，可以将其保存成一个文件，每次使用执行一下即可。</p>
 
           
         
@@ -2715,7 +2716,7 @@
     
       <span class="post-meta-item-text">本站共计&#58;</span>
     
-    <span title="本站共计">32.8k 字</span>
+    <span title="本站共计">32.9k 字</span>
   
 </div>
 
