@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="笔记," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -89,9 +89,8 @@
 
 
 <meta name="description" content="一、IPSec协议简介IPSec是IETF制定的为保证在Internet上传送数据的安全保密性能的三层隧道加密协议。IPSec是应用于IP层上网络数据安全的一整套体系结构，他包括报文首部认证协议（ Authentication Header, AH）、封装安全载荷协议(Encapsulating Security Payload, ESP)、互联网间密钥交换协议(Internet Key Exch">
-<meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IPSec VPN搭建及协议解析">
+<meta property="og:title" content="来呀，不服抓个包~~">
 <meta property="og:url" content="https://wangjibao.com.cn/2019/07/02/IPSec-VPN搭建及协议解析/index.html">
 <meta property="og:site_name" content="来呀，不服抓个包~~">
 <meta property="og:description" content="一、IPSec协议简介IPSec是IETF制定的为保证在Internet上传送数据的安全保密性能的三层隧道加密协议。IPSec是应用于IP层上网络数据安全的一整套体系结构，他包括报文首部认证协议（ Authentication Header, AH）、封装安全载荷协议(Encapsulating Security Payload, ESP)、互联网间密钥交换协议(Internet Key Exch">
@@ -107,9 +106,9 @@
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/02/IPSec-VPN搭建及协议解析/nat3.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/02/IPSec-VPN搭建及协议解析/nat4.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/02/IPSec-VPN搭建及协议解析/feature.jpg">
-<meta property="og:updated_time" content="2019-07-03T01:16:34.200Z">
+<meta property="og:updated_time" content="2019-07-03T01:32:07.646Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IPSec VPN搭建及协议解析">
+<meta name="twitter:title" content="来呀，不服抓个包~~">
 <meta name="twitter:description" content="一、IPSec协议简介IPSec是IETF制定的为保证在Internet上传送数据的安全保密性能的三层隧道加密协议。IPSec是应用于IP层上网络数据安全的一整套体系结构，他包括报文首部认证协议（ Authentication Header, AH）、封装安全载荷协议(Encapsulating Security Payload, ESP)、互联网间密钥交换协议(Internet Key Exch">
 <meta name="twitter:image" content="https://wangjibao.com.cn/2019/07/02/IPSec-VPN搭建及协议解析/vpnsetup.png">
 
@@ -147,7 +146,7 @@
 
 
 
-  <title>IPSec VPN搭建及协议解析 | 来呀，不服抓个包~~</title>
+  <title> | 来呀，不服抓个包~~</title>
   
 
 
@@ -347,7 +346,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">IPSec VPN搭建及协议解析</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -375,34 +374,12 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T09:16:34+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T09:32:07+08:00">
                 2019-07-03
               </time>
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -421,7 +398,7 @@
 
           
           
-             <span id="/2019/07/02/IPSec-VPN搭建及协议解析/" class="leancloud_visitors" data-flag-title="IPSec VPN搭建及协议解析">
+             <span id="/2019/07/02/IPSec-VPN搭建及协议解析/" class="leancloud_visitors" data-flag-title="">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -489,8 +466,9 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://git.io/vpnsetup -O vpnsetup.sh</span><br></pre></td></tr></table></figure>
 <p>之后，在<code>vpnsetup.sh</code>文件中，设置<code>YOUR_IPSEC_PSK, YOUR_USERNAME 和 YOUR_PASSWORD</code>三个字段，如下图：</p>
 <p><img src="/2019/07/02/IPSec-VPN搭建及协议解析/vpnsetup.png" alt=""></p>
+<a id="more"></a>
 <p>最后，通过命令 <code>sudo sh vpnsetup.sh</code> 启动服务器的 <code>ipsec vpn</code>服务。接下来，就是客户端的配置，以安卓手机为例：</p>
-<p>​         <img src="/2019/07/02/IPSec-VPN搭建及协议解析/ipsec1.png" alt="">               <img src="/2019/07/02/IPSec-VPN搭建及协议解析/ipsec2.png" alt=""></p>
+<p>   <img src="/2019/07/02/IPSec-VPN搭建及协议解析/ipsec1.png" alt="">     <img src="/2019/07/02/IPSec-VPN搭建及协议解析/ipsec2.png" alt=""></p>
 <p>选择对应的 <code>VPN</code> 添加类型，其中<code>IPSec Xauth</code> 类型也称 <code>Cisco IPsec</code> 模式，更加高效一些。填写好服务器地址、预共享密钥<code>(PSK)</code> 、用户名和密码后，即可使用该 <code>VPN</code>，如果服务器在香港或国外的话，即可实现<code>翻墙</code>的功能。</p>
 <h4 id="三、IPSec协议解析"><a href="#三、IPSec协议解析" class="headerlink" title="三、IPSec协议解析"></a>三、<code>IPSec</code>协议解析</h4><p><code>IPSec</code>主要包括两部分协议，分别是 <code>ISAKMP</code> 协议和 <code>ESP</code>协议，可使用<code>wireshark</code>采集以上两种协议的报文。</p>
 <p><strong>(1) <code>ISAKMP</code>协议</strong></p>
@@ -609,12 +587,6 @@
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
-          
-        </div>
       
 
       
@@ -791,7 +763,7 @@
       			    
       			    
       			      <li>
-      			        <a href="/2019/07/02/IPSec-VPN搭建及协议解析/" title="IPSec VPN搭建及协议解析" target="_blank">IPSec VPN搭建及协议解析</a>
+      			        <a href="/2019/07/02/IPSec-VPN搭建及协议解析/" title="" target="_blank"></a>
       			      </li>
       			    
       			      <li>
