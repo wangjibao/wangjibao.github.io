@@ -98,7 +98,6 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/02/IPSec-VPN搭建及协议解析/vpnsetup.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/02/IPSec-VPN搭建及协议解析/ipsec1.png">
-<meta property="og:image" content="https://wangjibao.com.cn/2019/07/02/IPSec-VPN搭建及协议解析/ipsec2.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/02/IPSec-VPN搭建及协议解析/isakmp.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/02/IPSec-VPN搭建及协议解析/isakmp_1.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/02/IPSec-VPN搭建及协议解析/esp.png">
@@ -107,7 +106,7 @@
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/02/IPSec-VPN搭建及协议解析/nat3.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/02/IPSec-VPN搭建及协议解析/nat4.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/02/IPSec-VPN搭建及协议解析/feature.jpg">
-<meta property="og:updated_time" content="2019-07-03T01:38:26.222Z">
+<meta property="og:updated_time" content="2019-07-03T01:42:36.710Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IPSec VPN搭建及协议解析">
 <meta name="twitter:description" content="一、IPSec协议简介IPSec是IETF制定的为保证在Internet上传送数据的安全保密性能的三层隧道加密协议。IPSec是应用于IP层上网络数据安全的一整套体系结构，他包括报文首部认证协议（ Authentication Header, AH）、封装安全载荷协议(Encapsulating Security Payload, ESP)、互联网间密钥交换协议(Internet Key Exch">
@@ -375,7 +374,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T09:38:26+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T09:42:36+08:00">
                 2019-07-03
               </time>
             
@@ -491,7 +490,7 @@
 <p><img src="/2019/07/02/IPSec-VPN搭建及协议解析/vpnsetup.png" alt=""></p>
 <a id="more"></a>
 <p>最后，通过命令 <code>sudo sh vpnsetup.sh</code> 启动服务器的 <code>ipsec vpn</code>服务。接下来，就是客户端的配置，以安卓手机为例：</p>
-<p><img src="/2019/07/02/IPSec-VPN搭建及协议解析/ipsec1.png" alt=""><img src="/2019/07/02/IPSec-VPN搭建及协议解析/ipsec2.png" alt=""></p>
+<p><img src="/2019/07/02/IPSec-VPN搭建及协议解析/ipsec1.png" alt=""></p>
 <p>选择对应的 <code>VPN</code> 添加类型，其中<code>IPSec Xauth</code> 类型也称 <code>Cisco IPsec</code> 模式，更加高效一些。填写好服务器地址、预共享密钥<code>(PSK)</code> 、用户名和密码后，即可使用该 <code>VPN</code>，如果服务器在香港或国外的话，即可实现<code>翻墙</code>的功能。</p>
 <h4 id="三、IPSec协议解析"><a href="#三、IPSec协议解析" class="headerlink" title="三、IPSec协议解析"></a>三、<code>IPSec</code>协议解析</h4><p><code>IPSec</code>主要包括两部分协议，分别是 <code>ISAKMP</code> 协议和 <code>ESP</code>协议，可使用<code>wireshark</code>采集以上两种协议的报文。</p>
 <p><strong>(1) <code>ISAKMP</code>协议</strong></p>
