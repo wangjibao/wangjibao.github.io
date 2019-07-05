@@ -109,7 +109,7 @@
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/05/HTTP2协议解析及抓包分析/h2_9.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/05/HTTP2协议解析及抓包分析/h2_10.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/05/HTTP2协议解析及抓包分析/h2_11.png">
-<meta property="og:updated_time" content="2019-07-05T12:30:22.953Z">
+<meta property="og:updated_time" content="2019-07-05T12:34:48.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP2协议解析及抓包分析">
 <meta name="twitter:description" content="一、HTTP2协议简介1、HTTP2的帧格式HTTP2的所有帧都是由一个固定的9字节头部（payload之前）和一个指定长度的负载（payload）组成，如下图所示：  其中，Stream Identifier用作流控制，用31位无符号整数表示。客户端建立的sid必须为奇数，服务端建立的sid必须为偶数，值（0x0）保留给与整个连接相关联的帧（连接控制消息），而不是单个流。 Frame Paylo">
@@ -377,7 +377,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-05T20:30:22+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-05T20:34:48+08:00">
                 2019-07-05
               </time>
             
@@ -515,7 +515,8 @@
 <p><img src="/2019/07/05/HTTP2协议解析及抓包分析/h2_4.png" alt=""></p>
 <p>3、在<code>wireshark</code>中，<code>分析 &gt;&gt; 已解析的协议...</code>中，启用<code>HTTP2</code>的解析。并在 <code>编辑 &gt;&gt; 首选项 &gt;&gt; Protocols &gt;&gt; TLS</code> 中，配置 <code>(Pre)-Master-Secret</code> 为之前创建的<code>log</code>文件，之后，<code>wireshark</code>就可以凭借此文件中的秘钥解密<code>HTTP2</code>中的各个加密字段，便于我们进行协议分析。</p>
 <p><img src="/2019/07/05/HTTP2协议解析及抓包分析/h2_2.png" alt=""></p>
-<h4 id="三、HTTP2协议数据包解析"><a href="#三、HTTP2协议数据包解析" class="headerlink" title="三、HTTP2协议数据包解析"></a>三、HTTP2协议数据包解析</h4><p><img src="/2019/07/05/HTTP2协议解析及抓包分析/h2_3.png" alt=""></p>
+<h4 id="三、HTTP2协议数据包解析"><a href="#三、HTTP2协议数据包解析" class="headerlink" title="三、HTTP2协议数据包解析"></a>三、HTTP2协议数据包解析</h4><p>数据包<a href="/download/h2.rar">点击下载</a></p>
+<p><img src="/2019/07/05/HTTP2协议解析及抓包分析/h2_3.png" alt=""></p>
 <p>1、从上图可以看到，<code>HTTP2</code>协议的工作流程为：建立<code>TCP</code>连接、建立<code>TLS</code>连接、<code>HTTP2</code>通信，断开<code>TCP</code>连接 四个过程。在<code>Client Hello</code>中，客户端再扩展字段中会说明其所支持的协议，指定<code>ALPN Next Protocol</code> 为 <code>h2</code> 或 <code>HTTP/1.1</code>。之后，服务端在<code>Server Hello</code>中，回复所协商的接下来使用的应用层协议。如下图：</p>
 <p><img src="/2019/07/05/HTTP2协议解析及抓包分析/h2_5.png" alt=""></p>
 <p>2、在<code>TLS</code>连接过程中，如果服务器支持<code>session ticket</code>，则发送<code>New Session Ticket</code>类型的握手报文，其中包含了能够恢复包括主密钥在内的会话信息。为了不让中间人可见，这个<code>session ticket</code>部分会进行编码、加密等操作，同时，还会指定此<code>ticket</code>的过期时间等。</p>
