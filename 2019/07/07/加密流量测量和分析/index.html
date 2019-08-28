@@ -100,7 +100,7 @@
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/07/加密流量测量和分析/feature.jpg">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/07/加密流量测量和分析/1.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/07/加密流量测量和分析/2.png">
-<meta property="og:updated_time" content="2019-08-28T07:06:00.314Z">
+<meta property="og:updated_time" content="2019-08-28T07:08:32.286Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="加密流量测量和分析">
 <meta name="twitter:description" content="一、加密与非加密流量识别1、利用 信息熵 的方法对加密流量进行识别。 对不同类型的文件，如文本、图片、压缩文件、加密文件等的前 1KB  数据的熵进行计算分析，可以发现文本文件的熵处于较低水平，压缩文件和加密文件的熵处于较高的水平，且两者较难区分。 多元组熵的定义： （1）n元字符组集合指以大小为 n 的滑动窗口对报文序列 P 进行切割后得到的字符串 $s_i (1 \le i \le L-n+1">
@@ -368,7 +368,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-28T15:06:00+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-28T15:08:32+08:00">
                 2019-08-28
               </time>
             
@@ -480,8 +480,8 @@
 <p>多元组熵的定义：</p>
 <p>（1）n元字符组集合指以大小为 n 的滑动窗口对报文序列 P 进行切割后得到的字符串 $s_i (1 \le i \le L-n+1)$ 的集合，L 表示分析报文序列以 <strong>字节</strong> 为单位的长度：<br>$$<br>S_n = \lbrace s_1, s_2, …, s_{L-n+1} \rbrace<br>$$<br> 如 <code>“data.dat”</code> 对应的二元字符组集合为 $S_2 = \lbrace da, at, ta, a., .d, da, at \rbrace​$。</p>
 <a id="more"></a>
-<p>（2）从 n 元字符组集合中各元素出现的频率进行考虑，选择 n 元字符组集合中出现频数高于 k 的元素 $s\prime_{i, k}(1 \le i \le m)$ ，并统计其在集合中出现的频数 $f_{i, k}$ ，组成 k 频 n 元字符组集合为：<br>$$<br>S\prime _{n, k} = \lbrace s\prime <em>{1, k}:f</em>{1, k} ,\ \ s\prime <em>{2, k}:f</em>{2,k}, \ … \ ,s\prime_{m, k}:f_{m, k}\rbrace<br>$$<br>其中，频数阈值 k 为 [1, L-n+1] 区间内的整数， $m(0 \le m \le n)​$ 表示频数不小于 k 的不重复元素的个数。在上文例子中，若取 $n=2, k=1​$ ，则有 $S\prime_{2,1} = \lbrace da:2,\  at:2,\  ta:1,\  a.:1,\  .d:1\rbrace​$ ; 若取 n=2, k=2, 则有 $S\prime_{2,2} = \lbrace da:2, \ at:2\rbrace​$。</p>
-<p>根据以上定义， k 频 n 元字符组集合 $S’<em>{n,k}​$ 的信息熵可以表示为：<br>$$<br>H</em>{n,k} = -\sum_{i=1}^{m} P(s\prime_{i,k}) log_2P(s\prime_{i,k})<br>$$<br>其中，$P\prime_{i,k} = f_{i,k}/\sum_{t=1}^{m}f_{t,k}$。</p>
+<p>（2）从 n 元字符组集合中各元素出现的频率进行考虑，选择 n 元字符组集合中出现频数高于 k 的元素 $s\prime_{i, k}(1 \le i \le m)​$ ，并统计其在集合中出现的频数 $f_{i, k}​$ ，组成 k 频 n 元字符组集合为：<br>$$<br>S\prime <em>{n, k} = \lbrace s\prime</em>{1, k}:f_{1, k} ,\ \ s\prime_{2, k}:f_{2,k}, \ … \ ,s\prime_{m, k}:f_{m, k}\rbrace<br>$$<br>其中，频数阈值 k 为 [1, L-n+1] 区间内的整数， $m(0 \le m \le n)​$ 表示频数不小于 k 的不重复元素的个数。在上文例子中，若取 $n=2, k=1​$ ，则有 $S\prime_{2,1} = \lbrace da:2,\  at:2,\  ta:1,\  a.:1,\  .d:1\rbrace​$ ; 若取 n=2, k=2, 则有 $S\prime_{2,2} = \lbrace da:2, \ at:2\rbrace​$。</p>
+<p>根据以上定义， k 频 n 元字符组集合 $S’<em>{n,k}​$ 的信息熵可以表示为：<br>$$<br>H</em>{n,k} = -\sum_{i=1}^{m} P(s\prime_{i,k}) log_2P(s\prime_{i,k})<br>$$<br>其中，$P\prime_{i,k} = f_{i,k}/\sum_{t=1}^{m}f_{t,k}​$。</p>
 <p>（3）若对长度 n, 频数阈值 k 各取不同的值时，则可以得到一系列关于报文序列 P 的熵值特征，就构成了多元组熵值特征集：<br>$$<br>H = \lbrace H_{n,k} \ \rvert \ n \in[N_a, N_b], k \in [K_a, K_b] \rbrace<br>$$<br>其中，H 中元素(熵值) 的个数为 $(N_b - N_a) \times (K_b - K_a)​$ 。一般地，对 n, k 的取值区间分别定义为 $[1, N]  和 [1, K]​$ 。在上例中，取 N=2, K=2，则序列 <code>“data.dat”</code> 的多元熵值特征集为 $H = \lbrace H_{1,1}\approx1.906, \ H_{1,2}\approx0.835, \ H_{2,1}\approx1.514, H_{2,2}\approx1\rbrace​$。</p>
 <p>2、利用 <strong>累加和检测</strong> 的方法对加密流量进行识别。</p>
 <p>多元组熵是以字节为单位的随机性检测，其需要一定数量的数据，计算相对复杂；而累加和检验是以比特位单位的随机性检测，通常只需要较少的数据即可有较好的检验效果，且具有较快的计算速度。</p>
