@@ -812,8 +812,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-04T15:26:43+08:00">
-                2019-08-04
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-28T14:46:13+08:00">
+                2019-08-28
               </time>
             
           </span>
@@ -923,9 +923,7 @@
           <h5 id="一、加密与非加密流量识别"><a href="#一、加密与非加密流量识别" class="headerlink" title="一、加密与非加密流量识别"></a>一、加密与非加密流量识别</h5><p>1、利用 <strong>信息熵</strong> 的方法对加密流量进行识别。</p>
 <p>对不同类型的文件，如文本、图片、压缩文件、加密文件等的前 <strong><code>1KB</code></strong>  数据的熵进行计算分析，可以发现文本文件的熵处于较低水平，压缩文件和加密文件的熵处于较高的水平，且两者较难区分。</p>
 <p>多元组熵的定义：</p>
-<p>（1）n元字符组集合指以大小为 n 的滑动窗口对报文序列 P 进行切割后得到的字符串 $s_i (1 \le i \le L-n+1)$ 的集合，L 表示分析报文序列以 <strong>字节</strong> 为单位的长度：</p>
-<p>​                                                                        $$S_n = {s_1, s_2, …, s_{L-n+1}}​$$</p>
-<p> 如 <code>“data.dat”</code> 对应的二元字符组集合为 $S_2 = {da, at, ta, a., .d, da, at}​$。</p>
+<p>（1）n元字符组集合指以大小为 n 的滑动窗口对报文序列 P 进行切割后得到的字符串 $s_i (1 \le i \le L-n+1)$ 的集合，L 表示分析报文序列以 <strong>字节</strong> 为单位的长度：<br>$$<br>S_n = \lbrace s_1, s_2, …, s_{L-n+1} \rbrace<br>$$<br> 如 <code>“data.dat”</code> 对应的二元字符组集合为 $S_2 = \lbrace da, at, ta, a., .d, da, at \rbrace​$。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/07/07/加密流量测量和分析/#more" rel="contents">

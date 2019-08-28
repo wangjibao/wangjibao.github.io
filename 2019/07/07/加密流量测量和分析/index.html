@@ -98,7 +98,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/07/加密流量测量和分析/FSEN.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/07/07/加密流量测量和分析/feature.jpg">
-<meta property="og:updated_time" content="2019-08-04T07:26:43.902Z">
+<meta property="og:updated_time" content="2019-08-28T06:46:13.792Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="加密流量测量和分析">
 <meta name="twitter:description" content="一、加密与非加密流量识别1、利用 信息熵 的方法对加密流量进行识别。 对不同类型的文件，如文本、图片、压缩文件、加密文件等的前 1KB  数据的熵进行计算分析，可以发现文本文件的熵处于较低水平，压缩文件和加密文件的熵处于较高的水平，且两者较难区分。 多元组熵的定义： （1）n元字符组集合指以大小为 n 的滑动窗口对报文序列 P 进行切割后得到的字符串 $s_i (1 \le i \le L-n+1">
@@ -366,8 +366,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-04T15:26:43+08:00">
-                2019-08-04
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-28T14:46:13+08:00">
+                2019-08-28
               </time>
             
           </span>
@@ -476,13 +476,9 @@
         <h5 id="一、加密与非加密流量识别"><a href="#一、加密与非加密流量识别" class="headerlink" title="一、加密与非加密流量识别"></a>一、加密与非加密流量识别</h5><p>1、利用 <strong>信息熵</strong> 的方法对加密流量进行识别。</p>
 <p>对不同类型的文件，如文本、图片、压缩文件、加密文件等的前 <strong><code>1KB</code></strong>  数据的熵进行计算分析，可以发现文本文件的熵处于较低水平，压缩文件和加密文件的熵处于较高的水平，且两者较难区分。</p>
 <p>多元组熵的定义：</p>
-<p>（1）n元字符组集合指以大小为 n 的滑动窗口对报文序列 P 进行切割后得到的字符串 $s_i (1 \le i \le L-n+1)$ 的集合，L 表示分析报文序列以 <strong>字节</strong> 为单位的长度：</p>
-<p>​                                                                        $$S_n = {s_1, s_2, …, s_{L-n+1}}​$$</p>
-<p> 如 <code>“data.dat”</code> 对应的二元字符组集合为 $S_2 = {da, at, ta, a., .d, da, at}​$。</p>
+<p>（1）n元字符组集合指以大小为 n 的滑动窗口对报文序列 P 进行切割后得到的字符串 $s_i (1 \le i \le L-n+1)$ 的集合，L 表示分析报文序列以 <strong>字节</strong> 为单位的长度：<br>$$<br>S_n = \lbrace s_1, s_2, …, s_{L-n+1} \rbrace<br>$$<br> 如 <code>“data.dat”</code> 对应的二元字符组集合为 $S_2 = \lbrace da, at, ta, a., .d, da, at \rbrace​$。</p>
 <a id="more"></a>
-<p>（2）从 n 元字符组集合中各元素出现的频率进行考虑，选择 n 元字符组集合中出现频数高于 k 的元素 $s’<em>{i, k}(1 \le i \le m)​$ ，并统计其在集合中出现的频数 $f</em>{i, k}​$ ，组成 k 频 n 元字符组集合为：</p>
-<p>​                                                 $$S’<em>{n, k} = {s’</em>{1, k}:f_{1, k} ,\ \ s’<em>{2, k}:f</em>{2,k}, \ … \ ,s’<em>{m, k}:f</em>{m, k}}​$$</p>
-<p>其中，频数阈值 k 为 [1, L-n+1] 区间内的整数， $m(0 \le m \le n)​$ 表示频数不小于 k 的不重复元素的个数。在上文例子中，若取 $n=2, k=1​$ ，则有 $S’<em>{2,1} = {da:2,\  at:2,\  ta:1,\  a.:1,\  .d:1}​$ ; 若取 n=2, k=2, 则有 $S’</em>{2,2} = {da:2, \ at:2}​$。</p>
+<p>（2）从 n 元字符组集合中各元素出现的频率进行考虑，选择 n 元字符组集合中出现频数高于 k 的元素 $s’<em>{i, k}(1 \le i \le m)$ ，并统计其在集合中出现的频数 $f</em>{i, k}$ ，组成 k 频 n 元字符组集合为：<br>$$<br>S’<em>{n, k} = {s’</em>{1, k}:f_{1, k} ,\ \ s’<em>{2, k}:f</em>{2,k}, \ … \ ,s’<em>{m, k}:f</em>{m, k}}<br>$$<br>其中，频数阈值 k 为 [1, L-n+1] 区间内的整数， $m(0 \le m \le n)​$ 表示频数不小于 k 的不重复元素的个数。在上文例子中，若取 $n=2, k=1​$ ，则有 $S’<em>{2,1} = {da:2,\  at:2,\  ta:1,\  a.:1,\  .d:1}​$ ; 若取 n=2, k=2, 则有 $S’</em>{2,2} = {da:2, \ at:2}​$。</p>
 <p>根据以上定义， k 频 n 元字符组集合 $S’_{n,k}$ 的信息熵可以表示为：</p>
 <p>​                                                                    $$H_{n,k} = -\sum_{i=1}^{m} P(s’_{i,k}) log_2P(s’_{i,k})$$</p>
 <p>其中，$P’<em>{i,k} = f</em>{i,k}/\sum_{t=1}^{m}f_{t,k}$。</p>
