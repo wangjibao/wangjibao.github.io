@@ -98,7 +98,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/10/22/Docker实战笔记/daemon.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/10/22/Docker实战笔记/table.png">
-<meta property="og:updated_time" content="2019-10-22T06:18:29.213Z">
+<meta property="og:updated_time" content="2019-10-22T06:20:39.454Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker实战笔记">
 <meta name="twitter:description" content="闲来没事苟着，顺手读读之前买的已经落灰的书《Docker实战》。 1、daemon（守护进程），运行中的 docker 由守护进程（服务端）和客户端组成(通过unix域间套接字通信），比如说，执行：docker ps -a 命令，是客户端将命令传送给守护进程，由守护进程发送对应的响应给前端，前端解析并显示。可以通过如下操作查看docker守护进程和客户端的通信过程:1234sudo socat -">
@@ -366,7 +366,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-22T14:18:29+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-22T14:20:39+08:00">
                 2019-10-22
               </time>
             
@@ -475,6 +475,7 @@
       
         <p>闲来没事苟着，顺手读读之前买的已经落灰的书《Docker实战》。</p>
 <p>1、<code>daemon</code>（守护进程），运行中的 <code>docker</code> 由守护进程（服务端）和客户端组成(通过unix域间套接字通信），比如说，执行：<code>docker ps -a</code> 命令，是客户端将命令传送给守护进程，由守护进程发送对应的响应给前端，前端解析并显示。可以通过如下操作查看<code>docker</code>守护进程和客户端的通信过程:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo socat -v UNIX-LISTEN:/tmp/dockerapi.sock UNIX-CONNECT:/var/run/docker.sock</span><br><span class="line"><span class="meta">#</span># 其中 socat 是 netcat(nc) 命令的升级版，-v 参数有助于人阅读 address1 address2 可以是 tcp、udp或 socket等</span><br><span class="line">docker -H unix:///tmp/dockerapi.sock ps -a</span><br><span class="line"><span class="meta">#</span>#  -H 参数指定 docker daemon socket(s) to connect to.</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>两者直接通过 <code>HTTP</code> 通信，客户端解析返回的 <code>json</code> 并显示，运行结果如下：<br><img src="/2019/10/22/Docker实战笔记/daemon.png" alt=""></p>
 <p>2、以服务方式在后台运行一个 <code>docker</code> 容器（docker最主要的功能之一），使用 <code>docker run -p ***</code>  命令。不然的话，需要使用类似 <code>nohup docker run *** &amp;</code> 的方式来实现此功能。</p>
 <p>3、<code>docker</code> 中的端口映射—将容器的某端口暴露给宿主机的某端口，便于外界访问容器中的功能：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 宿主机端口：容器端口 --name 容器名 使用的镜像名</span><br></pre></td></tr></table></figure></p>
