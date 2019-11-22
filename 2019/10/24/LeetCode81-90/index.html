@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="LeetCode," />
 
 
 
@@ -88,17 +88,18 @@
 
 
 
-<meta name="description" content="机会总是留给有准备的人">
+<meta name="description" content="81、搜索旋转排序数组 II二分搜索，注意第 34 行的 L = L + 1 的条件判断，在最坏情况下，会使得该二分搜索退化为 O(N) 的时间复杂度。 123456789101112131415161718192021222324252627282930313233343536373839class Solution &amp;#123;public:    bool search(vector&amp;lt;">
+<meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode81-90">
 <meta property="og:url" content="https://wangjibao.com.cn/2019/10/24/LeetCode81-90/index.html">
 <meta property="og:site_name" content="来呀，不服抓个包~~">
-<meta property="og:description" content="机会总是留给有准备的人">
+<meta property="og:description" content="81、搜索旋转排序数组 II二分搜索，注意第 34 行的 L = L + 1 的条件判断，在最坏情况下，会使得该二分搜索退化为 O(N) 的时间复杂度。 123456789101112131415161718192021222324252627282930313233343536373839class Solution &amp;#123;public:    bool search(vector&amp;lt;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-24T01:33:41.411Z">
+<meta property="og:updated_time" content="2019-11-08T02:19:00.123Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode81-90">
-<meta name="twitter:description" content="机会总是留给有准备的人">
+<meta name="twitter:description" content="81、搜索旋转排序数组 II二分搜索，注意第 34 行的 L = L + 1 的条件判断，在最坏情况下，会使得该二分搜索退化为 O(N) 的时间复杂度。 123456789101112131415161718192021222324252627282930313233343536373839class Solution &amp;#123;public:    bool search(vector&amp;lt;">
 
 
 
@@ -362,12 +363,45 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-24T09:33:41+08:00">
-                2019-10-24
+              <time title="更新于" itemprop="dateModified" datetime="2019-11-08T10:19:00+08:00">
+                2019-11-08
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/LeetCode81-90/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode81-90</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -411,7 +445,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0 字
+                  838 字
                 </span>
               
 
@@ -427,7 +461,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -447,7 +481,19 @@
       
 
       
-        
+        <h2 id="81、搜索旋转排序数组-II"><a href="#81、搜索旋转排序数组-II" class="headerlink" title="81、搜索旋转排序数组 II"></a>81、<a href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii/" target="_blank" rel="noopener">搜索旋转排序数组 II</a></h2><p>二分搜索，注意第 <code>34</code> 行的 <code>L = L + 1</code> 的条件判断，在最坏情况下，会使得该二分搜索退化为 <code>O(N)</code> 的时间复杂度。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">search</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.size()==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">int</span> L = <span class="number">0</span>, R = nums.size()<span class="number">-1</span>, mid;</span><br><span class="line">        <span class="keyword">while</span>(L &lt;= R)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"L: "</span> &lt;&lt; L &lt;&lt; <span class="string">",  R: "</span> &lt;&lt; R &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            mid = (L + R) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid]&gt;nums[L])&#123;</span><br><span class="line">                <span class="keyword">if</span>(target==nums[mid])</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(target&gt;nums[mid])</span><br><span class="line">                    L = mid + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(target&gt;=nums[L])</span><br><span class="line">                    R = mid - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    L = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid]&lt;nums[L])&#123;</span><br><span class="line">                <span class="keyword">if</span>(target==nums[mid])</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(target&lt;nums[mid])</span><br><span class="line">                    R = mid - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(target&lt;=nums[R])</span><br><span class="line">                    L = mid + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    R = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123; <span class="comment">// nums[mid] == nums[L]</span></span><br><span class="line">                <span class="keyword">if</span>(target==nums[mid])</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    L = L + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="82、删除排序链表中的重复元素-II"><a href="#82、删除排序链表中的重复元素-II" class="headerlink" title="82、删除排序链表中的重复元素 II"></a>82、<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/" target="_blank" rel="noopener">删除排序链表中的重复元素 II</a></h2><p>模拟题</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">deleteDuplicates</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!head)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        ListNode *new_head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode *new_p = new_head, *ptr=head;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> num = <span class="number">1e10</span>;</span><br><span class="line">        <span class="keyword">while</span>(ptr!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(ptr-&gt;next!=<span class="literal">NULL</span> &amp;&amp; ptr-&gt;val==ptr-&gt;next-&gt;val)&#123;</span><br><span class="line">                num = ptr-&gt;val;</span><br><span class="line">                ptr = ptr-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>((<span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span>)(ptr-&gt;val)==num)&#123;</span><br><span class="line">                ptr = ptr-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                new_p-&gt;next = ptr;</span><br><span class="line">                ptr = ptr-&gt;next;</span><br><span class="line">                new_p = new_p-&gt;next;</span><br><span class="line">                new_p-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> new_head-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="83、删除排序链表中的重复元素"><a href="#83、删除排序链表中的重复元素" class="headerlink" title="83、删除排序链表中的重复元素"></a>83、<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/" target="_blank" rel="noopener">删除排序链表中的重复元素</a></h2><p>模拟题，线上代码铁定不能这么写，内存泄露有木有！</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">deleteDuplicates</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode *new_head = head, *p = head;</span><br><span class="line">        <span class="keyword">while</span>(p!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p-&gt;next!=<span class="literal">NULL</span> &amp;&amp; p-&gt;val==p-&gt;next-&gt;val)&#123;</span><br><span class="line">                p-&gt;next = p-&gt;next-&gt;next;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> new_head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="84、柱状图中最大的矩形"><a href="#84、柱状图中最大的矩形" class="headerlink" title="84、柱状图中最大的矩形"></a>84、<a href="https://leetcode-cn.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">柱状图中最大的矩形</a></h2><p>一个很自然的想法是，以当前柱子为高，向两边遍历，时间复杂度为 $O(n^2)$。降低复杂度的关键是，如何快速找到以当前柱子为高的左右边界<code>left_index 和 right_index</code>，维护一个单调的递增栈 <code>&gt;=</code>，即可快速找到 <code>left_index 和 right_index</code>。具体如代码第 14 行所示，整体时间复杂度为  $O(n)$ 。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">largestRectangleArea</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; heights)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(heights.size()==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; index;</span><br><span class="line">        index.push(<span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">int</span> max_area = <span class="number">0</span>, N = heights.size(), h;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;N; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(index.size()&gt;<span class="number">1</span> &amp;&amp; heights[i]&lt;heights[index.top()])&#123;</span><br><span class="line">                <span class="keyword">while</span>(index.size()&gt;<span class="number">1</span> &amp;&amp; heights[i]&lt;heights[index.top()])&#123;</span><br><span class="line">                    h = heights[index.top()];</span><br><span class="line">                    index.pop();</span><br><span class="line">                    max_area = max(max_area, h*(i-index.top()<span class="number">-1</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            index.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(index.size()&gt;<span class="number">1</span>)&#123;</span><br><span class="line">            h = heights[index.top()];</span><br><span class="line">            index.pop();</span><br><span class="line">            max_area = max(max_area, h*(N-index.top()<span class="number">-1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max_area;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="85、"><a href="#85、" class="headerlink" title="85、"></a>85、</h2><h2 id="86、分隔链表"><a href="#86、分隔链表" class="headerlink" title="86、分隔链表"></a>86、<a href="https://leetcode-cn.com/problems/partition-list/" target="_blank" rel="noopener">分隔链表</a></h2><p>使用两个指针即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">partition</span><span class="params">(ListNode* head, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        ListNode *big_head = <span class="keyword">new</span> ListNode(<span class="number">0</span>), *small_head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode *big_p = big_head, *small_p = small_head, *p = head;</span><br><span class="line">        <span class="keyword">while</span>(p)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p-&gt;val &lt; x)&#123;</span><br><span class="line">                small_p-&gt;next = p;</span><br><span class="line">                p = p-&gt;next;</span><br><span class="line">                small_p = small_p-&gt;next;</span><br><span class="line">                small_p-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                big_p-&gt;next = p;</span><br><span class="line">                p = p-&gt;next;</span><br><span class="line">                big_p = big_p-&gt;next;</span><br><span class="line">                big_p-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        small_p-&gt;next = big_head-&gt;next;</span><br><span class="line">        <span class="keyword">return</span> small_head-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="88、合并两个有序数组"><a href="#88、合并两个有序数组" class="headerlink" title="88、合并两个有序数组"></a>88、<a href="https://leetcode-cn.com/problems/merge-sorted-array/" target="_blank" rel="noopener">合并两个有序数组</a></h2><p>一个小的 <code>trick</code> 是从后往前遍历，时间复杂度 $O(n+m)$, 空间复杂度 $O(1)$ 。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p1 = m<span class="number">-1</span>, p2 = n<span class="number">-1</span>, index = m+n<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(p1&gt;=<span class="number">0</span> &amp;&amp; p2&gt;=<span class="number">0</span>)</span><br><span class="line">            nums1[index--] = nums1[p1]&gt;=nums2[p2]? nums1[p1--] : nums2[p2--];</span><br><span class="line">        <span class="keyword">while</span>(p1+p2&gt;=<span class="number">-1</span>)</span><br><span class="line">            nums1[index--] = p1&gt;=<span class="number">0</span>? nums1[p1--] : nums2[p2--];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <div>
@@ -496,6 +542,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
+          
+        </div>
       
 
       
@@ -573,8 +625,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -593,7 +654,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -604,7 +665,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -667,6 +728,10 @@
       			    
       			    
       			      <li>
+      			        <a href="/2019/11/22/Linux环境变量配置/" title="Linux环境变量配置" target="_blank">Linux环境变量配置</a>
+      			      </li>
+      			    
+      			      <li>
       			        <a href="/2019/11/06/Go语言实战阅读笔记/" title="Go语言实战阅读笔记" target="_blank">Go语言实战阅读笔记</a>
       			      </li>
       			    
@@ -680,10 +745,6 @@
       			    
       			      <li>
       			        <a href="/2019/08/28/LeetCode71-80/" title="LeetCode71-80" target="_blank">LeetCode71-80</a>
-      			      </li>
-      			    
-      			      <li>
-      			        <a href="/2019/08/28/LeetCode61-70/" title="LeetCode61-70" target="_blank">LeetCode61-70</a>
       			      </li>
       			    
       			  </ul>
@@ -700,6 +761,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#81、搜索旋转排序数组-II"><span class="nav-text">81、搜索旋转排序数组 II</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#82、删除排序链表中的重复元素-II"><span class="nav-text">82、删除排序链表中的重复元素 II</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#83、删除排序链表中的重复元素"><span class="nav-text">83、删除排序链表中的重复元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#84、柱状图中最大的矩形"><span class="nav-text">84、柱状图中最大的矩形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#85、"><span class="nav-text">85、</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#86、分隔链表"><span class="nav-text">86、分隔链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#88、合并两个有序数组"><span class="nav-text">88、合并两个有序数组</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -728,7 +805,7 @@
     
       <span class="post-meta-item-text">本站共计&#58;</span>
     
-    <span title="本站共计">50.1k 字</span>
+    <span title="本站共计">51.5k 字</span>
   
 </div>
 
