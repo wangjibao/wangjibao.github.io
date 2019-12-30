@@ -106,7 +106,7 @@
 <meta property="og:image" content="https://wangjibao.com.cn/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/nslookup.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/stream.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/client_hello.png">
-<meta property="og:updated_time" content="2019-12-17T03:32:40.826Z">
+<meta property="og:updated_time" content="2019-12-30T08:44:09.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="v2ray+websocket+TLS通过cloudflare转发防IP被ban">
 <meta name="twitter:description" content="一、前言天朝 qiang 越垒越高，买的境外的服务器用时间长了经常会出现 IP 被 ban 的情况，本教程通过 v2ray+websocket(ws)+TLS 将流量伪装成 TLS 流量，即将自己的境外转发服务器伪装成一个网站，并通过 cloudflare 中转，网络流量流经图如下：  这样的话，防火墙就只知道你和 CDN 之间建立了连接，不知道你的 vps 实际的 IP 地址，这样就可以有效的防">
@@ -374,8 +374,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-17T11:32:40+08:00">
-                2019-12-17
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-30T16:44:09+08:00">
+                2019-12-30
               </time>
             
           </span>
@@ -484,6 +484,7 @@
         <h3 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h3><p>天朝 <code>qiang</code> 越垒越高，买的境外的服务器用时间长了经常会出现 <code>IP</code> 被 <code>ban</code> 的情况，本教程通过 <code>v2ray+websocket(ws)+TLS</code> 将流量伪装成 <code>TLS</code> 流量，即将自己的境外转发服务器伪装成一个网站，并通过 <code>cloudflare</code> 中转，网络流量流经图如下：</p>
 <p><img src="/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/cdn_cloudflare.png" alt=""></p>
 <p>这样的话，防火墙就只知道你和 <code>CDN</code> 之间建立了连接，不知道你的 <code>vps</code> 实际的 <code>IP</code> 地址，这样就可以有效的防止你的 <code>IP</code> 被 <code>ban</code>，并且  <code>CDN</code> 会有很多 <code>IP</code> 地址，防火墙也不会随意去 <code>ban</code> 他们的 <code>IP</code>，毕竟也有很多正规的网站在使用，所以基本上可以确保你的 <code>IP</code> 的安全。</p>
+<a id="more"></a>
 <h3 id="二、步骤"><a href="#二、步骤" class="headerlink" title="二、步骤"></a>二、步骤</h3><h4 id="1、购买域名并使用cloudflare进行域名解析"><a href="#1、购买域名并使用cloudflare进行域名解析" class="headerlink" title="1、购买域名并使用cloudflare进行域名解析"></a>1、购买域名并使用<code>cloudflare</code>进行域名解析</h4><p>首先，购买一个域名，我购买的是阿里云的域名，当然也有很多可以免费使用的域名，登录阿里云官网，可以对域名解析进行设置。</p>
 <p>之后，注册一个<code>cloudflare</code>账号，在首页输入自己购买的域名，它会给你分配两个 <code>cloudflare</code> 的 <code>authoritative DNS servers</code> ，具体如下图：</p>
 <p><img src="/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/cloudflare_index.png" alt=""></p>
