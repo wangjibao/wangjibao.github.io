@@ -317,6 +317,676 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjibao.com.cn/2019/12/27/cDCGAN生成指定手写数字--tensorflow2.0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="大宝哥spring">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="来呀，不服抓个包~~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/27/cDCGAN生成指定手写数字--tensorflow2.0/" itemprop="url">cDCGAN生成指定手写数字--tensorflow2.0</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-27T14:16:42+08:00">
+                2019-12-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-30T16:36:48+08:00">
+                2019-12-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/27/cDCGAN生成指定手写数字--tensorflow2.0/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/27/cDCGAN生成指定手写数字--tensorflow2.0/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/12/27/cDCGAN生成指定手写数字--tensorflow2.0/" class="leancloud_visitors" data-flag-title="cDCGAN生成指定手写数字--tensorflow2.0">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>接上一篇<code>DCGAN手写数字生成</code>，虽然它能够生成效果不错的手写数字图片，但它有一个缺点就是不能生成指定数值的数字，好在有一种 <code>GAN</code> 模型叫 <code>cGAN</code>，即 <code>Conditional Generative Adversarial Nets</code>， 出自 <a href="https://arxiv.org/abs/1411.1784" target="_blank" rel="noopener">此篇论文</a>。</p>
+<p>模型结构如下图：</p>
+<p><img src="/2019/12/27/cDCGAN生成指定手写数字--tensorflow2.0/cdcgan_model.png" alt=""></p>
+<p>其损失函数定义：</p>
+<p><img src="/2019/12/27/cDCGAN生成指定手写数字--tensorflow2.0/loss_function.png" alt=""></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/27/cDCGAN生成指定手写数字--tensorflow2.0/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    <div>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjibao.com.cn/2019/12/27/DCGAN手写数字生成--tensorflow2.0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="大宝哥spring">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="来呀，不服抓个包~~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/27/DCGAN手写数字生成--tensorflow2.0/" itemprop="url">DCGAN手写数字生成--tensorflow2.0</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-27T14:16:12+08:00">
+                2019-12-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-30T16:37:10+08:00">
+                2019-12-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/27/DCGAN手写数字生成--tensorflow2.0/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/27/DCGAN手写数字生成--tensorflow2.0/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/12/27/DCGAN手写数字生成--tensorflow2.0/" class="leancloud_visitors" data-flag-title="DCGAN手写数字生成--tensorflow2.0">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>最近忙里偷闲，补一发之前落下的关于一些<code>GAN</code>的<code>tensorflow2.0</code>实现代码。</p>
+<p>首先，<code>GAN</code> ，即生成对抗网络<code>Generative Adversarial Network</code>，由一个生成器<code>Generator</code>和一个判别器<code>Discriminator</code>组成，两者属于 <strong>零和博弈</strong> 的双方，不是你死就是我亡的状态。</p>
+<p>其损失函数一般定义如下：</p>
+<p><img src="/2019/12/27/DCGAN手写数字生成--tensorflow2.0/gan_loss.png" alt=""></p>
+<p>判别器 <code>D</code> 对来自真实数据集的样本 $x\sim p_{data}$ 要输出大概率，越接近 <code>1</code> 越好；对来自生成器生成的样本$z\sim p_z$ 要输出小概率，越接近 <code>0</code> 越好。当然，这是一个零和博弈，对于生成器<code>G</code>来说，其目标与<code>D</code>截然相反，他想使自己生成的样本不能被<code>D</code>识别出来。这么不断的你来我往，双方各自不断调优，最后达成一个平衡状态。</p>
+<p>当然，这其中的损失函数也不只这一种，比如说，生成器的损失函数可以定义为：生成样本分布与真实样本分布的 <code>KL</code> 散度值等。</p>
+<blockquote>
+<p>KL 散度用来衡量两个分布之间的相似性。</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/27/DCGAN手写数字生成--tensorflow2.0/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    <div>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjibao.com.cn/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="大宝哥spring">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="来呀，不服抓个包~~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/" itemprop="url">v2ray+websocket+TLS通过cloudflare转发防IP被ban</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-17T09:56:26+08:00">
+                2019-12-17
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-17T11:32:40+08:00">
+                2019-12-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/" class="leancloud_visitors" data-flag-title="v2ray+websocket+TLS通过cloudflare转发防IP被ban">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  810 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h3><p>天朝 <code>qiang</code> 越垒越高，买的境外的服务器用时间长了经常会出现 <code>IP</code> 被 <code>ban</code> 的情况，本教程通过 <code>v2ray+websocket(ws)+TLS</code> 将流量伪装成 <code>TLS</code> 流量，即将自己的境外转发服务器伪装成一个网站，并通过 <code>cloudflare</code> 中转，网络流量流经图如下：</p>
+<p><img src="/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/cdn_cloudflare.png" alt=""></p>
+<p>这样的话，防火墙就只知道你和 <code>CDN</code> 之间建立了连接，不知道你的 <code>vps</code> 实际的 <code>IP</code> 地址，这样就可以有效的防止你的 <code>IP</code> 被 <code>ban</code>，并且  <code>CDN</code> 会有很多 <code>IP</code> 地址，防火墙也不会随意去 <code>ban</code> 他们的 <code>IP</code>，毕竟也有很多正规的网站在使用，所以基本上可以确保你的 <code>IP</code> 的安全。</p>
+<h3 id="二、步骤"><a href="#二、步骤" class="headerlink" title="二、步骤"></a>二、步骤</h3><h4 id="1、购买域名并使用cloudflare进行域名解析"><a href="#1、购买域名并使用cloudflare进行域名解析" class="headerlink" title="1、购买域名并使用cloudflare进行域名解析"></a>1、购买域名并使用<code>cloudflare</code>进行域名解析</h4><p>首先，购买一个域名，我购买的是阿里云的域名，当然也有很多可以免费使用的域名，登录阿里云官网，可以对域名解析进行设置。</p>
+<p>之后，注册一个<code>cloudflare</code>账号，在首页输入自己购买的域名，它会给你分配两个 <code>cloudflare</code> 的 <code>authoritative DNS servers</code> ，具体如下图：</p>
+<p><img src="/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/cloudflare_index.png" alt=""></p>
+<p><img src="/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/nameservers.png" alt=""></p>
+<p>一切注册搞好之后，现在要做的就是将阿里云上买的域名的权威解析<code>DNS</code>服务器改成<code>cloudflare</code> 的权威域名解析服务器。一开始是：<code>dns19.hichina.com</code> 和 <code>dns20.hichina.com</code>，改好之后，如下图：</p>
+<p><img src="/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/aliyun_dns.png" alt=""></p>
+<p>现在，回到 <code>cloudflare</code> 的域名管理界面，添加域名解析。比如说，添加<code>A</code> 记录，将三级域名<code>v2ray</code> (即<code>v2ray.wangjibao.com.cn</code>) 解析到自己的 <code>VPS</code> 的 <code>IP</code> 上，如下图：</p>
+<p><img src="/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/dns_reslover.png" alt=""></p>
+<p>注意，先不要点亮红色框里的云朵，保持灰色，代表该域名先不走<code>cloudflare</code> 的代理，暂时只用其进行<code>域名--&gt;IP</code>的解析。</p>
+<h4 id="2、VPS搭建v2ray-服务"><a href="#2、VPS搭建v2ray-服务" class="headerlink" title="2、VPS搭建v2ray 服务"></a>2、<code>VPS</code>搭建<code>v2ray</code> 服务</h4><p>已经有大神写好了安装脚本，只需要进行傻瓜安装即可，具体的原理知识请移步<code>v2ray</code> 的<a href="https://www.v2ray.com/" target="_blank" rel="noopener">官网</a>学习，包括支持的协议，配置文件的编写等等。</p>
+<p>执行如下命令进行安装：<code>bash &lt;(curl -s -L https://git.io/v2ray.sh)</code></p>
+<p>这里传输协议选择 <code>websocket+TLS (4)</code>，然后根据提示信息一路输入并默认即可，输 <code>v2ray</code>端口、输入域名<code>v2ray.wangjibao.com.cn</code>，如下图：</p>
+<p><img src="/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/v2ray_install.png" alt=""></p>
+<p>接下来的全部选择默认，一路回车即可，安装好之后，输入 <code>v2ray status</code> 可查看安装状态，<code>v2ray info</code> 查看安装信息，<code>v2ray url</code> 可生成配置链接。</p>
+<p><img src="/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/v2ray_info.png" alt=""></p>
+<p>此时，环境已经搭建完毕，记得回到 <code>cloudflare</code> 的<code>DNS</code>管理界面将 <code>v2ray</code> 的解析云朵点亮成橙色。</p>
+<p>使用<code>nslookup v2ray.wangjibao.com.cn 8.8.8.8</code>查询域名解析，发现，此时返回的<code>ip</code>地址已经不是自己的<code>VPS</code>地址（是<code>cloudflare</code>的<code>CDN</code>地址），代表已经代理成功。 </p>
+<p><img src="/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/nslookup.png" alt=""></p>
+<p>将 <code>v2ay url</code> 生成配置信息导入到客户端，即可快乐上网。</p>
+<h3 id="三、抓包分析"><a href="#三、抓包分析" class="headerlink" title="三、抓包分析"></a>三、抓包分析</h3><p>搭建成功了，抓个数据包瞧一瞧。下图是某条数据流的信息，可以看到，与客户端进行通信的是 <code>cloudflare</code> 的<code>CDN(104.28.14.115)</code>, 而不是我们的 <code>VPS IP</code>。</p>
+<p><img src="/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/stream.png" alt=""></p>
+<p>其中的 <code>client hello</code> 包更能反映真实的信息。</p>
+<p><img src="/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/client_hello.png" alt=""></p>
+<p>伪装成功，完美防<code>ban</code>！</p>
+
+          
+        
+      
+    </div>
+    <div>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://wangjibao.com.cn/2019/11/22/Linux环境变量配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1851,654 +2521,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjibao.com.cn/2019/07/07/加密流量测量和分析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="大宝哥spring">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="来呀，不服抓个包~~">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/07/加密流量测量和分析/" itemprop="url">加密流量测量和分析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-07T09:16:31+08:00">
-                2019-07-07
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-28T15:38:55+08:00">
-                2019-08-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/07/加密流量测量和分析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/07/加密流量测量和分析/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/07/07/加密流量测量和分析/" class="leancloud_visitors" data-flag-title="加密流量测量和分析">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  4.2k 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  15 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h5 id="一、加密与非加密流量识别"><a href="#一、加密与非加密流量识别" class="headerlink" title="一、加密与非加密流量识别"></a>一、加密与非加密流量识别</h5><p>1、利用 <strong>信息熵</strong> 的方法对加密流量进行识别。</p>
-<p>对不同类型的文件，如文本、图片、压缩文件、加密文件等的前 <strong><code>1KB</code></strong>  数据的熵进行计算分析，可以发现文本文件的熵处于较低水平，压缩文件和加密文件的熵处于较高的水平，且两者较难区分。</p>
-<p>多元组熵的定义：</p>
-<p>（1）n元字符组集合指以大小为 n 的滑动窗口对报文序列 P 进行切割后得到的字符串 $s_i (1 \le i \le L-n+1)$ 的集合，L 表示分析报文序列以 <strong>字节</strong> 为单位的长度：<br>$$<br>S_n = \lbrace s_1, s_2, …, s_{L-n+1} \rbrace<br>$$<br> 如 <code>“data.dat”</code> 对应的二元字符组集合为 $S_2 = \lbrace da, at, ta, a., .d, da, at \rbrace​$。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/07/加密流量测量和分析/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    <div>
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjibao.com.cn/2019/07/05/HTTP2协议解析及抓包分析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="大宝哥spring">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="来呀，不服抓个包~~">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/05/HTTP2协议解析及抓包分析/" itemprop="url">HTTP2协议解析及抓包分析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-05T20:17:27+08:00">
-                2019-07-05
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-05T20:34:48+08:00">
-                2019-07-05
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/05/HTTP2协议解析及抓包分析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/05/HTTP2协议解析及抓包分析/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/07/05/HTTP2协议解析及抓包分析/" class="leancloud_visitors" data-flag-title="HTTP2协议解析及抓包分析">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.7k 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="一、HTTP2协议简介"><a href="#一、HTTP2协议简介" class="headerlink" title="一、HTTP2协议简介"></a>一、HTTP2协议简介</h4><h5 id="1、HTTP2的帧格式"><a href="#1、HTTP2的帧格式" class="headerlink" title="1、HTTP2的帧格式"></a>1、HTTP2的帧格式</h5><p>HTTP2的所有帧都是由一个固定的<strong>9</strong>字节头部（payload之前）和一个指定长度的负载（payload）组成，如下图所示：</p>
-<p><img src="/2019/07/05/HTTP2协议解析及抓包分析/h2帧格式.jpg" alt=""></p>
-<p>其中，<code>Stream Identifier</code>用作流控制，用31位无符号整数表示。客户端建立的<code>sid</code>必须为奇数，服务端建立的<code>sid</code>必须为偶数，<strong>值（0x0）保留给与整个连接相关联的帧（连接控制消息），而不是单个流。</strong></p>
-<p><code>Frame Payload</code>是主体内容，有帧类型决定，HTTP2一共有<strong>10</strong>种类型的帧：</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/05/HTTP2协议解析及抓包分析/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    <div>
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wangjibao.com.cn/2019/07/02/IPSec-VPN搭建及协议解析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="大宝哥spring">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="来呀，不服抓个包~~">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/02/IPSec-VPN搭建及协议解析/" itemprop="url">IPSec VPN搭建及协议解析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-02T22:08:50+08:00">
-                2019-07-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T09:42:36+08:00">
-                2019-07-03
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/02/IPSec-VPN搭建及协议解析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/02/IPSec-VPN搭建及协议解析/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/07/02/IPSec-VPN搭建及协议解析/" class="leancloud_visitors" data-flag-title="IPSec VPN搭建及协议解析">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2.5k 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  8 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="一、IPSec协议简介"><a href="#一、IPSec协议简介" class="headerlink" title="一、IPSec协议简介"></a>一、IPSec协议简介</h4><p><code>IPSec</code>是<code>IETF</code>制定的为保证在<code>Internet</code>上传送数据的安全保密性能的三层隧道加密协议。<code>IPSec</code>是应用于<code>IP</code>层上网络数据安全的一整套体系结构，他包括<strong>报文首部认证协议</strong><code>（ Authentication Header, AH）</code>、<strong>封装安全载荷协议</strong><code>(Encapsulating Security Payload, ESP)</code>、<strong>互联网间密钥交换协议</strong><code>(Internet Key Exchange, IKE)</code> 和一些用于网络认证及加密的算法等。<code>IPSec</code>协议本身定义了如何在<code>IP</code>数据包中增加字段来保证<code>IP</code>包的完整性、私有性和真实性，以及如何加密数据包。</p>
-<p><code>IPSec</code>有传输<code>(transport)</code>和隧道<code>(tunnel)</code>两种工作方式，其中，传输模式适用于主机之间建立<code>IPSec</code>安全传输，隧道模式更适合网关之间的通信，常用来实现虚拟专用网<code>VPN</code>。</p>
-<h4 id="二、IPSec-VPN搭建"><a href="#二、IPSec-VPN搭建" class="headerlink" title="二、IPSec-VPN搭建"></a>二、IPSec-VPN搭建</h4><p>详细教程请参考：<a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/README-zh.md" target="_blank" rel="noopener">https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/README-zh.md</a></p>
-<p>以 <code>Ubuntu 16.04</code>为例，首先执行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://git.io/vpnsetup -O vpnsetup.sh</span><br></pre></td></tr></table></figure>
-<p>之后，在<code>vpnsetup.sh</code>文件中，设置<code>YOUR_IPSEC_PSK, YOUR_USERNAME 和 YOUR_PASSWORD</code>三个字段，如下图：</p>
-<p><img src="/2019/07/02/IPSec-VPN搭建及协议解析/vpnsetup.png" alt=""></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/02/IPSec-VPN搭建及协议解析/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    <div>
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2553,7 +2575,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2627,23 +2649,23 @@
       			    
       			    
       			      <li>
+      			        <a href="/2019/12/27/cDCGAN生成指定手写数字--tensorflow2.0/" title="cDCGAN生成指定手写数字--tensorflow2.0" target="_blank">cDCGAN生成指定手写数字--tensorflow2.0</a>
+      			      </li>
+      			    
+      			      <li>
+      			        <a href="/2019/12/27/DCGAN手写数字生成--tensorflow2.0/" title="DCGAN手写数字生成--tensorflow2.0" target="_blank">DCGAN手写数字生成--tensorflow2.0</a>
+      			      </li>
+      			    
+      			      <li>
+      			        <a href="/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/" title="v2ray+websocket+TLS通过cloudflare转发防IP被ban" target="_blank">v2ray+websocket+TLS通过cloudflare转发防IP被ban</a>
+      			      </li>
+      			    
+      			      <li>
       			        <a href="/2019/11/22/Linux环境变量配置/" title="Linux环境变量配置" target="_blank">Linux环境变量配置</a>
       			      </li>
       			    
       			      <li>
       			        <a href="/2019/11/06/Go语言实战阅读笔记/" title="Go语言实战阅读笔记" target="_blank">Go语言实战阅读笔记</a>
-      			      </li>
-      			    
-      			      <li>
-      			        <a href="/2019/10/24/LeetCode81-90/" title="LeetCode81-90" target="_blank">LeetCode81-90</a>
-      			      </li>
-      			    
-      			      <li>
-      			        <a href="/2019/10/22/Docker实战笔记/" title="Docker实战笔记" target="_blank">Docker实战笔记</a>
-      			      </li>
-      			    
-      			      <li>
-      			        <a href="/2019/08/28/LeetCode71-80/" title="LeetCode71-80" target="_blank">LeetCode71-80</a>
       			      </li>
       			    
       			  </ul>
@@ -2688,7 +2710,7 @@
     
       <span class="post-meta-item-text">本站共计&#58;</span>
     
-    <span title="本站共计">51.5k 字</span>
+    <span title="本站共计">56.7k 字</span>
   
 </div>
 
