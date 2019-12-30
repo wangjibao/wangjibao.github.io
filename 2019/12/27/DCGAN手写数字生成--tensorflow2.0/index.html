@@ -97,9 +97,9 @@
 <meta property="og:description" content="最近忙里偷闲，补一发之前落下的关于一些GAN的tensorflow2.0实现代码。 首先，GAN ，即生成对抗网络Generative Adversarial Network，由一个生成器Generator和一个判别器Discriminator组成，两者属于 零和博弈 的双方，不是你死就是我亡的状态。 其损失函数一般定义如下：  判别器 D 对来自真实数据集的样本 $x\sim p_{data}$">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/12/27/DCGAN手写数字生成--tensorflow2.0/gan_loss.png">
-<meta property="og:image" content="https://wangjibao.com.cn/2019/12/27/DCGAN手写数字生成--tensorflow2.0/epoch_1.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2019/12/27/DCGAN手写数字生成--tensorflow2.0/epoch.png">
 <meta property="og:image" content="https://wangjibao.com.cn/2019/12/27/DCGAN手写数字生成--tensorflow2.0/dcgan_gif.gif">
-<meta property="og:updated_time" content="2019-12-30T09:05:38.129Z">
+<meta property="og:updated_time" content="2019-12-30T09:39:32.017Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DCGAN手写数字生成--tensorflow2.0">
 <meta name="twitter:description" content="最近忙里偷闲，补一发之前落下的关于一些GAN的tensorflow2.0实现代码。 首先，GAN ，即生成对抗网络Generative Adversarial Network，由一个生成器Generator和一个判别器Discriminator组成，两者属于 零和博弈 的双方，不是你死就是我亡的状态。 其损失函数一般定义如下：  判别器 D 对来自真实数据集的样本 $x\sim p_{data}$">
@@ -367,7 +367,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-30T17:05:38+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-30T17:39:32+08:00">
                 2019-12-30
               </time>
             
@@ -501,7 +501,7 @@
 <p>每个 <code>epoch</code> 训练结束，我们使用一个固定的 <code>seed(256*100)</code>来查看生成器的生成数字的效果，其查看效果函数定义如下，就是将<code>seed</code>喂入生成器，将生成的数字图片画出来：</p>
  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_and_save_images</span><span class="params">(model, epoch, input)</span>:</span></span><br><span class="line">    predictions = model(input, training=<span class="keyword">False</span>)</span><br><span class="line">    fig = plt.figure(figsize=(<span class="number">4</span>, <span class="number">4</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(predictions.shape[<span class="number">0</span>]):</span><br><span class="line">        plt.subplot(<span class="number">4</span>, <span class="number">4</span>, i+<span class="number">1</span>)</span><br><span class="line">        plt.imshow(predictions[i,:,:,<span class="number">0</span>]*<span class="number">127.5</span>+<span class="number">127.5</span>, cmap=<span class="string">'gray'</span>)</span><br><span class="line">        plt.axis(<span class="string">'off'</span>)</span><br><span class="line">    plt.savefig(<span class="string">"dcgan_image_save/epoch_"</span> + str(epoch) + <span class="string">".png"</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
 <h5 id="5、效果展示"><a href="#5、效果展示" class="headerlink" title="5、效果展示"></a>5、效果展示</h5><p>每次训练生成的数字效果图如下:</p>
-<p><img src="/2019/12/27/DCGAN手写数字生成--tensorflow2.0/epoch_1.png" alt=""></p>
+<p><img src="/2019/12/27/DCGAN手写数字生成--tensorflow2.0/epoch.png" alt=""></p>
 <p>为了有个动态的直观感受，我们使用如下函数，将每轮训练保存的效果图片生成一个 <code>gif</code> 图片。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gif_animation_generate</span><span class="params">()</span>:</span></span><br><span class="line">    gif_name = <span class="string">"dcgan_gif.gif"</span></span><br><span class="line">    filenames = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">61</span>):</span><br><span class="line">        filenames.append(<span class="string">"dcgan_image_save/epoch_"</span> + str(i) + <span class="string">".png"</span>)</span><br><span class="line">    frames = []</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">        im = imageio.imread(filename)</span><br><span class="line">        frames.append(im)</span><br><span class="line">    imageio.mimsave(gif_name, frames, <span class="string">"GIF"</span>, duration=<span class="number">0.1</span>)</span><br></pre></td></tr></table></figure>
 <p>最后的效果图：</p>
