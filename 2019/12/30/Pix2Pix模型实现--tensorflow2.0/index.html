@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="笔记," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="来呀，不服抓个包~~" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="该篇博文使用 cGAN 实现了 image to image translation，由于 cGAN 可以通过添加条件来指导图像的生成，因此用此图像翻译技术，可以很好的实现诸如图片着色等任务，具体模型参考 此篇论文 。 pix2pix 模型使用输入图像(x)作为条件（这里没有噪声输入 z, 可以把 G 的输入 x 看做是噪声 z），学习从输入图像到输出图像的映射，从而得到指定的输出图像。具体过程如">
+<meta name="keywords" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pix2Pix模型实现--tensorflow2.0">
+<meta property="og:url" content="https://wangjibao.com.cn/2019/12/30/Pix2Pix模型实现--tensorflow2.0/index.html">
+<meta property="og:site_name" content="来呀，不服抓个包~~">
+<meta property="og:description" content="该篇博文使用 cGAN 实现了 image to image translation，由于 cGAN 可以通过添加条件来指导图像的生成，因此用此图像翻译技术，可以很好的实现诸如图片着色等任务，具体模型参考 此篇论文 。 pix2pix 模型使用输入图像(x)作为条件（这里没有噪声输入 z, 可以把 G 的输入 x 看做是噪声 z），学习从输入图像到输出图像的映射，从而得到指定的输出图像。具体过程如">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://wangjibao.com.cn/2019/12/30/Pix2Pix模型实现--tensorflow2.0/pix2pix.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2019/12/30/Pix2Pix模型实现--tensorflow2.0/pix2pix_image1.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2019/12/30/Pix2Pix模型实现--tensorflow2.0/pix2pix_image2.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2019/12/30/Pix2Pix模型实现--tensorflow2.0/facade.jpg">
+<meta property="og:image" content="https://wangjibao.com.cn/2019/12/30/Pix2Pix模型实现--tensorflow2.0/unet.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2019/12/30/Pix2Pix模型实现--tensorflow2.0/pix2pix_generator.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2019/12/30/Pix2Pix模型实现--tensorflow2.0/pix2pix_discriminator.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2019/12/30/Pix2Pix模型实现--tensorflow2.0/loss_function.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2019/12/30/Pix2Pix模型实现--tensorflow2.0/loss_function.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2019/12/30/Pix2Pix模型实现--tensorflow2.0/l1_loss.png">
+<meta property="og:image" content="https://wangjibao.com.cn/2019/12/30/Pix2Pix模型实现--tensorflow2.0/effect.png">
+<meta property="og:updated_time" content="2019-12-31T04:53:58.564Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pix2Pix模型实现--tensorflow2.0">
+<meta name="twitter:description" content="该篇博文使用 cGAN 实现了 image to image translation，由于 cGAN 可以通过添加条件来指导图像的生成，因此用此图像翻译技术，可以很好的实现诸如图片着色等任务，具体模型参考 此篇论文 。 pix2pix 模型使用输入图像(x)作为条件（这里没有噪声输入 z, 可以把 G 的输入 x 看做是噪声 z），学习从输入图像到输出图像的映射，从而得到指定的输出图像。具体过程如">
+<meta name="twitter:image" content="https://wangjibao.com.cn/2019/12/30/Pix2Pix模型实现--tensorflow2.0/pix2pix.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wangjibao.com.cn/2019/12/30/Pix2Pix模型实现--tensorflow2.0/"/>
+
+
+
+
+
+  <title>Pix2Pix模型实现--tensorflow2.0 | 来呀，不服抓个包~~</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/wangjibao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">来呀，不服抓个包~~</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wangjibao.com.cn/2019/12/30/Pix2Pix模型实现--tensorflow2.0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="大宝哥spring">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="来呀，不服抓个包~~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Pix2Pix模型实现--tensorflow2.0</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-30T17:55:48+08:00">
+                2019-12-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-31T12:53:58+08:00">
+                2019-12-31
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/30/Pix2Pix模型实现--tensorflow2.0/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/30/Pix2Pix模型实现--tensorflow2.0/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/12/30/Pix2Pix模型实现--tensorflow2.0/" class="leancloud_visitors" data-flag-title="Pix2Pix模型实现--tensorflow2.0">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  20 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>该篇博文使用 <code>cGAN</code> 实现了 <code>image to image translation</code>，由于 <code>cGAN</code> 可以通过添加条件来指导图像的生成，因此用此图像翻译技术，可以很好的实现诸如图片着色等任务，具体模型参考 <a href="https://arxiv.org/abs/1611.07004" target="_blank" rel="noopener">此篇论文</a> 。</p>
+<p><code>pix2pix</code> 模型使用输入图像<code>(x)</code>作为条件（这里没有噪声输入 <code>z</code>, 可以把 <code>G</code> 的输入 <code>x</code> 看做是噪声 <code>z</code>），学习从输入图像到输出图像的映射，从而得到指定的输出图像。具体过程如下图：</p>
+<p><img src="/2019/12/30/Pix2Pix模型实现--tensorflow2.0/pix2pix.png" alt=""></p>
+<p>传统图像转换过程中都是针对具体问题采用特定算法去解决，而这些过程的本质都是根据像素点（输入信息）对像素点做出预测<code>(predict from pixels to pixels)</code>，<code>pix2pix</code>的目标就是建立一个通用的架构去解决图像翻译问题，使得我们不必要为每个特定任务都重新设计一个损失函数。但是该模型也有一定的缺点，<code>pix2pix</code>在训练时需要成对的图像<code>（x和y）</code>，模型学到的是 <strong>x 到  y 之间的一对一映射</strong>。也就说，<code>pix2pix</code>就是对<code>ground  truth</code>的重建：输入轮廓—&gt;经过<code>Unet</code>编码解码成对应的向量—&gt;解码成真实图。这种一对一映射的应用范围十分有限，当我们输入的数据与训练集中的数据差距较大时，生成的结果很可能就没有意义，这就要求我们的训练数据集要尽量涵盖各种类型。以轮廓图到服装为例，我们在自己的数据集上训练好模型，当输入与训练集中类似的轮廓图时得到以下结果：</p>
+<a id="more"></a>
+<p><img src="/2019/12/30/Pix2Pix模型实现--tensorflow2.0/pix2pix_image1.png" alt=""></p>
+<p>当我们输入训练集中不存在的轮廓图时，得到以下：</p>
+<p><img src="/2019/12/30/Pix2Pix模型实现--tensorflow2.0/pix2pix_image2.png" alt=""></p>
+<p>我们可以看出，服装的形态还是可以保持的，但是生成图像的颜色并不能令人满意。</p>
+<p>对于这种训练数据需要成对的问题，我们下一篇博文会讲述如何使用 <code>cycleGAN</code> 来解决这个问题。那么，闲话不多说，先上代码来复现一下论文中提到的 <code>pix2pix</code> 模型。</p>
+<h5 id="1、数据集图像处理"><a href="#1、数据集图像处理" class="headerlink" title="1、数据集图像处理"></a>1、数据集图像处理</h5><p>简单起见，我们直接使用论文中的 <a href="https://people.eecs.berkeley.edu/%7Etinghuiz/projects/pix2pix/datasets/" target="_blank" rel="noopener"><code>CMP Facade Database</code></a>，给定楼房的轮廓生成实际的楼房图，数据集中的样本是一张张 <code>x+y</code> 组成的图片，大小为 <code>256 * 512</code> 像素，左边部分是真实的楼房图片，右边部分是与之对应的轮廓图，如下图所示：</p>
+<p><img src="/2019/12/30/Pix2Pix模型实现--tensorflow2.0/facade.jpg" alt=""></p>
+<p>首先要做的是将图片的左右两侧分开，实现函数如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_image</span><span class="params">(image_path)</span>:</span></span><br><span class="line">    image = tf.io.read_file(image_path)</span><br><span class="line">    image = tf.image.decode_jpeg(image)</span><br><span class="line">    width = tf.shape(image)[<span class="number">1</span>] // <span class="number">2</span></span><br><span class="line">    real_image = tf.cast(image[:, :width, :], tf.float32)</span><br><span class="line">    input_image = tf.cast(image[:, width:, :], tf.float32)</span><br><span class="line">    <span class="keyword">return</span> input_image, real_image</span><br></pre></td></tr></table></figure>
+<p>分开之后，对于每张图片我们可以得到一个 <code>input_image</code> 和 <code>real_image</code>。之后，为了使训练得到的模型更具有适应性，模型训练时每次喂入的样本需要进行随机扰动（先将 <code>256*256</code> 的图像放大到 <code>286*286</code>，之后再裁剪到 <code>256*256</code>）、镜像等操作。论文中是这样描述的：</p>
+<blockquote>
+<p>1、resize an image to bigger height and width<br>2、randomly crop to the target size<br>3、randomly flip the image horizontally</p>
+</blockquote>
+<p>具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">resize_image</span><span class="params">(input_image, real_image, height, width)</span>:</span></span><br><span class="line">    input_image = tf.image.resize(input_image, [height, width], method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)</span><br><span class="line">    real_image = tf.image.resize(real_image, [height, width], method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)</span><br><span class="line">    <span class="keyword">return</span> input_image, real_image</span><br><span class="line"><span class="comment"># input_iamge和real_image先合并，再random_crop裁剪，可以保证两者裁剪到的是同一区域，相对应</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">random_crop</span><span class="params">(input_image, real_image)</span>:</span></span><br><span class="line">    stacked_image = tf.stack([input_image, real_image], axis=<span class="number">0</span>)</span><br><span class="line">    cropped_image = tf.image.random_crop(stacked_image, size=[<span class="number">2</span>, IMG_HEIGHT, IMG_WIDTH, <span class="number">3</span>])</span><br><span class="line">    <span class="keyword">return</span> cropped_image[<span class="number">0</span>], cropped_image[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">random_jitter</span><span class="params">(input_image, real_image)</span>:</span></span><br><span class="line">    input_image, real_image = resize_image(input_image, real_image, <span class="number">286</span>, <span class="number">286</span>)</span><br><span class="line">    input_image, real_image = random_crop(input_image, real_image)</span><br><span class="line">    <span class="keyword">if</span> tf.random.uniform(()) &gt; <span class="number">0.5</span>:  <span class="comment"># 随机选取图像进行水平镜像</span></span><br><span class="line">        input_image = tf.image.flip_left_right(input_image)</span><br><span class="line">        real_image = tf.image.flip_left_right(real_image)</span><br><span class="line">    <span class="keyword">return</span> input_image, real_image</span><br></pre></td></tr></table></figure>
+<p>最后，对图像的像素值进行一个归一化操作，将其像素值归一化为 [-1, 1] 之间。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">normalize_image</span><span class="params">(input_image, real_image)</span>:</span></span><br><span class="line">    input_image = (input_image / <span class="number">127.5</span>) - <span class="number">1</span></span><br><span class="line">    real_image = (real_image / <span class="number">127.5</span>) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> input_image, real_image</span><br></pre></td></tr></table></figure>
+<p>总体的数据加载函数如下，包括训练集的加载（需要随机裁剪、镜像）和测试集的加载（不需要任何多余操作）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_train_image</span><span class="params">(image_file)</span>:</span></span><br><span class="line">    input_image, real_image = load_image(image_file)</span><br><span class="line">    input_image, real_image = random_jitter(input_image, real_image)</span><br><span class="line">    input_image, real_image = normalize_image(input_image, real_image)</span><br><span class="line">    <span class="keyword">return</span> input_image, real_image</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_test_image</span><span class="params">(image_file)</span>:</span></span><br><span class="line">    input_image, real_image = load_image(image_file)</span><br><span class="line">    input_image, real_image = resize_image(input_image, real_image, IMG_HEIGHT, IMG_WIDTH)</span><br><span class="line">    input_image, real_image = normalize_image(input_image, real_image)</span><br><span class="line">    <span class="keyword">return</span> input_image, real_image</span><br></pre></td></tr></table></figure>
+<h5 id="2、构建生成器"><a href="#2、构建生成器" class="headerlink" title="2、构建生成器"></a>2、构建生成器</h5><p>生成器是一个 <code>U-net</code> 架构的网络，其结构如下图：</p>
+<p><img src="/2019/12/30/Pix2Pix模型实现--tensorflow2.0/unet.png" alt=""></p>
+<p>由降采样的编码层和上采样的解码层组成，其中，编码器和解码器的层还会跨层通过 <code>channel</code> 进行拼接，这点和 <code>FCN</code> （<a href="https://arxiv.org/abs/1411.4038" target="_blank" rel="noopener">全卷积网络</a>）有些不同，虽然它们都可以用来做图像语义分割，<code>FCN</code> 是像素点 <code>add</code> 。</p>
+<p>在 <code>Encoder</code> 模块中<strong>（降采样）</strong>的每个 <code>block</code> 结构为： <code>Conv--&gt;Batchnorm--&gt;Leaky ReLU</code>，代码实现如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">downsample</span><span class="params">(filters, kernel_size, apply_batchnorm=True)</span>:</span></span><br><span class="line">    result = tf.keras.Sequential()</span><br><span class="line">    result.add(tf.keras.layers.Conv2D(filters, kernel_size, strides=<span class="number">2</span>, padding=<span class="string">'same'</span>, kernel_initializer=tf.random_normal_initializer(<span class="number">0.</span>, <span class="number">0.02</span>), use_bias=<span class="keyword">False</span>))</span><br><span class="line">    <span class="keyword">if</span> apply_batchnorm:</span><br><span class="line">        result.add(tf.keras.layers.BatchNormalization())</span><br><span class="line">    result.add(tf.keras.layers.LeakyReLU())</span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<p>在 <code>Decoder</code> 模块中<strong>（上采样）</strong>的每个 <code>block</code> 结构为：<code>Transposed Conv--&gt;Batchnorm--&gt;Dropout(applied to the first 3 blocks)--&gt;Relu</code>，代码实现如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">upsample</span><span class="params">(filters, kernel_size, apply_dropout=False)</span>:</span></span><br><span class="line">    result = tf.keras.Sequential()</span><br><span class="line">    result.add(tf.keras.layers.Conv2DTranspose(filters, kernel_size, strides=<span class="number">2</span>, padding=<span class="string">'same'</span>, kernel_initializer=tf.random_normal_initializer(<span class="number">0.</span>, <span class="number">0.02</span>), use_bias=<span class="keyword">False</span>))</span><br><span class="line">    result.add(tf.keras.layers.BatchNormalization())</span><br><span class="line">    <span class="keyword">if</span> apply_dropout:</span><br><span class="line">        result.add(tf.keras.layers.Dropout(rate=<span class="number">0.5</span>))</span><br><span class="line">    result.add(tf.keras.layers.ReLU())</span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上面关于 encoder 和 decoder 模块的实现方式，采用的是 Keras 的序列模型实现方式。接下来的 generator 采用的就是 keras 的 通用模型实现方式。两者都需要在模型的第一层指定输入的尺寸。</p>
+</blockquote>
+<p>定义好了 <code>Encoder</code> 和 <code>Decoder</code> 模块后，就可以基于此来搭建整个 <code>U-net</code> 架构的 <code>Generator</code> 了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Generator</span><span class="params">()</span>:</span></span><br><span class="line">    inputs = tf.keras.layers.Input(shape=(<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>))</span><br><span class="line">    down_stack = [</span><br><span class="line">        downsample(<span class="number">64</span>, (<span class="number">4</span>, <span class="number">4</span>), apply_batchnorm=<span class="keyword">False</span>),  <span class="comment"># [batch, 128, 128, 64]</span></span><br><span class="line">        downsample(<span class="number">128</span>, (<span class="number">4</span>, <span class="number">4</span>)),   <span class="comment"># [batch, 64, 64, 128]</span></span><br><span class="line">        downsample(<span class="number">256</span>, (<span class="number">4</span>, <span class="number">4</span>)),   <span class="comment"># [batch, 32, 32, 256]</span></span><br><span class="line">        downsample(<span class="number">512</span>, (<span class="number">4</span>, <span class="number">4</span>)),   <span class="comment"># [batch, 16, 16, 512]</span></span><br><span class="line">        downsample(<span class="number">512</span>, (<span class="number">4</span>, <span class="number">4</span>)),   <span class="comment"># [batch, 8, 8, 512]</span></span><br><span class="line">        downsample(<span class="number">512</span>, (<span class="number">4</span>, <span class="number">4</span>)),   <span class="comment"># [batch, 4, 4, 512]</span></span><br><span class="line">        downsample(<span class="number">512</span>, (<span class="number">4</span>, <span class="number">4</span>)),   <span class="comment"># [batch, 2, 2, 512]</span></span><br><span class="line">        downsample(<span class="number">512</span>, (<span class="number">4</span>, <span class="number">4</span>)),   <span class="comment"># [batch, 1, 1, 512]</span></span><br><span class="line">    ]</span><br><span class="line">    up_stack = [</span><br><span class="line">        upsample(<span class="number">512</span>, (<span class="number">4</span>, <span class="number">4</span>), apply_dropout=<span class="keyword">True</span>),  <span class="comment"># [batch, 2, 2, 512]</span></span><br><span class="line">        upsample(<span class="number">512</span>, (<span class="number">4</span>, <span class="number">4</span>), apply_dropout=<span class="keyword">True</span>),  <span class="comment"># [batch, 4, 4, 512]</span></span><br><span class="line">        upsample(<span class="number">512</span>, (<span class="number">4</span>, <span class="number">4</span>), apply_dropout=<span class="keyword">True</span>),  <span class="comment"># [batch, 8, 8, 512]</span></span><br><span class="line">        upsample(<span class="number">512</span>, (<span class="number">4</span>, <span class="number">4</span>)),  <span class="comment"># [batch, 16, 16, 512]</span></span><br><span class="line">        upsample(<span class="number">256</span>, (<span class="number">4</span>, <span class="number">4</span>)),  <span class="comment"># [batch, 32, 32, 256]</span></span><br><span class="line">        upsample(<span class="number">128</span>, (<span class="number">4</span>, <span class="number">4</span>)),  <span class="comment"># [batch, 64, 64, 128]</span></span><br><span class="line">        upsample(<span class="number">64</span>, (<span class="number">4</span>, <span class="number">4</span>)),   <span class="comment"># [batch, 128, 128, 64]</span></span><br><span class="line">    ]</span><br><span class="line">    last_layer = tf.keras.layers.Conv2DTranspose(filters=OUTPUT_CHANNELS, kernel_size=(<span class="number">4</span>, <span class="number">4</span>), strides=<span class="number">2</span>, padding=<span class="string">'same'</span>, kernel_initializer=tf.random_normal_initializer(<span class="number">0.</span>, <span class="number">0.02</span>), activation=<span class="string">'tanh'</span>)  <span class="comment"># [batch, 256, 256, 3]</span></span><br><span class="line">    x = inputs   <span class="comment"># inputs is a tensor with shape [256, 256, 3]</span></span><br><span class="line">    down_outputs = []</span><br><span class="line">    <span class="keyword">for</span> down_layer <span class="keyword">in</span> down_stack:</span><br><span class="line">        x = down_layer(x)  <span class="comment"># 调用的是 call 方法</span></span><br><span class="line">        down_outputs.append(x)</span><br><span class="line">    down_outputs = reversed(down_outputs[:<span class="number">-1</span>])  <span class="comment"># 2--&gt;4--&gt;8--&gt;16--&gt;32--&gt;64--&gt;128, 共 7 层</span></span><br><span class="line">    <span class="keyword">for</span> up_layer, down_output <span class="keyword">in</span> zip(up_stack, down_outputs):</span><br><span class="line">        x = up_layer(x)</span><br><span class="line">        x = tf.concat([x, down_output], axis=<span class="number">3</span>)</span><br><span class="line">    x = last_layer(x)  <span class="comment"># [batch, 256, 256, 3]</span></span><br><span class="line">    <span class="keyword">return</span> tf.keras.Model(inputs=inputs, outputs=x)</span><br></pre></td></tr></table></figure>
+<p>其中第 <code>31</code> 行的 <code>x = tf.concat([x, down_output], axis=3)</code> 就是实现的 <code>skip connection</code>，将两者的 <code>channel</code> 拼接起来。可见，<code>generator</code> 输入尺寸是 <code>256*256*3</code> ，输出尺寸还是 <code>256*256*3</code> 。<code>generator</code> 的整个架构如下图：</p>
+<p><img src="/2019/12/30/Pix2Pix模型实现--tensorflow2.0/pix2pix_generator.png" alt=""></p>
+<h5 id="3、构建判别器"><a href="#3、构建判别器" class="headerlink" title="3、构建判别器"></a>3、构建判别器</h5><p>判别器接收两个输入，一个是条件(x) <code>input_image</code>，另一个是生成图片<code>generated_image</code> 或者是真实目标图片<code>real_image</code>。对于<code>input_image + generated_image</code> 的组合，判别器应该尽可能的输出全零，相反，对于 <code>input_image + real_image</code> 的组合，判别器应该尽可能的输出全 1。</p>
+<p>这里，判别器使用的是 <code>PatchGAN</code> 的架构，最后输出的不再是一个标量值，代表 <code>real</code> 或者 <code>fake</code> ，而是一个 <code>30*30</code> 的矩阵，矩阵中的每个元素是对自己感受野区域<code>receptive field</code>真伪的一个判定，这样的话判别器可以输出更加<strong>细粒度</strong>的判定结果。</p>
+<p>对于 <code>PatchGAN</code> 的理解，可以参阅<a href="https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/issues/39" target="_blank" rel="noopener">作者的回答</a>，里面详细介绍了什么是 <code>PatchGAN</code> 以及输出矩阵中每个元素感受野大小的计算等问题。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Discriminator</span><span class="params">()</span>:</span></span><br><span class="line">    input_image = tf.keras.layers.Input(shape=[<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>], name=<span class="string">'input_image'</span>)</span><br><span class="line">    target_image = tf.keras.layers.Input(shape=[<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>], name=<span class="string">'target_image'</span>)</span><br><span class="line">    x = tf.concat([input_image, target_image], axis=<span class="number">3</span>)  <span class="comment"># [batch, 256, 256, 6]</span></span><br><span class="line"></span><br><span class="line">    down_sample1 = downsample(filters=<span class="number">64</span>, kernel_size=(<span class="number">4</span>, <span class="number">4</span>), apply_batchnorm=<span class="keyword">False</span>)(x) <span class="comment"># [batch, 128, 128, 64]</span></span><br><span class="line">    down_sample2 = downsample(<span class="number">128</span>, (<span class="number">4</span>, <span class="number">4</span>))(down_sample1) <span class="comment"># [batch, 64, 64, 128]</span></span><br><span class="line">    down_sample3 = downsample(<span class="number">256</span>, (<span class="number">4</span>, <span class="number">4</span>))(down_sample2) <span class="comment"># [batch, 32, 32, 256]</span></span><br><span class="line"></span><br><span class="line">    zero_pad1 = tf.keras.layers.ZeroPadding2D(padding=(<span class="number">1</span>, <span class="number">1</span>))(down_sample3)  <span class="comment"># [batch, 34, 34, 256]</span></span><br><span class="line">    conv = tf.keras.layers.Conv2D(filters=<span class="number">512</span>, kernel_size=(<span class="number">4</span>, <span class="number">4</span>), strides=<span class="number">1</span>, padding=<span class="string">'valid'</span>, kernel_initializer=tf.random_normal_initializer(<span class="number">0.</span>, <span class="number">0.02</span>), use_bias=<span class="keyword">False</span>)(zero_pad1)   <span class="comment"># [batch, 31, 31, 512]</span></span><br><span class="line">    batchnorm = tf.keras.layers.BatchNormalization()(conv)</span><br><span class="line">    leaky_relu = tf.keras.layers.LeakyReLU()(batchnorm)</span><br><span class="line"></span><br><span class="line">    zero_pad2 = tf.keras.layers.ZeroPadding2D(padding=(<span class="number">1</span>, <span class="number">1</span>))(leaky_relu) <span class="comment"># [batch, 33, 33, 512]</span></span><br><span class="line">    output = tf.keras.layers.Conv2D(filters=<span class="number">1</span>, kernel_size=(<span class="number">4</span>, <span class="number">4</span>), strides=<span class="number">1</span>, kernel_initializer=tf.random_normal_initializer(<span class="number">0.</span>, <span class="number">0.02</span>))(zero_pad2)</span><br><span class="line">    <span class="comment"># [batch, 30, 30, 1]</span></span><br><span class="line">    <span class="keyword">return</span> tf.keras.Model(inputs=[input_image, target_image], outputs=output)</span><br></pre></td></tr></table></figure>
+<p>整个判别器的架构图如下：</p>
+<p><img src="/2019/12/30/Pix2Pix模型实现--tensorflow2.0/pix2pix_discriminator.png" alt=""></p>
+<h5 id="4、定义生成器和判别器的损失函数"><a href="#4、定义生成器和判别器的损失函数" class="headerlink" title="4、定义生成器和判别器的损失函数"></a>4、定义生成器和判别器的损失函数</h5><p><code>pix2pix</code> 说到底还是一个 <code>cGAN</code> 模型，所以其整体的损失函数也和 <code>cGAN</code> 差不多，定义如下：</p>
+<p><img src="/2019/12/30/Pix2Pix模型实现--tensorflow2.0/loss_function.png" alt=""></p>
+<p>在 <code>cGAN</code> 损失函数的基础上，加上了生成器 <code>G</code> 的 <code>L1</code> 损失，两部分损失定义如下：</p>
+<p><img src="/2019/12/30/Pix2Pix模型实现--tensorflow2.0/loss_function.png" alt=""> <img src="/2019/12/30/Pix2Pix模型实现--tensorflow2.0/l1_loss.png" alt=""></p>
+<p>其具体的代码实现很简单，如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generator_loss</span><span class="params">(disc_generated_output, generated_image, real_image)</span>:</span></span><br><span class="line">    loss_object = tf.keras.losses.BinaryCrossentropy(from_logits=<span class="keyword">True</span>)</span><br><span class="line">    gan_loss = loss_object(tf.ones_like(disc_generated_output), disc_generated_output)</span><br><span class="line">    l1_loss = tf.reduce_mean(tf.abs(generated_image - real_image))</span><br><span class="line">    <span class="keyword">return</span> gan_loss + <span class="number">100</span> * l1_loss</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">discriminator_loss</span><span class="params">(disc_real_output, disc_generated_output)</span>:</span></span><br><span class="line">    loss_object = tf.keras.losses.BinaryCrossentropy(from_logits=<span class="keyword">True</span>)</span><br><span class="line">    real_loss = loss_object(tf.ones_like(disc_real_output), disc_real_output)</span><br><span class="line">    generated_loss = loss_object(tf.zeros_like(disc_generated_output), disc_generated_output)</span><br><span class="line">    <span class="keyword">return</span> real_loss + generated_loss</span><br></pre></td></tr></table></figure>
+<h5 id="5、定义优化器及训练过程"><a href="#5、定义优化器及训练过程" class="headerlink" title="5、定义优化器及训练过程"></a>5、定义优化器及训练过程</h5><p>训练过程中，每次喂入一对图像<code>input_image</code> 和对应的 <code>real_image</code>。之后，生成器根据 <code>input_image</code> 生成 <code>generated_image</code>，接着，判别器分别判断<code>input_image + generated_image</code> 和 <code>input_image + real_image</code>，输出 <code>disc_generate_output</code> 和 <code>disc_real_output</code>，计算出 <code>loss</code> 后，计算梯度并更新模型参数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">generator = Generator()</span><br><span class="line">discriminator = Discriminator()</span><br><span class="line">generator_optimizier = tf.keras.optimizers.Adam(learning_rate=<span class="number">2e-4</span>, beta_1=<span class="number">0.5</span>)</span><br><span class="line">discriminator_optimizier = tf.keras.optimizers.Adam(learning_rate=<span class="number">2e-4</span>, beta_1=<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@tf.function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_step</span><span class="params">(input_image, real_image)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> tf.GradientTape() <span class="keyword">as</span> gen_tape, tf.GradientTape() <span class="keyword">as</span> disc_tape:</span><br><span class="line">        generated_image = generator(inputs=input_image, training=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">        disc_generate_output = discriminator(inputs=[input_image, generated_image], training=<span class="keyword">True</span>)</span><br><span class="line">        disc_real_output = discriminator(inputs=[input_image, real_image], training=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">        gen_loss = generator_loss(disc_generate_output, generated_image, real_image)</span><br><span class="line">        disc_loss = discriminator_loss(disc_real_output, disc_generate_output)</span><br><span class="line"></span><br><span class="line">        gen_gradients = gen_tape.gradient(gen_loss, generator.trainable_variables)</span><br><span class="line">        disc_gradients = disc_tape.gradient(disc_loss, discriminator.trainable_variables)</span><br><span class="line"></span><br><span class="line">        generator_optimizier.apply_gradients(zip(gen_gradients, generator.trainable_variables))</span><br><span class="line">        discriminator_optimizier.apply_gradients(zip(disc_gradients, discriminator.trainable_variables))</span><br></pre></td></tr></table></figure>
+<h5 id="6、开始训练"><a href="#6、开始训练" class="headerlink" title="6、开始训练"></a>6、开始训练</h5><p>定义<code>checkpoint</code>，训练过程中每 <code>20</code> 轮保存一下模型，同时展示每一轮训练后，生成器生成图片的效果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(train_dataset_dir)</span>:</span></span><br><span class="line">    files = os.listdir(train_dataset_dir)</span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">        image_path = os.path.join(train_dataset_dir, file)</span><br><span class="line">        input_image, real_image = load_train_image(image_path)</span><br><span class="line">        train_step(input_image[tf.newaxis,...], real_image[tf.newaxis,...])</span><br><span class="line">checkpint = tf.train.Checkpoint(generator=generator, discriminator=discriminator, generator_optimizer = generator_optimizier, discriminator_optimizier=discriminator_optimizier)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    test_images_dir = <span class="string">"dataset/facades/test/"</span></span><br><span class="line">    test_image_names = os.listdir(test_images_dir)  <span class="comment"># return a filename list</span></span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(EPOCHs):</span><br><span class="line">        start = time.time()</span><br><span class="line">        train(<span class="string">"dataset/facades/train"</span>)  </span><br><span class="line">        print(<span class="string">"Epoch"</span>, epoch, <span class="string">": "</span>, time.time()-start)</span><br><span class="line">        <span class="keyword">if</span> (epoch+<span class="number">1</span>) % <span class="number">20</span> == <span class="number">0</span>:</span><br><span class="line">            checkpint.save(file_prefix=<span class="string">'training_checkpoints/pix2pix'</span>)</span><br><span class="line">        <span class="comment"># 随机找一张图片查看模型的训练效果</span></span><br><span class="line">        test_image_path = os.path.join(test_images_dir, random.choice(test_image_names))</span><br><span class="line">        test_input_image, test_real_image = load_test_image(test_image_path)</span><br><span class="line">        show_image(generator, test_input_image, test_real_image, epoch)</span><br></pre></td></tr></table></figure>
+<h5 id="7、效果展示"><a href="#7、效果展示" class="headerlink" title="7、效果展示"></a>7、效果展示</h5><p>每次画出 输入图、真实图、生成图，三者形成效果对比，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_image</span><span class="params">(generator_model, input_image, real_image, epoch)</span>:</span></span><br><span class="line">    generated_image = generator_model(input_image[tf.newaxis,...], training=<span class="keyword">False</span>)[<span class="number">0</span>]</span><br><span class="line">    plt.figure(figsize=(<span class="number">15</span>, <span class="number">6</span>))</span><br><span class="line">    plt.subplot(<span class="number">1</span>, <span class="number">3</span>, <span class="number">1</span>)</span><br><span class="line">    plt.imshow(input_image*<span class="number">0.5</span>+<span class="number">0.5</span>)  <span class="comment"># pixel value is between [0, 1]</span></span><br><span class="line">    plt.title(<span class="string">"Input Image"</span>)</span><br><span class="line">    plt.axis(<span class="string">"off"</span>)</span><br><span class="line">    plt.subplot(<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">    plt.imshow(real_image * <span class="number">0.5</span> + <span class="number">0.5</span>)  <span class="comment"># pixel value is between [0, 1]</span></span><br><span class="line">    plt.title(<span class="string">"Real Image"</span>)</span><br><span class="line">    plt.axis(<span class="string">"off"</span>)</span><br><span class="line">    plt.subplot(<span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>)</span><br><span class="line">    plt.imshow(generated_image * <span class="number">0.5</span> + <span class="number">0.5</span>)  <span class="comment"># pixel value is between [0, 1]</span></span><br><span class="line">    plt.title(<span class="string">"Generated Image"</span>)</span><br><span class="line">    plt.axis(<span class="string">"off"</span>)</span><br><span class="line">    plt.savefig(<span class="string">"pix2pix_image_save/"</span> + str(epoch) + <span class="string">".png"</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/12/30/Pix2Pix模型实现--tensorflow2.0/effect.png" alt=""></p>
+<p>由上图可见，训练效果还不错。</p>
+<p>完整代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># _*_ coding: utf-8 _*_</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">@author: Jibao Wang</span></span><br><span class="line"><span class="string">@time: 2019/12/27 19:32</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> os, time, random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">IMG_WIDTH = <span class="number">256</span></span><br><span class="line">IMG_HEIGHT = <span class="number">256</span></span><br><span class="line">OUTPUT_CHANNELS = <span class="number">3</span></span><br><span class="line">EPOCHs = <span class="number">150</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_image</span><span class="params">(image_path)</span>:</span></span><br><span class="line">    image = tf.io.read_file(image_path)</span><br><span class="line">    image = tf.image.decode_jpeg(image)</span><br><span class="line">    width = tf.shape(image)[<span class="number">1</span>] // <span class="number">2</span></span><br><span class="line">    real_image = tf.cast(image[:, :width, :], tf.float32)</span><br><span class="line">    input_image = tf.cast(image[:, width:, :], tf.float32)</span><br><span class="line">    <span class="keyword">return</span> input_image, real_image</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">resize_image</span><span class="params">(input_image, real_image, height, width)</span>:</span></span><br><span class="line">    input_image = tf.image.resize(input_image, [height, width], method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)</span><br><span class="line">    real_image = tf.image.resize(real_image, [height, width], method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)</span><br><span class="line">    <span class="keyword">return</span> input_image, real_image</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">random_crop</span><span class="params">(input_image, real_image)</span>:</span></span><br><span class="line">    stacked_image = tf.stack([input_image, real_image], axis=<span class="number">0</span>)</span><br><span class="line">    cropped_image = tf.image.random_crop(stacked_image, size=[<span class="number">2</span>, IMG_HEIGHT, IMG_WIDTH, <span class="number">3</span>])</span><br><span class="line">    <span class="keyword">return</span> cropped_image[<span class="number">0</span>], cropped_image[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">random_jitter</span><span class="params">(input_image, real_image)</span>:</span></span><br><span class="line">    input_image, real_image = resize_image(input_image, real_image, <span class="number">286</span>, <span class="number">286</span>)</span><br><span class="line">    input_image, real_image = random_crop(input_image, real_image)</span><br><span class="line">    <span class="keyword">if</span> tf.random.uniform(()) &gt; <span class="number">0.5</span>:  <span class="comment"># 随机选取图像进行水平镜像</span></span><br><span class="line">        input_image = tf.image.flip_left_right(input_image)</span><br><span class="line">        real_image = tf.image.flip_left_right(real_image)</span><br><span class="line">    <span class="keyword">return</span> input_image, real_image</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将图像的像素值归一化为 [-1, 1] 之间</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">normalize_image</span><span class="params">(input_image, real_image)</span>:</span></span><br><span class="line">    input_image = (input_image / <span class="number">127.5</span>) - <span class="number">1</span></span><br><span class="line">    real_image = (real_image / <span class="number">127.5</span>) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> input_image, real_image</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_train_image</span><span class="params">(image_file)</span>:</span></span><br><span class="line">    input_image, real_image = load_image(image_file)</span><br><span class="line">    input_image, real_image = random_jitter(input_image, real_image)</span><br><span class="line">    input_image, real_image = normalize_image(input_image, real_image)</span><br><span class="line">    <span class="keyword">return</span> input_image, real_image</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_test_image</span><span class="params">(image_file)</span>:</span></span><br><span class="line">    input_image, real_image = load_image(image_file)</span><br><span class="line">    input_image, real_image = resize_image(input_image, real_image, IMG_HEIGHT, IMG_WIDTH)</span><br><span class="line">    input_image, real_image = normalize_image(input_image, real_image)</span><br><span class="line">    <span class="keyword">return</span> input_image, real_image</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构建生成器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">downsample</span><span class="params">(filters, kernel_size, apply_batchnorm=True)</span>:</span></span><br><span class="line">    result = tf.keras.Sequential()</span><br><span class="line">    result.add(tf.keras.layers.Conv2D(filters, kernel_size, strides=<span class="number">2</span>, padding=<span class="string">'same'</span>, kernel_initializer=tf.random_normal_initializer(<span class="number">0.</span>, <span class="number">0.02</span>),</span><br><span class="line">                                      use_bias=<span class="keyword">False</span>))</span><br><span class="line">    <span class="keyword">if</span> apply_batchnorm:</span><br><span class="line">        result.add(tf.keras.layers.BatchNormalization())</span><br><span class="line">    result.add(tf.keras.layers.LeakyReLU())</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">upsample</span><span class="params">(filters, kernel_size, apply_dropout=False)</span>:</span></span><br><span class="line">    result = tf.keras.Sequential()</span><br><span class="line">    result.add(tf.keras.layers.Conv2DTranspose(filters, kernel_size, strides=<span class="number">2</span>, padding=<span class="string">'same'</span>, kernel_initializer=tf.random_normal_initializer(<span class="number">0.</span>, <span class="number">0.02</span>),</span><br><span class="line">                                               use_bias=<span class="keyword">False</span>))</span><br><span class="line">    result.add(tf.keras.layers.BatchNormalization())</span><br><span class="line">    <span class="keyword">if</span> apply_dropout:</span><br><span class="line">        result.add(tf.keras.layers.Dropout(rate=<span class="number">0.5</span>))</span><br><span class="line">    result.add(tf.keras.layers.ReLU())</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Generator</span><span class="params">()</span>:</span></span><br><span class="line">    inputs = tf.keras.layers.Input(shape=(<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>))</span><br><span class="line">    down_stack = [</span><br><span class="line">        downsample(<span class="number">64</span>, (<span class="number">4</span>, <span class="number">4</span>), apply_batchnorm=<span class="keyword">False</span>),  <span class="comment"># [batch, 128, 128, 64]</span></span><br><span class="line">        downsample(<span class="number">128</span>, (<span class="number">4</span>, <span class="number">4</span>)),   <span class="comment"># [batch, 64, 64, 128]</span></span><br><span class="line">        downsample(<span class="number">256</span>, (<span class="number">4</span>, <span class="number">4</span>)),   <span class="comment"># [batch, 32, 32, 256]</span></span><br><span class="line">        downsample(<span class="number">512</span>, (<span class="number">4</span>, <span class="number">4</span>)),   <span class="comment"># [batch, 16, 16, 512]</span></span><br><span class="line">        downsample(<span class="number">512</span>, (<span class="number">4</span>, <span class="number">4</span>)),   <span class="comment"># [batch, 8, 8, 512]</span></span><br><span class="line">        downsample(<span class="number">512</span>, (<span class="number">4</span>, <span class="number">4</span>)),   <span class="comment"># [batch, 4, 4, 512]</span></span><br><span class="line">        downsample(<span class="number">512</span>, (<span class="number">4</span>, <span class="number">4</span>)),   <span class="comment"># [batch, 2, 2, 512]</span></span><br><span class="line">        downsample(<span class="number">512</span>, (<span class="number">4</span>, <span class="number">4</span>)),   <span class="comment"># [batch, 1, 1, 512]</span></span><br><span class="line">    ]</span><br><span class="line">    up_stack = [</span><br><span class="line">        upsample(<span class="number">512</span>, (<span class="number">4</span>, <span class="number">4</span>), apply_dropout=<span class="keyword">True</span>),  <span class="comment"># [batch, 2, 2, 512]</span></span><br><span class="line">        upsample(<span class="number">512</span>, (<span class="number">4</span>, <span class="number">4</span>), apply_dropout=<span class="keyword">True</span>),  <span class="comment"># [batch, 4, 4, 512]</span></span><br><span class="line">        upsample(<span class="number">512</span>, (<span class="number">4</span>, <span class="number">4</span>), apply_dropout=<span class="keyword">True</span>),  <span class="comment"># [batch, 8, 8, 512]</span></span><br><span class="line">        upsample(<span class="number">512</span>, (<span class="number">4</span>, <span class="number">4</span>)),  <span class="comment"># [batch, 16, 16, 512]</span></span><br><span class="line">        upsample(<span class="number">256</span>, (<span class="number">4</span>, <span class="number">4</span>)),  <span class="comment"># [batch, 32, 32, 256]</span></span><br><span class="line">        upsample(<span class="number">128</span>, (<span class="number">4</span>, <span class="number">4</span>)),  <span class="comment"># [batch, 64, 64, 128]</span></span><br><span class="line">        upsample(<span class="number">64</span>, (<span class="number">4</span>, <span class="number">4</span>)),   <span class="comment"># [batch, 128, 128, 64]</span></span><br><span class="line">    ]</span><br><span class="line">    last_layer = tf.keras.layers.Conv2DTranspose(filters=OUTPUT_CHANNELS, kernel_size=(<span class="number">4</span>, <span class="number">4</span>), strides=<span class="number">2</span>, padding=<span class="string">'same'</span>,</span><br><span class="line">                                           kernel_initializer=tf.random_normal_initializer(<span class="number">0.</span>, <span class="number">0.02</span>), activation=<span class="string">'tanh'</span>)  <span class="comment"># [batch, 256, 256, 3]</span></span><br><span class="line">    x = inputs   <span class="comment"># inputs is a tensor with shape [256, 256, 3]</span></span><br><span class="line">    down_outputs = []</span><br><span class="line">    <span class="keyword">for</span> down_layer <span class="keyword">in</span> down_stack:</span><br><span class="line">        x = down_layer(x)  <span class="comment"># 调用的是 call 方法</span></span><br><span class="line">        down_outputs.append(x)</span><br><span class="line">    down_outputs = reversed(down_outputs[:<span class="number">-1</span>])  <span class="comment"># 2--&gt;4--&gt;8--&gt;16--&gt;32--&gt;64--&gt;128, 共 7 层</span></span><br><span class="line">    <span class="keyword">for</span> up_layer, down_output <span class="keyword">in</span> zip(up_stack, down_outputs):</span><br><span class="line">        x = up_layer(x)</span><br><span class="line">        x = tf.concat([x, down_output], axis=<span class="number">3</span>)</span><br><span class="line">    x = last_layer(x)  <span class="comment"># [batch, 256, 256, 3]</span></span><br><span class="line">    <span class="keyword">return</span> tf.keras.Model(inputs=inputs, outputs=x)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Discriminator</span><span class="params">()</span>:</span></span><br><span class="line">    input_image = tf.keras.layers.Input(shape=[<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>], name=<span class="string">'input_image'</span>)</span><br><span class="line">    target_image = tf.keras.layers.Input(shape=[<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>], name=<span class="string">'target_image'</span>)</span><br><span class="line">    x = tf.concat([input_image, target_image], axis=<span class="number">3</span>)  <span class="comment"># [batch, 256, 256, 6]</span></span><br><span class="line"></span><br><span class="line">    down_sample1 = downsample(filters=<span class="number">64</span>, kernel_size=(<span class="number">4</span>, <span class="number">4</span>), apply_batchnorm=<span class="keyword">False</span>)(x) <span class="comment"># [batch, 128, 128, 64]</span></span><br><span class="line">    down_sample2 = downsample(<span class="number">128</span>, (<span class="number">4</span>, <span class="number">4</span>))(down_sample1) <span class="comment"># [batch, 64, 64, 128]</span></span><br><span class="line">    down_sample3 = downsample(<span class="number">256</span>, (<span class="number">4</span>, <span class="number">4</span>))(down_sample2) <span class="comment"># [batch, 32, 32, 256]</span></span><br><span class="line"></span><br><span class="line">    zero_pad1 = tf.keras.layers.ZeroPadding2D(padding=(<span class="number">1</span>, <span class="number">1</span>))(down_sample3)  <span class="comment"># [batch, 34, 34, 256]</span></span><br><span class="line">    conv = tf.keras.layers.Conv2D(filters=<span class="number">512</span>, kernel_size=(<span class="number">4</span>, <span class="number">4</span>), strides=<span class="number">1</span>, padding=<span class="string">'valid'</span>, kernel_initializer=tf.random_normal_initializer(<span class="number">0.</span>, <span class="number">0.02</span>),</span><br><span class="line">                                  use_bias=<span class="keyword">False</span>)(zero_pad1)   <span class="comment"># [batch, 31, 31, 512]</span></span><br><span class="line">    batchnorm = tf.keras.layers.BatchNormalization()(conv)</span><br><span class="line">    leaky_relu = tf.keras.layers.LeakyReLU()(batchnorm)</span><br><span class="line"></span><br><span class="line">    zero_pad2 = tf.keras.layers.ZeroPadding2D(padding=(<span class="number">1</span>, <span class="number">1</span>))(leaky_relu) <span class="comment"># [batch, 33, 33, 512]</span></span><br><span class="line">    output = tf.keras.layers.Conv2D(filters=<span class="number">1</span>, kernel_size=(<span class="number">4</span>, <span class="number">4</span>), strides=<span class="number">1</span>, kernel_initializer=tf.random_normal_initializer(<span class="number">0.</span>, <span class="number">0.02</span>))(zero_pad2)</span><br><span class="line">    <span class="comment"># [batch, 30, 30, 1]</span></span><br><span class="line">    <span class="keyword">return</span> tf.keras.Model(inputs=[input_image, target_image], outputs=output)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generator_loss</span><span class="params">(disc_generated_output, generated_image, real_image)</span>:</span></span><br><span class="line">    loss_object = tf.keras.losses.BinaryCrossentropy(from_logits=<span class="keyword">True</span>)</span><br><span class="line">    gan_loss = loss_object(tf.ones_like(disc_generated_output), disc_generated_output)</span><br><span class="line">    l1_loss = tf.reduce_mean(tf.abs(generated_image - real_image))</span><br><span class="line">    <span class="keyword">return</span> gan_loss + <span class="number">100</span> * l1_loss</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">discriminator_loss</span><span class="params">(disc_real_output, disc_generated_output)</span>:</span></span><br><span class="line">    loss_object = tf.keras.losses.BinaryCrossentropy(from_logits=<span class="keyword">True</span>)</span><br><span class="line">    real_loss = loss_object(tf.ones_like(disc_real_output), disc_real_output)</span><br><span class="line">    generated_loss = loss_object(tf.zeros_like(disc_generated_output), disc_generated_output)</span><br><span class="line">    <span class="keyword">return</span> real_loss + generated_loss</span><br><span class="line"></span><br><span class="line">generator = Generator()</span><br><span class="line">discriminator = Discriminator()</span><br><span class="line">generator_optimizier = tf.keras.optimizers.Adam(learning_rate=<span class="number">2e-4</span>, beta_1=<span class="number">0.5</span>)</span><br><span class="line">discriminator_optimizier = tf.keras.optimizers.Adam(learning_rate=<span class="number">2e-4</span>, beta_1=<span class="number">0.5</span>)</span><br><span class="line">checkpint = tf.train.Checkpoint(generator=generator, discriminator=discriminator,</span><br><span class="line">                                generator_optimizer = generator_optimizier, discriminator_optimizier=discriminator_optimizier)</span><br><span class="line"></span><br><span class="line"><span class="meta">@tf.function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_step</span><span class="params">(input_image, real_image)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> tf.GradientTape() <span class="keyword">as</span> gen_tape, tf.GradientTape() <span class="keyword">as</span> disc_tape:</span><br><span class="line">        generated_image = generator(inputs=input_image, training=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">        disc_generate_output = discriminator(inputs=[input_image, generated_image], training=<span class="keyword">True</span>)</span><br><span class="line">        disc_real_output = discriminator(inputs=[input_image, real_image], training=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">        gen_loss = generator_loss(disc_generate_output, generated_image, real_image)</span><br><span class="line">        disc_loss = discriminator_loss(disc_real_output, disc_generate_output)</span><br><span class="line"></span><br><span class="line">        gen_gradients = gen_tape.gradient(gen_loss, generator.trainable_variables)</span><br><span class="line">        disc_gradients = disc_tape.gradient(disc_loss, discriminator.trainable_variables)</span><br><span class="line"></span><br><span class="line">        generator_optimizier.apply_gradients(zip(gen_gradients, generator.trainable_variables))</span><br><span class="line">        discriminator_optimizier.apply_gradients(zip(disc_gradients, discriminator.trainable_variables))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(train_dataset_dir)</span>:</span></span><br><span class="line">    files = os.listdir(train_dataset_dir)</span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">        image_path = os.path.join(train_dataset_dir, file)</span><br><span class="line">        input_image, real_image = load_train_image(image_path)</span><br><span class="line">        train_step(input_image[tf.newaxis,...], real_image[tf.newaxis,...])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_image</span><span class="params">(generator_model, input_image, real_image, epoch)</span>:</span></span><br><span class="line">    generated_image = generator_model(input_image[tf.newaxis,...], training=<span class="keyword">False</span>)[<span class="number">0</span>]</span><br><span class="line">    plt.figure(figsize=(<span class="number">15</span>, <span class="number">6</span>))</span><br><span class="line">    plt.subplot(<span class="number">1</span>, <span class="number">3</span>, <span class="number">1</span>)</span><br><span class="line">    plt.imshow(input_image*<span class="number">0.5</span>+<span class="number">0.5</span>)  <span class="comment"># pixel value is between [0, 1]</span></span><br><span class="line">    plt.title(<span class="string">"Input Image"</span>)</span><br><span class="line">    plt.axis(<span class="string">"off"</span>)</span><br><span class="line">    plt.subplot(<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">    plt.imshow(real_image * <span class="number">0.5</span> + <span class="number">0.5</span>)  <span class="comment"># pixel value is between [0, 1]</span></span><br><span class="line">    plt.title(<span class="string">"Real Image"</span>)</span><br><span class="line">    plt.axis(<span class="string">"off"</span>)</span><br><span class="line">    plt.subplot(<span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>)</span><br><span class="line">    plt.imshow(generated_image * <span class="number">0.5</span> + <span class="number">0.5</span>)  <span class="comment"># pixel value is between [0, 1]</span></span><br><span class="line">    plt.title(<span class="string">"Generated Image"</span>)</span><br><span class="line">    plt.axis(<span class="string">"off"</span>)</span><br><span class="line">    plt.savefig(<span class="string">"pix2pix_image_save/"</span> + str(epoch) + <span class="string">".png"</span>)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过 imageio 生成训练过程动画</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gif_animation_generate</span><span class="params">()</span>:</span></span><br><span class="line">    gif_name = <span class="string">"pix2pix.gif"</span></span><br><span class="line">    filenames = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">151</span>):</span><br><span class="line">        filenames.append(<span class="string">"pix2pix_image_save/"</span> + str(i) + <span class="string">".png"</span>)</span><br><span class="line">    frames = []</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">        im = imageio.imread(filename)</span><br><span class="line">        frames.append(im)</span><br><span class="line">    imageio.mimsave(gif_name, frames, <span class="string">"GIF"</span>, duration=<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    test_images_dir = <span class="string">"dataset/facades/test/"</span></span><br><span class="line">    test_image_names = os.listdir(test_images_dir)  <span class="comment"># return a filename list</span></span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(EPOCHs):</span><br><span class="line">        start = time.time()</span><br><span class="line">        train(<span class="string">"dataset/facades/train"</span>)  <span class="comment"># 测试集和验证集同时拿来训练</span></span><br><span class="line">        train(<span class="string">"dataset/facades/val"</span>)</span><br><span class="line">        print(<span class="string">"Epoch"</span>, epoch, <span class="string">": "</span>, time.time()-start)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (epoch+<span class="number">1</span>) % <span class="number">20</span> == <span class="number">0</span>:</span><br><span class="line">            checkpint.save(file_prefix=<span class="string">'training_checkpoints/pix2pix'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 随机找一张图片查看模型的训练效果</span></span><br><span class="line">        test_image_path = os.path.join(test_images_dir, random.choice(test_image_names))</span><br><span class="line">        test_input_image, test_real_image = load_test_image(test_image_path)</span><br><span class="line">        show_image(generator, test_input_image, test_real_image, epoch)</span><br><span class="line">        <span class="comment"># 固定地选取一张图片，查看模型的训练效果</span></span><br><span class="line">        processing_show_input_image, processing_show_real_image = load_test_image(<span class="string">"dataset/facades/test/1.jpg"</span>)</span><br><span class="line">        show_image(generator, processing_show_input_image, processing_show_real_image, epoch+<span class="number">150</span>)</span><br><span class="line">    gif_animation_generate()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div>
+      
+          <div> 
+     
+      	<div style="text-align:center;color: #ccc;font-size:14px;">
+            -------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------
+        </div>
+     
+</div>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的鼓励就是我创作的动力，求打赏买面包~~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="大宝哥spring 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/27/cDCGAN生成指定手写数字--tensorflow2.0/" rel="next" title="cDCGAN生成指定手写数字--tensorflow2.0">
+                <i class="fa fa-chevron-left"></i> cDCGAN生成指定手写数字--tensorflow2.0
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="大宝哥spring" />
+            
+              <p class="site-author-name" itemprop="name">大宝哥spring</p>
+              <p class="site-description motion-element" itemprop="description">机会总是留给有准备的人</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangjibao1995@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="skype:1625888175?call|chat" target="_blank" title="Skype">
+                      
+                        <i class="fa fa-fw fa-skype"></i>Skype</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+          
+          
+      			<div class="links-of-blogroll motion-element links-of-blogroll-block">
+      			  <div class="links-of-blogroll-title">
+      			    <!-- modify icon to fire by szw -->
+      			    <i class="fa fa-history fa-" aria-hidden="true"></i>
+      			    近期文章
+      			  </div>
+      			  <ul class="links-of-blogroll-list">
+      			    
+      			    
+      			      <li>
+      			        <a href="/2019/12/30/Pix2Pix模型实现--tensorflow2.0/" title="Pix2Pix模型实现--tensorflow2.0" target="_blank">Pix2Pix模型实现--tensorflow2.0</a>
+      			      </li>
+      			    
+      			      <li>
+      			        <a href="/2019/12/27/cDCGAN生成指定手写数字--tensorflow2.0/" title="cDCGAN生成指定手写数字--tensorflow2.0" target="_blank">cDCGAN生成指定手写数字--tensorflow2.0</a>
+      			      </li>
+      			    
+      			      <li>
+      			        <a href="/2019/12/27/DCGAN手写数字生成--tensorflow2.0/" title="DCGAN手写数字生成--tensorflow2.0" target="_blank">DCGAN手写数字生成--tensorflow2.0</a>
+      			      </li>
+      			    
+      			      <li>
+      			        <a href="/2019/12/17/v2ray-websocket-TLS通过cloudflare转发防IP被ban/" title="v2ray+websocket+TLS通过cloudflare转发防IP被ban" target="_blank">v2ray+websocket+TLS通过cloudflare转发防IP被ban</a>
+      			      </li>
+      			    
+      			      <li>
+      			        <a href="/2019/11/22/Linux环境变量配置/" title="Linux环境变量配置" target="_blank">Linux环境变量配置</a>
+      			      </li>
+      			    
+      			  </ul>
+      			</div>
+      		
+
+          <!-- CloudCalendar -->
+          <div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+            <div class="widget" id="CloudCalendar"></div>
+          </div>
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、数据集图像处理"><span class="nav-text">1、数据集图像处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、构建生成器"><span class="nav-text">2、构建生成器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、构建判别器"><span class="nav-text">3、构建判别器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、定义生成器和判别器的损失函数"><span class="nav-text">4、定义生成器和判别器的损失函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、定义优化器及训练过程"><span class="nav-text">5、定义优化器及训练过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6、开始训练"><span class="nav-text">6、开始训练</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7、效果展示"><span class="nav-text">7、效果展示</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">大宝哥spring</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站共计&#58;</span>
+    
+    <span title="本站共计">60.8k 字</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 你是本站的第
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      位访问者
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'B31yiwrejjIOHiBSE6OpWt5u-gzGzoHsz',
+        appKey: 'iK4kp1lzdo6WOfMHzUm0CJMG',
+        placeholder: '来呀，互相交流，互相伤害啊~~~',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("B31yiwrejjIOHiBSE6OpWt5u-gzGzoHsz", "iK4kp1lzdo6WOfMHzUm0CJMG");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,QQZone,Evernote,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  <!-- calendar widget -->
+
+
+    <script src="/lib/CloudCalendar/CloudCalendar.min.js"></script>
+    <script src="/lib/CloudCalendar/languages.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#CloudCalendar').aCalendar('zh-CN', 
+            $.extend(
+                '', {
+                    single:true,
+                    root:'/calendar/'
+                }
+            )
+        );
+    });
+    </script>
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>
