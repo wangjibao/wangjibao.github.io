@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wangjibao.com.cn/2020/01/01/cycleGAN%E5%AE%9E%E7%8E%B0-tensorflow2-0/</loc>
+    
+    <lastmod>2020-01-02T11:10:46.602Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wangjibao.com.cn/2019/12/30/Pix2Pix%E6%A8%A1%E5%9E%8B%E5%AE%9E%E7%8E%B0--tensorflow2.0/</loc>
     
     <lastmod>2019-12-31T04:53:58.564Z</lastmod>
